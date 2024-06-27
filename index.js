@@ -126,6 +126,10 @@ app.use( express.static(path.join(__dirname , ("./images"))));
         const adminUpdateTeacher = require("./src/router/Auth/Admin/Teacher/update")
     // teacher
 
+    // get 
+        const adminGetOne = require("./src/router/Admin/get_one");
+        const adminGetAll = require("./src/router/Admin/get_all");
+    // get 
 // require admin files
 
 // create admin api's
@@ -152,6 +156,10 @@ app.use( express.static(path.join(__dirname , ("./images"))));
         app.use("/api/v1/admin/teacher/update" , adminUpdateTeacher);
     // teacher api's
 
+    // get 
+        app.use("/api/v1/admin/get/one" , adminGetOne);
+        app.use("/api/v1/admin/get/all" , adminGetAll);
+    // get 
 // create admin api's
 
 
