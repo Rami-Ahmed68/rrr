@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // english model
-const English = require("../../../../models/Subjects_Banks/english/english");
+const English = require("../../../../models/Subjects_Banks/English/english");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Teacher/Joi_validate_create_question");
