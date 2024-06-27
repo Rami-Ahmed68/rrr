@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // geography model
-const Geography = require("../../../../models/Subjects Banks/Geography/geography");
+const Geography = require("../../../../models/Subjects_Banks/Geography/geography");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Teacher/Joi_validate_create_question");

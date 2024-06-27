@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // sciences model
-const Sciences = require("../../../../models/Subjects Banks/Sciences/sciences");
+const Sciences = require("../../../../models/Subjects_Banks/Sciences/sciences");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");

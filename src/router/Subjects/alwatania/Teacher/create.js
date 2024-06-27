@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // alawatania model
-const Alwatania = require("../../../../models/Subjects Banks/alwatania/alwatania");
+const Alwatania = require("../../../../models/Subjects_Banks/alwatania/alwatania");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Teacher/Joi_validate_create_question");

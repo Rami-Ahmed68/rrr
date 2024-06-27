@@ -7,7 +7,7 @@ const Joi = require("joi");
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 // chemistry model
-const Chemistry = require("../../../models/Subjects Banks/chemistry/chemistry");
+const Chemistry = require("../../../models/Subjects_Banks/chemistry/chemistry");
 
 
 router.get("/" , async (req , res , next) => {

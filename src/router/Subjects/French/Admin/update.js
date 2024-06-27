@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // french model
-const French = require("../../../../models/Subjects Banks/French/french");
+const French = require("../../../../models/Subjects_Banks/French/french");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");

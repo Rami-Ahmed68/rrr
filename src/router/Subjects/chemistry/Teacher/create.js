@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // chemistry model
-const Chemistry = require("../../../../models/Subjects Banks/chemistry/chemistry");
+const Chemistry = require("../../../../models/Subjects_Banks/chemistry/chemistry");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Teacher/Joi_validate_create_question");

@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // alawatania model
-const Alwatania = require("../../../../models/Subjects Banks/alwatania/alwatania");
+const Alwatania = require("../../../../models/Subjects_Banks/alwatania/alwatania");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");
