@@ -1245,7 +1245,7 @@ app.all("*" , (req , res , next) => {
 // Global error handling middlware
 app.use(Global);
 // Global error handling middlware
-
+//s
 // connect to data base
 mongoose.connect(process.env.DATA_BASE_LINK)
 .then(() => {
