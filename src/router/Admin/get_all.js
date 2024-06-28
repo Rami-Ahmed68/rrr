@@ -14,7 +14,9 @@ router.get("/" , async (req , res , next) => {
 
         // create schema to validate query data
         const Schema = Joi.object().keys({
-            name : Joi.string()
+            name : Joi.string(),
+            limit : Joi.number(),
+            page : Joi.number()
         });
 
         // validate query data
