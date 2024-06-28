@@ -150,6 +150,7 @@ router.post("/" , upload , async (req , res , next) => {
         res.status(200).send(result);
 
     } catch (error) {
+        res.send(error)
         // to delete uploaded avatar
         DeleteImages(req.files , next);
         // return error
