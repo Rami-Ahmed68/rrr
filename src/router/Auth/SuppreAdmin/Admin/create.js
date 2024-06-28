@@ -154,7 +154,7 @@ router.post("/" , upload , async (req , res , next) => {
         DeleteImages(req.files , next);
         // return error
         return next(new ApiErrors(JSON.stringify({
-            english : error,
+            english : `${error}...`,
             arabic : "... عذرا خطأ عام"
         }) , 500))
     }
