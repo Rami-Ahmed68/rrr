@@ -47,20 +47,18 @@ router.get("/" , async (req , res , next) => {
             // get all parent 
             parents = await Parent.find({ 
                 name : { $regex: new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit).populate([
-                {
+            }).skip(skip).limit(limit).populate({
                     path : "created_by",
                     select : "_id name avatar"
-                }
-            ]);
+                });
         } else {
             // get all parent 
-            parents = await Parent.find().skip(skip).limit(limit).populate([
+            parents = await Parent.find().skip(skip).limit(limit).populate(
                 {
                     path : "created_by",
                     select : "_id name avatar"
                 }
-            ]);
+            );
         }
 
         // create result

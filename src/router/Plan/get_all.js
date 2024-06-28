@@ -42,20 +42,20 @@ router.get("/" , async (req , res , next) => {
 
         let plans;
 
-        if (req.query.class_level) {
+        if (req.query.title) {
             // get the plans by class level
             plans = await Plan.find({ 
                 title : { $regex: new RegExp(req.query.title , 'ig') }
             }).skip(skip).limit(limit).populate({
                 path : "created_by",
                 select : "_id name avatar"
-            });
+            }).sort({ _id : -1 });
         } else {
             // get all plans
             plans = await Plan.find().skip(skip).limit(limit).populate({
                 path : "created_by",
                 select : "_id name avatar"
-            });
+            }).sort({ _id : -1 });
         }
 
         // create result

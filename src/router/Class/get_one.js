@@ -44,6 +44,10 @@ router.get("/" , async(req , res , next) => {
             {
                 path : "created_by",
                 select : "_id name avatar"
+            },
+            {
+                path : "home_works",
+                select : "_id title images"
             }
         ]);
 

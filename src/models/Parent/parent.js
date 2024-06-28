@@ -24,7 +24,8 @@ const parent = new mongoose.Schema({
         type : String
     },
     children : [{
-        type : mongoose.Schema.Types.ObjectId
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "student"
     }],
     created_by : {
         type : mongoose.Schema.Types.ObjectId,

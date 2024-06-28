@@ -42,12 +42,12 @@ router.get("/" , async (req , res , next) => {
 
         if (req.query.name) {
             // get admins
-            admins = Admin.find({
-                name: { $regex: new RegExp(req.query.name, 'ig') }
-            }).skip(skip).limit(limit);
+            admins = await Admin.find({
+                name : { $regex: new RegExp(req.query.name, 'ig') }
+            }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
             // get admins
-            admins = Admin.find().skip(skip).limit(limit);
+            admins = await Admin.find().skip(skip).limit(limit).sort({ _id : -1 });
         }
 
         // create resul

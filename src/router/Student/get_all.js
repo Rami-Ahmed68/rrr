@@ -15,7 +15,7 @@ router.get("/" , async (req , res , next) => {
 
         // create schema
         const Schema = Joi.object().keys({
-            title : Joi.string(),
+            name : Joi.string(),
             limit : Joi.number(),
             page : Joi.number()
         });
@@ -45,18 +45,24 @@ router.get("/" , async (req , res , next) => {
         let students;
 
         // get all students
-        if (req.query.title) {
+        if (req.query.name) {
             students = await Student.find({
-                name : { $regex : new RegExp(req.query.title , 'ig') }
-            }).skip(skip).limit(limit).sort({ _id : -1 });
+                name : { $regex : new RegExp(req.query.name , 'ig') }
+            }).skip(skip).limit(limit).populate({
+                path : "created_by",
+                select : "_id name avatar"
+            }).sort({ _id : -1 });
         } else {
-            students = await Student.find().skip(skip).limit(limit).sort({ _id : -1 });
+            students = await Student.find().skip(skip).limit(limit).populate({
+                path : "created_by",
+                select : "_id name avatar"
+            }).sort({ _id : -1 });
         }
 
         // craete result
         const result = {
             "message" : "Student geted successfully",
-            "student_data" : students.map(student => _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "total_gpa" , "List_of_modifiers" , "classes" , "plans" , "class_level" , "joind_at"]))
+            "student_data" : students.map(student => _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "total_gpa" , "List_of_modifiers" , "classes" , "plans" , "class_level" , "created_by" , "joind_at"]))
         }
 
         // send result

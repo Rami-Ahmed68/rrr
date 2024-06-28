@@ -181,7 +181,6 @@ app.use( express.static(path.join(__dirname , ("./images"))));
 // create teacher api's
 
 
-
 // require student files
     const StudentLogin = require("./src/router/Auth/Student/login");
     const StudentUpdate = require("./src/router/Auth/Student/update");
@@ -412,6 +411,47 @@ app.use( express.static(path.join(__dirname , ("./images"))));
         app.use("/api/v1/plan/get/one" , planGetOne);
     // get
 // create plan api's
+
+
+// require message files
+    // super admin
+        const superMessageCreate = require("./src/router/Message/Supper_Admin/create");
+        const superMessageDelete = require("./src/router/Message/Supper_Admin/delete");
+        const superMessageUpdate = require("./src/router/Message/Supper_Admin/update");
+    // super admin
+
+    // admin
+        const adminMessageCreate = require("./src/router/Message/Admin/create");
+        const adminMessageDelete = require("./src/router/Message/Admin/delete");
+        const adminMessageUpdate = require("./src/router/Message/Admin/update");
+    // admin
+
+    // get
+        const messageGetAll = require("./src/router/Message/get_all");
+        const messageGetOne = require("./src/router/Message/get_one");
+    // get
+// require message files
+
+
+// craete reate message api's
+    // super 
+        app.use("/api/v1/super/message/create" , superMessageCreate);
+        app.use("/api/v1/super/message/delete" , superMessageDelete);
+        app.use("/api/v1/super/message/update" , superMessageUpdate);
+    // super 
+
+    // admin
+        app.use("/api/v1/admin/message/create" , adminMessageCreate);
+        app.use("/api/v1/admin/message/delete" , adminMessageDelete);
+        app.use("/api/v1/admin/message/update" , adminMessageUpdate);
+    // admin
+
+    // get 
+        app.use("/api/v1/message/get/all" , messageGetAll);
+        app.use("/api/v1/message/get/one" , messageGetOne);
+    // get 
+// craete reate message api's
+
 
 // require home work files
 
@@ -1073,7 +1113,6 @@ app.use( express.static(path.join(__dirname , ("./images"))));
     // create sciences api's 
 
 
-
     // require geography files
         // super admin
         const superGeographyCreate = require("./src/router/Subjects/Geography/Supper_Admin/create");
@@ -1208,7 +1247,7 @@ app.use(Global);
 // Global error handling middlware
 
 // connect to data base
-mongoose.connect(process.env.URL)
+mongoose.connect(process.env.DATA_BASE_LINK)
 .then(() => {
     console.log("###### Conected ######")
 })

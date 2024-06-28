@@ -47,16 +47,16 @@ router.get("/" , async (req , res , next) => {
             // get teachers
             teachers = await Teacher.find({
                 name : { $regex : new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit).popualte({
+            }).skip(skip).limit(limit).populate({
                 path : "created_by",
                 select : "_id name avatar"
-            }).sort();
+            }).sort({ _id : -1 });
         } else {
             // get teachers
-            teachers = await Teacher.find().skip(skip).limit(limit).popualte({
+            teachers = await Teacher.find().skip(skip).limit(limit).populate({
                 path : "created_by",
                 select : "_id name avatar"
-            }).sort();
+            }).sort({ _id : -1 });
         }
 
         // create result
