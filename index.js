@@ -17,7 +17,11 @@ app.use(cors(corsOptions));
 
 app.get("/test" , (req , res) => {
     res.send("Truee")
-})
+});
+
+app.get("/" , (req , res) => {
+    res.send("Index page")
+});
 
 // import error validate
 const ApiErrors = require("./src/utils/validation_error/ApiErrors");
