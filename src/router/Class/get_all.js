@@ -59,7 +59,7 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Classes geted successfully",
-            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "student" , "home_works" , "teacher" , "class_level" , "created_by"]))
+            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "students" , "home_works" , "teacher" , "class_level" , "created_by"]))
         }
 
         // send the result
