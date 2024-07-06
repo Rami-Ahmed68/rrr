@@ -34,7 +34,7 @@ const UploadCloudinary = require("../../../utils/cloudinary/UploadCloudinary");
 
 router.post("/" , upload_home_work_images , async (req , res , next) => {
     try {
-    res.send("ddd")
+
         // validate body data 
         const Error = Validate_hw_create(req.body);
 
