@@ -7,7 +7,7 @@ const Validate_teacher_update = (data) => {
         teacher_id : Joi.string().required(),
         name : Joi.string().min(3).max(100),
         editor : Joi.boolean(),
-        subject : Joi.object(),
+        subject : Joi.string(),
         email : Joi.string().min(5).max(50).email(),
         password : Joi.string().min(8).max(100),
         about_me : Joi.string().min(10).max(500),
