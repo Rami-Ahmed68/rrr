@@ -133,7 +133,7 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
             created_by_type : "teacher",
             created_by : req.body.teacher_id
         });
-res.send("ddd222")
+
         // upload the images to cloudinary cloud
         if (req.files && req.files.length > 0) {
             // upload images to cloudinary cloud
@@ -147,7 +147,7 @@ res.send("ddd222")
             // delete the uploaded images from images folder
             DeleteImages(req.files , next);
         }
-
+res.send("ddd333")
         // save the home wrok
         await homeWork.save();
 
