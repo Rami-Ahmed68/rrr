@@ -13,7 +13,7 @@ const Validate_teacher_update = (data) => {
         about_me : Joi.string().min(10).max(500),
         gender : Joi.string(),
         delete_avatar : Joi.boolean().required(),
-        class_level : Joi.object()
+        class_level : Joi.string()
     });
 
     // validate body data using Schema
