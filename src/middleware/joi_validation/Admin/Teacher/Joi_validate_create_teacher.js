@@ -11,7 +11,7 @@ const Validate_teacher_create = (data) => {
         password : Joi.string().min(8).max(100).required(),
         about_me : Joi.string().min(10).max(500),
         gender : Joi.string().required(),
-        class_level : Joi.object().required()
+        class_level : Joi.string().required()
     });
 
     // validate body data using Schema
