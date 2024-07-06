@@ -6,7 +6,7 @@ const Validate_teacher_create = (data) => {
         admin_id : Joi.string().required(),
         name : Joi.string().min(3).max(100).required(),
         editor : Joi.boolean().required(),
-        subject : Joi.object().required(),
+        subject : Joi.string().required(),
         email : Joi.string().min(5).max(50).email().required(),
         password : Joi.string().min(8).max(100).required(),
         about_me : Joi.string().min(10).max(500),
