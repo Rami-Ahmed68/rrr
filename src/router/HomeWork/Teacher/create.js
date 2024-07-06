@@ -71,7 +71,7 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
             DeleteImages(req.files , next);
 
             // return error
-            return next(new ApiErrors(JSOn.stringify({
+            return next(new ApiErrors(JSON.stringify({
                 english : "Sorry, invalid teacher data ...",
                 arabic : "... عذرا خطأ في بيانات المدرس"
             }) , 400))
