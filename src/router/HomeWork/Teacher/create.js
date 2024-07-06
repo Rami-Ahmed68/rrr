@@ -147,10 +147,10 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
             // delete the uploaded images from images folder
             DeleteImages(req.files , next);
         }
-res.send("ddd333")
+
         // save the home wrok
         await homeWork.save();
-
+res.send("ddd444")
         // add the created home work id to class's home works array
         Class_object.home_works.push(homeWork._id);
 
