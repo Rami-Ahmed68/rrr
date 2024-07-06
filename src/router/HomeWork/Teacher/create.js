@@ -150,10 +150,10 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
 
         // save the home wrok
         await homeWork.save();
-res.send("ddd444")
+
         // add the created home work id to class's home works array
         Class_object.home_works.push(homeWork._id);
-
+res.send("ddd444")
         // save the class object in data base after added the home work's id
         await Class_object.save();
 
