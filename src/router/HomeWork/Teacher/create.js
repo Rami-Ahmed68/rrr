@@ -163,6 +163,7 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
             "home_work_data" : _.pick(homeWork , ["_id" , "title" , "description" , "note" , "class_id" , "level" , "images" , "created_at" , "created_by"])
         }
 
+        res.status(200).send("سيسشيسش");
         // send the result
         res.status(200).send(result);
 
