@@ -157,6 +157,9 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
         // save the class object in data base after added the home work's id
         await Class_object.save();
 
+        res.status(200).send("111");
+        
+        
         // create result
         const result = {
             "message" : "Home work created successfully",
