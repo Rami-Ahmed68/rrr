@@ -80,10 +80,10 @@ router.put("/" , async (req , res , next) => {
         }
 
         // delete the student id from class's students array
-        classObject.students.filter(studentId => studentId != req.body.student_id);
+        classObject.students = classObject.students.filter(studentId => studentId != req.body.student_id);
 
         // delete the class id from student's classes array
-        student.classes.filter(classObId => classObId != req.body.class_id);
+        student.classes = student.classes.filter(classObId => classObId != req.body.class_id);
 
         // save the student after changes
         await student.save();
@@ -93,7 +93,7 @@ router.put("/" , async (req , res , next) => {
 
         // create result
         const result = {
-            "message" : "Joined successfully",
+            "message" : "Leaved successfully",
             "class_data" : _.pick(classObject , ["_id" , "title" , "cover" , "teacher" , "students" , "subject" , "note" , "home_works" , "class_level"])
         };
 
