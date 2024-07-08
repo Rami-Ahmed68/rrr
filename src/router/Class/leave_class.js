@@ -79,11 +79,11 @@ router.put("/" , async (req , res , next) => {
             }) , 403));
         }
 
-        // add student id to clss students array
-        classObject.students.push(student._id);
+        // delete the student id from class's students array
+        classObject.students.filter(student => student != student._id);
 
-        // add class id to student classes
-        student.classes.push(classObject._id);
+        // delete the class id from student's classes array
+        student.classes.filter(classOb => classOb != classObject._id);
 
         // save the student after changes
         await student.save();
