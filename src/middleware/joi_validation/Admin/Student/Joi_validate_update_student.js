@@ -10,7 +10,7 @@ const Validate_student_update = (data) => {
         password : Joi.string().min(8).max(100),
         gender : Joi.string(),
         about_me : Joi.string().min(5).max(500),
-        class_level : Joi.object(),
+        class_level : Joi.string(),
         delete_avatar : Joi.boolean().required()
     });
 
