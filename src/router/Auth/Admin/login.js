@@ -60,7 +60,8 @@ router.post("/" , async (req , res , next) => {
 
         // create result
         const result = {
-            "admin_data" : _.pick(admin , ["_id" , "name" , "is_admin" , "email" , "avatar" , "gender" , "joined_at" , "rate" ]),
+            "message" : "Loged in successfully",
+            "user_data" : _.pick(admin , ["_id" , "name" , "is_admin" , "email" , "avatar" , "gender" , "joined_at" , "rate" ]),
             "token" : token
         };
 
