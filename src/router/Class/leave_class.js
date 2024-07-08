@@ -74,16 +74,16 @@ router.put("/" , async (req , res , next) => {
         if (!classObject.students.includes(student._id) && !student.classes.includes(classObject._id)) {
             // return error
             return next(new ApiErrors(JSON.stringify({
-                english : "Sorry, you are already enrolled in this class ...",
-                arabic : "... عذرا انت منضم الى الصف بالفعل"
+                english : "Sorry, you are not in the class ...",
+                arabic : "... عذرا انت لست منضم للصف"
             }) , 403));
         }
 
         // delete the student id from class's students array
-        classObject.students.filter(student => student != student._id);
+        classObject.students.filter(studentId => studentId != req.body.student_id);
 
         // delete the class id from student's classes array
-        student.classes.filter(classOb => classOb != classObject._id);
+        student.classes.filter(classObId => classObId != req.body.class_id);
 
         // save the student after changes
         await student.save();
