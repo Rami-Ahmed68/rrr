@@ -90,13 +90,10 @@ router.put("/" , async (req , res , next) => {
         }
 
         // add student id to clss students array
-        // classObject.students.push(student._id);
-        classObject.students.filter(student => student != student._id);
-
+        classObject.students.push(student._id);
 
         // add class id to student classes
-        // student.classes.push(classObject._id);
-        student.classes.filter(classOb => classOb != classObject._id);
+        student.classes.push(classObject._id);
 
         // save the student after changes
         await student.save();
