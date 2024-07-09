@@ -53,7 +53,7 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Home work geted successfully",
-            "home_work_data" : _.pick(home_work , ["_id" , "title" , "description" , "note" , "level" , "class_id" , "subject" , "images" , "created_by" , "created_at"])
+            "home_work_data" : _.pick(home_work , ["_id" , "title" , "description" , "note" , "level" , "class_id" , "subject" , "images" , "created_by" , "created_by_type" , "created_at"])
         }
 
         // send the result
