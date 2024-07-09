@@ -59,7 +59,16 @@ router.put("/" , async (req , res , next) => {
         }
 
         // find the class
-        const classObject = await ClassSchema.findById(req.body.class_id);
+        const classObject = await ClassSchema.findById(req.body.class_id).populate([
+            {
+                path : "created_by",
+                select : "_id name avatar"
+            },
+            {
+                path : "teacher",
+                select : "_id name avatar"
+            }
+        ]);
 
         // check if the class is exists
         if (!classObject) {
@@ -104,7 +113,7 @@ router.put("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Joined successfully",
-            "class_data" : _.pick(classObject , ["_id" , "title" , "cover" , "teacher" , "students" , "subject" , "note" , "home_works" , "class_level"])
+            "class_data" : _.pick(classObject , ["_id" , "title" , "cover" , "teacher" , "students" , "subject" , "note" , "home_works" , "class_level" , "created_by" , "created_by_type"])
         };
 
         // send result
