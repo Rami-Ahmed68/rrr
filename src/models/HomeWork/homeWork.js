@@ -49,6 +49,7 @@ const homework = new mongoose.Schema({
         type : String,
         min : 5,
         max : 100,
+        required : true
     },
     created_at : {
         type : Date,
