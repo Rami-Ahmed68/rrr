@@ -21,7 +21,7 @@ const homework = new mongoose.Schema({
     level : {
         type : String,
         required : true,
-        enum : ["normal" , "important" , "veryimportant"]
+        enum : ["normal" , "easy" , "hard"]
     },
     subject : {
         type : String,
