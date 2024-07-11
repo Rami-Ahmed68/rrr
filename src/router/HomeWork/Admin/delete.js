@@ -28,7 +28,7 @@ const CheckAdmin = require("../../../middleware/CheckAdmin");
 
 router.delete("/" , async (req , res , next) => {
     try {
-
+res.send(req.admin_id)
         // validate body data
         const Error = Validate_hw_delete(req.body);
 
@@ -123,7 +123,7 @@ router.delete("/" , async (req , res , next) => {
     } catch (error) {
         // return error
         return next(new ApiErrors(JSON.stringify({
-            english : `${error}`,
+            english : `${error} ...`,
             arabic : "... عذرا خطأ عام"
         }) , 500))
     }
