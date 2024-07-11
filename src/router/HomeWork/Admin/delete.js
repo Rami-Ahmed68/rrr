@@ -118,7 +118,7 @@ router.delete("/" , async (req , res , next) => {
         }
 
         // send result
-        res.status(200).send(result);
+        res.send(result);
 
     // } catch (error) {
     //     // return error
