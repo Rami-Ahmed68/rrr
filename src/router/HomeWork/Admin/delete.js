@@ -27,7 +27,7 @@ const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 const CheckAdmin = require("../../../middleware/CheckAdmin");
 
 router.delete("/" , async (req , res , next) => {
-    // try {
+    try {
 
         // validate body data
         const Error = Validate_hw_delete(req.body);
@@ -104,7 +104,7 @@ router.delete("/" , async (req , res , next) => {
         // check and delete the home work images
         if (home_work.images.length > 0) {
             for (let i = 0; i < home_work.images.length; i++) {
-                await DeleteCloudinary(home_work.images[i]);
+                await DeleteCloudinary(home_work.images[i] , next);
             }
         }
 
@@ -120,13 +120,13 @@ router.delete("/" , async (req , res , next) => {
         // send result
         res.status(200).send(result);
 
-    // } catch (error) {
-    //     // return error
-    //     return next(new ApiErrors(JSON.stringify({
-    //         english : `${error} ...`,
-    //         arabic : "... عذرا خطأ عام"
-    //     }) , 500))
-    // }
+    } catch (error) {
+        // return error
+        return next(new ApiErrors(JSON.stringify({
+            english : `${error} ...`,
+            arabic : "... عذرا خطأ عام"
+        }) , 500))
+    }
 });
 
 module.exports = router;
