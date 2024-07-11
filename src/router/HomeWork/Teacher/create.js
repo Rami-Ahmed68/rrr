@@ -129,6 +129,7 @@ router.post("/" , upload_home_work_images , async (req , res , next) => {
             class_id : req.body.class_id,
             level : req.body.level,
             images : [],
+            note : "",
             subject : Class_object.subject,
             created_by_type : "teacher",
             created_by : req.body.teacher_id
