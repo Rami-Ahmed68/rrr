@@ -27,7 +27,7 @@ const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 const CheckAdmin = require("../../../middleware/CheckAdmin");
 
 router.delete("/" , async (req , res , next) => {
-    // try {
+    try {
 
         // validate body data
         const Error = Validate_hw_delete(req.body);
@@ -118,15 +118,15 @@ router.delete("/" , async (req , res , next) => {
         }
 
         // send result
-        res.send(result);
+        res.status(200).send(result);
 
-    // } catch (error) {
-    //     // return error
-    //     return next(new ApiErrors(JSON.stringify({
-    //         english : `${error} ...`,
-    //         arabic : "... عذرا خطأ عام"
-    //     }) , 500))
-    // }
+    } catch (error) {
+        // return error
+        return next(new ApiErrors(JSON.stringify({
+            english : `${error} ...`,
+            arabic : "... عذرا خطأ عام"
+        }) , 500))
+    }
 });
 
 module.exports = router;
