@@ -28,7 +28,7 @@ const CheckAdmin = require("../../../middleware/CheckAdmin");
 
 router.delete("/" , async (req , res , next) => {
     try {
-res.send(req.admin_id)
+res.send("req.admin_id")
         // validate body data
         const Error = Validate_hw_delete(req.body);
 
