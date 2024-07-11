@@ -33,13 +33,13 @@ router.delete("/" , async (req , res , next) => {
         const Error = Validate_hw_delete(req.body);
 
         // check if the body data has any error
-        if (Error.error) {
-            // return error
-            return next(new ApiErrors(JSON.stringify({
-                english : Error.error.details[0].message,
-                arabic : "... عذرا خطأ في البيانات المرسلة"
-            }) , 400))
-        }
+        // if (Error.error) {
+        //     // return error
+        //     return next(new ApiErrors(JSON.stringify({
+        //         english : Error.error.details[0].message,
+        //         arabic : "... عذرا خطأ في البيانات المرسلة"
+        //     }) , 400))
+        // }
 
         // verify token data 
         const VerifyTokenData = await VerifyToken(req.headers.authorization , next);
