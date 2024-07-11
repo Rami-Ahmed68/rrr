@@ -28,7 +28,7 @@ const CheckAdmin = require("../../../middleware/CheckAdmin");
 
 router.delete("/" , async (req , res , next) => {
     try {
-res.send(req.body.admin_id)
+
         // validate body data
         const Error = Validate_hw_delete(req.body);
 
@@ -50,7 +50,7 @@ res.send(req.body.admin_id)
             DeleteImages(req.files , next);
 
             // return error
-            return next(new ApiErrors(JSOn.stringify({
+            return next(new ApiErrors(JSON.stringify({
                 english : "Sorry, invalid admin data ...",
                 arabic : "... عذرا خطأ في بيانات الادمن"
             }) , 400))
