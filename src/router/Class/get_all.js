@@ -43,7 +43,7 @@ router.get("/" , async (req , res , next) => {
         const skip = ( page - 1 ) * limit;
 
         // create classes
-        let classesObjects;
+        let classesObjects = [];
 
         // check if query data has class level query
         if (req.query.title) {
@@ -76,7 +76,7 @@ router.get("/" , async (req , res , next) => {
 
 
             // Check for empty results and handle accordingly
-    if (classesObjects.length === 0) {
+    if (classesObjects.length == 0) {
       return res.status(200).send({
         message: "No classes found matching the criteria.",
         classes_data: [],
