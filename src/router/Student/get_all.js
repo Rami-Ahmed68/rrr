@@ -48,15 +48,9 @@ router.get("/" , async (req , res , next) => {
         if (req.query.name) {
             students = await Student.find({
                 name : { $regex : new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit).populate({
-                path : "created_by",
-                select : "_id name avatar"
-            }).sort({ _id : -1 });
+            }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
-            students = await Student.find().skip(skip).limit(limit).populate({
-                path : "created_by",
-                select : "_id name avatar"
-            }).sort({ _id : -1 });
+            students = await Student.find().skip(skip).limit(limit).sort({ _id : -1 });
         }
 
         // craete result
