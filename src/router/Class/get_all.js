@@ -58,7 +58,7 @@ router.get("/" , async (req , res , next) => {
             path: "teacher",
             select: "_id name avatar",
           },
-        ]);.skip(skip).limit(limit).sort({ _id : -1 });
+        ]).skip(skip).limit(limit).sort({ _id : -1 });
         ]);
 
         // create result
