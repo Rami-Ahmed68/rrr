@@ -50,16 +50,34 @@ router.get("/" , async (req , res , next) => {
             // get all classes
             classesObjects = await ClassSchema.find({
                 title : { $regex: new RegExp(req.query.title, 'ig') }
-            }).skip(skip).limit(limit).sort({ _id : -1 });
+            }).skip(skip).limit(limit).sort({ _id : -1 }).populate[
+                {
+                    path : "teacher",
+                    select : "_id name avatar"
+                },
+                {
+                    path : "created_by",
+                    select : "_id name avatra"
+                }
+            ];;
         } else {
             // get all classes
-            classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 });
+            classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 }).populate[
+                {
+                    path : "teacher",
+                    select : "_id name avatar"
+                },
+                {
+                    path : "created_by",
+                    select : "_id name avatra"
+                }
+            ];
         }
 
         // create result
         const result = {
             "message" : "Classes geted successfully",
-            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "students" , "home_works" , "teacher" , "class_level" , "created_by"]))
+            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "students" , "home_works" , "teacher" , "class_level" , "created_by" , "created_at"]))
         }
 
         // send the result
