@@ -59,7 +59,7 @@ router.get("/" , async (req , res , next) => {
                     path : "created_by",
                     select : "_id name avatra"
                 }
-            ];;
+            ];
         } else {
             // get all classes
             classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 }).populate[
@@ -72,6 +72,7 @@ router.get("/" , async (req , res , next) => {
                     select : "_id name avatra"
                 }
             ];
+        }
 
 
             // Check for empty results and handle accordingly
