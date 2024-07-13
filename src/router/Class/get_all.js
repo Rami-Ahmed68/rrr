@@ -85,21 +85,22 @@ router.get("/" , async (req , res , next) => {
 
     const result = {
       message: "Classes geted successfully",
-      classes_data: classesObjects.map((classObject) =>
-        _.pick(classObject, [
-          "_id",
-          "title",
-          "cover",
-          "subject",
-          "note",
-          "students",
-          "home_works",
-          "teacher",
-          "class_level",
-          "created_by",
-          "created_at",
-        ])
-      ),
+        classes_data : classesObjects
+      // classes_data: classesObjects.map((classObject) =>
+      //   _.pick(classObject, [
+      //     "_id",
+      //     "title",
+      //     "cover",
+      //     "subject",
+      //     "note",
+      //     "students",
+      //     "home_works",
+      //     "teacher",
+      //     "class_level",
+      //     "created_by",
+      //     "created_at",
+      //   ])
+      // ),
     };
 
     } catch (error) {
