@@ -53,11 +53,12 @@ router.get("/" , async (req , res , next) => {
             }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
             // get all classes
-            classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 }).populate([
+            classesObjects = await ClassSchema.find().populate([
           {
             path: "teacher",
             select: "_id name avatar",
           },
+        ]);.skip(skip).limit(limit).sort({ _id : -1 });
         ]);
 
         // create result
