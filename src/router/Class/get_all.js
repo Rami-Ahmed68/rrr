@@ -72,16 +72,34 @@ router.get("/" , async (req , res , next) => {
                     select : "_id name avatra"
                 }
             ];
-        }
 
-        // create result
-        const result = {
-            "message" : "Classes geted successfully",
-            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "students" , "home_works" , "teacher" , "class_level" , "created_by" , "created_at"]))
-        }
 
-        // send the result
-        res.status(200).send(result);
+            // Check for empty results and handle accordingly
+    if (classesObjects.length === 0) {
+      return res.status(200).send({
+        message: "No classes found matching the criteria.",
+        classes_data: [],
+      });
+    }
+
+    const result = {
+      message: "Classes geted successfully",
+      classes_data: classesObjects.map((classObject) =>
+        _.pick(classObject, [
+          "_id",
+          "title",
+          "cover",
+          "subject",
+          "note",
+          "students",
+          "home_works",
+          "teacher",
+          "class_level",
+          "created_by",
+          "created_at",
+        ])
+      ),
+    };
 
     } catch (error) {
         // return error
