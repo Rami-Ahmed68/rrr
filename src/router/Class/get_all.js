@@ -51,10 +51,28 @@ router.get("/" , async (req , res , next) => {
       // get all classes
       classesObjects = await ClassSchema.find({
         title : { $regex: new RegExp(req.query.title, 'ig') }
-      }).skip(skip).limit(limit).sort({ _id : -1 })
+      }).populate([
+            {
+                path : "teacher",
+                select : "_id name avatar"
+            },
+            {
+                path : "created_by",
+                select : "_id name avatar"
+            }
+        ]).skip(skip).limit(limit).sort({ _id : -1 })
     } else {
       // get all classes
-      classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 })
+      classesObjects = await ClassSchema.find().populate([
+            {
+                path : "teacher",
+                select : "_id name avatar"
+            },
+            {
+                path : "created_by",
+                select : "_id name avatar"
+            }
+        ]).skip(skip).limit(limit).sort({ _id : -1 })
     }
 
     // create result
