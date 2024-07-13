@@ -43,65 +43,27 @@ router.get("/" , async (req , res , next) => {
         const skip = ( page - 1 ) * limit;
 
         // create classes
-        let classesObjects = [];
+        let classesObjects;
 
         // check if query data has class level query
         if (req.query.title) {
             // get all classes
             classesObjects = await ClassSchema.find({
                 title : { $regex: new RegExp(req.query.title, 'ig') }
-            }).skip(skip).limit(limit).sort({ _id : -1 }).populate[
-                {
-                    path : "teacher",
-                    select : "_id name avatar"
-                },
-                {
-                    path : "created_by",
-                    select : "_id name avatra"
-                }
-            ];
+            }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
             // get all classes
-            classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 }).populate[
-                {
-                    path : "teacher",
-                    select : "_id name avatar"
-                },
-                {
-                    path : "created_by",
-                    select : "_id name avatra"
-                }
-            ];
+            classesObjects = await ClassSchema.find().skip(skip).limit(limit).sort({ _id : -1 });
         }
 
+        // create result
+        const result = {
+            "message" : "Classes geted successfully",
+            "classes_data" : classesObjects.map(classObject => _.pick(classObject , ["_id" , "title" , "cover" , "subject" , "note" , "students" , "home_works" , "teacher" , "class_level" , "created_by"]))
+        }
 
-            // Check for empty results and handle accordingly
-    // if (classesObjects.length == 0) {
-    //   return res.status(200).send({
-    //     message: "No classes found matching the criteria.",
-    //     classes_data: [],
-    //   });
-    // }
-
-    const result = {
-      message: "Classes geted successfully",
-        classes_data : classesObjects
-      // classes_data: classesObjects.map((classObject) =>
-      //   _.pick(classObject, [
-      //     "_id",
-      //     "title",
-      //     "cover",
-      //     "subject",
-      //     "note",
-      //     "students",
-      //     "home_works",
-      //     "teacher",
-      //     "class_level",
-      //     "created_by",
-      //     "created_at",
-      //   ])
-      // ),
-    };
+        // send the result
+        res.status(200).send(result);
 
     } catch (error) {
         // return error
