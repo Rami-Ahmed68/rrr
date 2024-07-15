@@ -56,7 +56,7 @@ router.get("/" , async (req , res , next) => {
         // craete result
         const result = {
             "message" : "Student geted successfully",
-            "student_data" : students.map(student => _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "total_gpa" , "List_of_modifiers" , "classes" , "plans" , "class_level" , "created_by" , "joind_at"]))
+            "students_data" : students.map(student => _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "total_gpa" , "List_of_modifiers" , "classes" , "plans" , "class_level" , "created_by" , "joind_at"]))
         }
 
         // send result
