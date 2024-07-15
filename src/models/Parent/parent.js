@@ -43,7 +43,7 @@ const parent = new mongoose.Schema({
         max : 10
     },
     created_at : {
-        type : Date(),
+        type : Date,
         default : new Date()
     }
 });
