@@ -47,10 +47,10 @@ router.get("/" , async (req , res , next) => {
             // get all parent 
             parents = await Parent.find({ 
                 name : { $regex: new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit);
+            }).skip(skip).limit(limit).sort({_id : -1});
         } else {
             // get all parent 
-            parents = await Parent.find().skip(skip).limit(limit);
+            parents = await Parent.find().skip(skip).limit(limit).sort({_id : -1});
         }
 
         // create result
