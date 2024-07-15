@@ -64,7 +64,7 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "mesage" : "Parent geted successfully",
-            "parents_data" : parents.map(parent => _.pick(parent , ["_id" , "name" , "avatar" , "gender" , "joined_at" , "children" , "created_by"]))
+            "parents_data" : parents.map(parent => _.pick(parent , ["_id" , "name" , "avatar" , "gender" , "joined_at" , "children" , "created_by" , "created_at"]))
         };
 
         // send the result
