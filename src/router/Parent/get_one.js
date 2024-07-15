@@ -50,7 +50,7 @@ router.get("/" , async (req , res , next) => {
         // craete result
         const result = {
             "message" : "Parent geted successfuly",
-            "parent_data" : _.pick(parent , ["_id" , "name" , "avatar" , "gender" , "childern" , "created_by"])
+            "parent_data" : _.pick(parent , ["_id" , "name" , "avatar" , "gender" , "childern" , "created_by" , "created_at"])
         };
 
         // send the result
