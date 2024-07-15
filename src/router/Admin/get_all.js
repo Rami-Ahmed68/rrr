@@ -32,10 +32,10 @@ router.get("/" , async (req , res , next) => {
         }
 
         // home page
-        const page =  1 || req.query.page;
+        const page =  req.query.page || 1;
 
         // limit of the documents
-        const limit =  5 || req.query.limit;
+        const limit =  req.query.limit || 5;
 
         // skip of documents
         const skip = ( page - 1 ) * limit;
