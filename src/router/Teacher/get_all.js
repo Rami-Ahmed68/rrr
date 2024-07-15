@@ -47,22 +47,16 @@ router.get("/" , async (req , res , next) => {
             // get teachers
             teachers = await Teacher.find({
                 name : { $regex : new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit).populate({
-                path : "created_by",
-                select : "_id name avatar"
-            }).sort({ _id : -1 });
+            }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
             // get teachers
-            teachers = await Teacher.find().skip(skip).limit(limit).populate({
-                path : "created_by",
-                select : "_id name avatar"
-            }).sort({ _id : -1 });
+            teachers = await Teacher.find().skip(skip).limit(limit).sort({ _id : -1 });
         }
 
         // create result
         const result = {
             "message" : "Teacher geted successfully",
-            "teachers_data" : teachers.map(teacher => _.pick(teacher , ["_id" , "name" , "avatar" , "editor" , "email" , , "rate" , "list_of_rate" , "rate_status" , "subject" , "about_me" , "gender" , "classes" , "my_plans" , "created_by"]))
+            "teachers_data" : teachers.map(teacher => _.pick(teacher , ["_id" , "name" , "avatar" , "editor" , "email" , , "rate" , "list_of_rate" , "rate_status" , "subject" , "about_me" , "gender" , "classes" , "my_plans" , "created_by" , "joind_at"]))
         };
 
         // send the result
