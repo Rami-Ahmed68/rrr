@@ -47,18 +47,10 @@ router.get("/" , async (req , res , next) => {
             // get all parent 
             parents = await Parent.find({ 
                 name : { $regex: new RegExp(req.query.name , 'ig') }
-            }).skip(skip).limit(limit).populate({
-                    path : "created_by",
-                    select : "_id name avatar"
-                });
+            }).skip(skip).limit(limit);
         } else {
             // get all parent 
-            parents = await Parent.find().skip(skip).limit(limit).populate(
-                {
-                    path : "created_by",
-                    select : "_id name avatar"
-                }
-            );
+            parents = await Parent.find().skip(skip).limit(limit);
         }
 
         // create result
@@ -73,7 +65,7 @@ router.get("/" , async (req , res , next) => {
     } catch (error) {
         // return error
         return next(new ApiErrors(JSON.stringify({
-            english : `${error}`,
+            english : `${error}...`,
             arabic : "... عذرا خطأ عام"
         }) , 500));
     }
