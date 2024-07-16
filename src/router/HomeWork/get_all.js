@@ -47,12 +47,12 @@ router.get("/" , async (req , res , next) => {
             home_works = await Home_Work.find({
                 title: { $regex: new RegExp(req.query.title, 'ig') }
             }).populate({
-                path : "teacher",
+                path : "created_by",
                 select : "_id name avatar"
             }).skip(skip).limit(limit).sort({ _id : -1 });
         } else {
             home_works = await Home_Work.find().populate({
-                path : "teacher",
+                path : "created_by",
                 select : "_id name avatar"
             }).skip(skip).limit(limit).sort({ _id : -1 });
         }
@@ -60,7 +60,7 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Home works geted successfully",
-            "home_works_data" : home_works.map(home_work => _.pick(home_work , ["_id" , "title" , "description" , "note" , "level" , "class_id" , "subject" , "images" , "teacher" , "created_at"]))
+            "home_works_data" : home_works.map(home_work => _.pick(home_work , ["_id" , "title" , "description" , "note" , "level" , "class_id" , "subject" , "images" , "created_by" , "created_by_type" , "created_at"]))
         }
 
         // send the result 
