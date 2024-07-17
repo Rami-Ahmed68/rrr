@@ -34,11 +34,13 @@ router.get("/" , async (req , res , next) => {
         .populate([
             {
                 path : "classes",
-                select : "_id title cover"
+                select : "_id title cover home_works subject students created_at",
+                limit : 5
             },
             {
                 path : "plans",
-                select : "_id title description"
+                select : "_id title description",
+                limit : 5
             },
             {
                 path : "created_by",
@@ -67,7 +69,7 @@ router.get("/" , async (req , res , next) => {
     } catch (error) {
         // return error
         return next(new ApiErrors(JSON.stringify({
-            english : `${error}`,
+            english : `${error}...`,
             arabic : "... عذرا خطأ عام"
         }) , 500));
     }
