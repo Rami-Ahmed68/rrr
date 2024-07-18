@@ -44,7 +44,8 @@ router.get("/" , async (req , res , next) => {
         // creaet result
         const result = {
             "message" : "Admin geted successfully",
-            "admin_data" : _.pick(admin , ["_id" , "name" , "avatar" , "is_supper_admin" , "is_admin" , "email" , "gender" , "rate" , "joind_at"])
+            // { user data } ot save all users data in one profile objectin vue.js's store
+            "user_data" : _.pick(admin , ["_id" , "name" , "avatar" , "is_supper_admin" , "is_admin" , "email" , "gender" , "rate" , "phone_number" , "joind_at"])
         };
 
         // send the result 
