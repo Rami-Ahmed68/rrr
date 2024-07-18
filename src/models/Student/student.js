@@ -99,7 +99,7 @@ const student = new mongoose.Schema({
             },
     }],
     phone_number : {
-        type : Number,
+        type : String,
         min : 10,
         max : 10
     },
