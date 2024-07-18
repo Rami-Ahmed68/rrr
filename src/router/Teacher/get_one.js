@@ -48,7 +48,8 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Teacher geted succsffully",
-            "teacher_data" : _.pick(teacher , ["_id" , "name" , "avatar" , "editor" , "email" , "subject" , "about_me" , "gender" , , "rate" , "list_of_rate" , "rate_status" , "classes" , "my_plans" , "created_by"])
+            // { user data } ot save all users data in one profile objectin vue.js's store
+            "user_data" : _.pick(teacher , ["_id" , "name" , "avatar" , "editor" , "email" , "subject" , "about_me" , "gender" , , "rate" , "list_of_rate" , "rate_status" , "classes" , "my_plans" , "created_by"])
         };
 
         // send the result
