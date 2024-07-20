@@ -83,7 +83,7 @@ router.post("/" , async (req , res , next) => {
         const message = new Message({
             title : req.body.title,
             description : req.body.description,
-            note : req.body.note,
+            note : req.body.note ? req.body.note : '',
             recipient : req.body.recipient,
             level : req.body.level,
             created_by : req.body.super_admin_id,
