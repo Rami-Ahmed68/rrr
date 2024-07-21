@@ -54,7 +54,7 @@ router.get("/" , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Foods geted successfully",
-            "foods_data" : foods.map(food => _.pick(food , ["_id" , "title" , "description" , "images"]))
+            "foods_data" : foods.map(food => _.pick(food , ["_id" , "title" , "description" , "images" , "created_at"]))
         };
 
         // send the result
