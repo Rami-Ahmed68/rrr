@@ -133,6 +133,7 @@ router.post("/" , upload , async (req , res , next) => {
             email : req.body.email,
             password : HashedPassword,
             gender : req.body.gender,
+            my_plans : [],
             about_me : req.body.about_me ? req.body.about_me : "",
             class_level : req.body.class_level,
             created_by : req.body.admin_id
