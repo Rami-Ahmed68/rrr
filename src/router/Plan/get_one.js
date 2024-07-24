@@ -30,20 +30,12 @@ router.get("/" , async (req , res , next) => {
         }
 
         // find the plan
-        const plan = await Plan.findById(req.query.plan_id).populate([
-            {
-                path : "teachers",
-                select : "_id name avatar"
-            },
-            {
-                path : "students",
-                select : "_id name avatar"
-            },
+        const plan = await Plan.findById(req.query.plan_id).populate(
             {
                 path : "created_by",
                 select : "_id name avatar"
             }
-        ]);
+        );
 
         // check if the plan is exists
         if (!plan) {
