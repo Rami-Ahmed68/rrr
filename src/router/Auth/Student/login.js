@@ -63,7 +63,7 @@ router.post("/" , async (req , res , next) => {
         // craete result
         const result = {
             "message" : "Loged in successfully",
-            "user_data" : _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "classes" , "plans" , "class_level" , "joind_at"]),
+            "user_data" : _.pick(student , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "classes" , "my_plans" , "class_level" , "joind_at"]),
             "token" : token
         };
 
