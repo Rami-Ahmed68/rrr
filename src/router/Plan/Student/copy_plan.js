@@ -70,22 +70,22 @@ router.put("/" , async (req , res , next) => {
 
         // check the method type
         if (req.body.method_type == "copy") {
-            // check if the student's plans array is has not the plan id and add the plan id to the array
-            if (!student.plans.includes(plan._id)) {
-                student.plans.push(plan._id)
+            // check if the student's my_plans array is has not the plan id and add the plan id to the array
+            if (!student.my_plans.includes(plan._id)) {
+                student.my_plans.push(plan._id)
             }
 
-            // check if the plans's students array is has not the student id and add the student id to the array
+            // check if the my_plans's students array is has not the student id and add the student id to the array
             if (!plan.students.includes(student._id)) {
                 plan.students.push(student._id)
             }
 
         } else if (req.body.method_type == "remove") {
 
-            // remove plan ID from student's plans array (corrected logic)
-            const studentPlansIndex = student.plans.indexOf(plan._id);
+            // remove plan ID from student's my_plans array (corrected logic)
+            const studentPlansIndex = student.my_plans.indexOf(plan._id);
             if (studentPlansIndex !== -1) { // Check if plan ID exists in array
-                student.plans.splice(studentPlansIndex, 1); // Remove the plan ID
+                student.my_plans.splice(studentPlansIndex, 1); // Remove the plan ID
             }
 
             // remove student ID from plan's students array (corrected logic)
