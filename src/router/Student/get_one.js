@@ -38,7 +38,7 @@ router.get("/" , async (req , res , next) => {
                 limit : 5
             },
             {
-                path : "plans",
+                path : "my_plans",
                 select : "_id title description",
                 limit : 5
             },
