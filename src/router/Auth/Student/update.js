@@ -110,7 +110,6 @@ router.put("/" , upload , async (req , res , next) => {
             $set : {
                 name : req.body.name ? req.body.name : student.name,
                 password : req.body.password ? await HashPassword(req.body.password) : student.password,
-                gender : req.body.gender ? req.body.gender : student.gender,
                 about_me : req.body.about_me ? req.body.about_me : student.about_me,
                 phone_number : req.body.phone_number ? req.body.phone_number : student.phone_number
             }
