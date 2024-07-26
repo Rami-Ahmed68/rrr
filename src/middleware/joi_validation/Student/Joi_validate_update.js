@@ -6,7 +6,6 @@ const Validate_admin_update = (data) => {
         student_id : Joi.string().required(),
         name : Joi.string().min(3).max(100),
         password : Joi.string().min(8).max(100),
-        gender : Joi.string(),
         phone_number : Joi.string(),
         about_me : Joi.string().min(5).max(500),
         delete_avatar : Joi.boolean() // true to delete the avatar and set the default avatar
