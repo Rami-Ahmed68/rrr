@@ -116,7 +116,7 @@ router.put("/" , upload , async (req , res , next) => {
         } , { new : true });
 
 
-        if (req.body.delete_avatar) {
+        if (req.body.delete_avatarv == true) {
             if (req.files.length > 0) {
                 // delete the uploaded images from images folder
                 DeleteImages(req.files , next);
