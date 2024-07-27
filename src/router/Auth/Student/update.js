@@ -158,7 +158,7 @@ router.put("/" , upload , async (req , res , next) => {
         }
 
         // save the student 
-        await updateTeacher.save();
+        await updateStudent.save();
 
         // delete avatar from images folder
         DeleteImages(req.files , next);
