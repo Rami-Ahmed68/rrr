@@ -166,7 +166,7 @@ router.put("/" , upload , async (req , res , next) => {
         // create result
         const result = {
             "message" : "Acount data updated successfully",
-            "admin_data" : _.pick(updateStudent , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "classes" , "plans" , "class_level" , "joind_at"]),
+            "admin_data" : _.pick(updateStudent , ["_id" , "name" , "avatar" , "email" , "about_me" , "phone_number" , "gender" , "finished_exams" , "points" , "classes" , "my_plans" , "class_level" , "joind_at"]),
         }
 
         // send the data to user
