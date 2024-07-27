@@ -178,7 +178,7 @@ router.put("/" , upload , async (req , res , next) => {
 
         // return error
         return next(new ApiErrors(JSON.stringify({
-            english : `{error} ...`,
+            english : `${error} ...`,
             arabic : "... عذرا خطأ عام"
         }) , 500));
     }
