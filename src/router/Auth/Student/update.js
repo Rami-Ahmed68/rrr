@@ -35,8 +35,6 @@ const Validate_student_update = require("../../../middleware/joi_validation/Stud
 router.put("/" , upload , async (req , res , next) => {
 
     try {
-
-        res.send(req.files.length)
         
         // check if the request has more than i avatar
         if (req.files && req.files.length > 1) {
