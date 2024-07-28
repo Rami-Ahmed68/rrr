@@ -64,7 +64,7 @@ router.put("/" , upload , async (req , res , next) => {
         }
 
         // check if the request has any data
-        if (!req.body.name && !req.body.gender && !req.body.password && req.files.length == 0) {
+        if (!req.body.name && !req.body.gender && !req.body.password && !req.body.delete_avatar && !req.body.phone_number req.files.length == 0) {
             // to delete uploaded avatar
             DeleteImages(req.files , next);
 
