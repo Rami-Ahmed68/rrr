@@ -36,6 +36,8 @@ router.put("/" , upload , async (req , res , next) => {
 
     try {
 
+        res.send(req.files)
+        
         // check if the request has more than i avatar
         if (req.files && req.files.length > 1) {
             // to delete all uploaded images from images folder
