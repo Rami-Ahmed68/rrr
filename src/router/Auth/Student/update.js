@@ -36,7 +36,7 @@ router.put("/" , upload , async (req , res , next) => {
 
     try {
 
-        res.send(req.files)
+        res.send(req.files.length)
         
         // check if the request has more than i avatar
         if (req.files && req.files.length > 1) {
