@@ -144,6 +144,7 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : admin.password,
           gender: req.body.gender ? req.body.gender : admin.gender,
+          phone_number : req.body.phone_number ? req.body.phone_number : admin.phone_number
         },
       },
       { new: true }
