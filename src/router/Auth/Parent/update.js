@@ -54,8 +54,7 @@ router.put("/", upload, async (req, res, next) => {
     if (
       !req.body.name &&
       !req.body.password &&
-      !req.body.gender &&
-      !req.body.children &&
+      !req.body.delete_avatar
       req.files.length == 0
     ) {
       // return error
@@ -218,7 +217,7 @@ router.put("/", upload, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: error,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500
