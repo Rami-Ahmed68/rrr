@@ -98,7 +98,7 @@ router.put("/", upload, async (req, res, next) => {
     const VerifyTokenData = await VerifyToken(req.headers.authorization, next);
 
     // verify token id with admin id in body
-    if (VerifyTokenData._id != req.body.adminId) {
+    if (VerifyTokenData._id != req.body.admin_id) {
       // to delete uploaded avatar
       DeleteImages(req.files, next);
 
@@ -115,7 +115,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find the admin by id
-    const admin = await Admin.findById(req.body.adminId);
+    const admin = await Admin.findById(req.body.admin_id);
 
     // check if the admin is exists
     if (!admin) {
@@ -136,7 +136,7 @@ router.put("/", upload, async (req, res, next) => {
 
     // update admin acount and return the admin data after updated
     const updateAdmin = await Admin.findByIdAndUpdate(
-      { _id: req.body.adminId },
+      { _id: req.body.admin_id },
       {
         $set: {
           name: req.body.name ? req.body.name : admin.name,
