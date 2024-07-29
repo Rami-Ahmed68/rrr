@@ -11,7 +11,7 @@ const Admin = require("../../../models/Admin/admin");
 // food model
 const Food = require("../../../models/Food/food");
 
-// validate body data 
+// validate body data
 const Validate_update_food = require("../../../middleware/joi_validation/Food/Admin/Joi_validate_update_food");
 
 // delete images method
@@ -23,7 +23,7 @@ const upload_food_images = require("../../../utils/multer/upload_food_images/upl
 // delete cloudinary cloud
 const DeleteCloudinary = require("../../../utils/cloudinary/DeleteCloudinary");
 
-// uplad cloudinary 
+// uplad cloudinary
 const UploadCloudinary = require("../../../utils/cloudinary/UploadCloudinary");
 
 // veriy token data method
@@ -32,172 +32,220 @@ const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 // check admin method
 const CheckAdmin = require("../../../middleware/CheckAdmin");
 
+router.put("/", upload_food_images, async (req, res, next) => {
+  try {
+    // valiadte body data
+    const Error = Validate_update_food(req.body);
 
-router.put("/" , upload_food_images ,  async(req , res , next) => {
-    try {
+    // check if the body data has any error
+    if (Error.error) {
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
 
-        // valiadte body data
-        const Error = Validate_update_food(req.body);
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: Error.error.details[0].message,
+            arabic: "... عذرا خطأ في البيانات المرسلة",
+          }),
+          400
+        )
+      );
+    }
 
-        // check if the body data has any error
-        if (Error.error) {
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
+    // verifytoken data
+    const VerifyTokenData = await VerifyToken(req.headers.authorization, next);
 
-            return next(new ApiErrors(JSON.stringify({
-                english : Error.error.details[0].message,
-                arabic : "... عذرا خطأ في البيانات المرسلة"
-            }) , 400));
-        }
+    // check if the admin id in token is equal id in body
+    if (VerifyTokenData._id != req.body.admin_id) {
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
 
-        // verifytoken data
-        const VerifyTokenData = await VerifyToken(req.headers.authorization , next);
+      // return error
+      return next(
+        new ApiErrors(
+          JOSN.stringify({
+            english: "Sorry, invalid admin data ...",
+            arabic: "... عذرا خطأ في بيانات الادمن",
+          }),
+          400
+        )
+      );
+    }
 
-        // check if the admin id in token is equal id in body
-        if (VerifyTokenData._id != req.body.admin_id) {
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
+    // check if the body images length more than 5 images
+    if (req.files && req.files.length > 5) {
+      // delete all uploaded images
+      DeleteImages(req.files, next);
 
-            // return error
-            return next(new ApiErrors(JOSN.stringify({
-                english : "Sorry, invalid admin data ...",
-                arabic : "... عذرا خطأ في بيانات الادمن"
-            }) , 400));
-        }
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: "Sorry, you can not upload more than five image ...",
+            arabic: "... عذرا لا يمكنك ارسل اكثر من خمس صور",
+          }),
+          403
+        )
+      );
+    }
 
-        // check if the body images length more than 5 images
-        if (req.files && req.files.length > 5) {
-            // delete all uploaded images 
-            DeleteImages(req.files , next);
+    // check if the request has a new data
+    if (!req.body.title && !req.body.description && req.files.length == 0) {
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english:
+              "It is not permissible to request modification of data without submitting new data ...",
+            arabic: "... عذرا غير مسموع بالتعديل دون ارسال بيانات جديدة",
+          }),
+          403
+        )
+      );
+    }
 
-            // return error
-            return next(new ApiErrors(JSON.stringify({
-                english : "Sorry, you can not upload more than five image ..." ,
-                arabic : "... عذرا لا يمكنك ارسل اكثر من خمس صور"
-            }), 403));
-        }
+    // find the admin
+    const admin = await Admin.findById(req.body.admin_id);
 
-        // check if the request has a new data
-        if (!req.body.title
-            && !req.body.description
-            && req.files.length == 0) {
-                // return error
-                return next(new ApiErrors(JSON.stringify({
-                    english : "It is not permissible to request modification of data without submitting new data ...",
-                    arabic : "... عذرا غير مسموع بالتعديل دون ارسال بيانات جديدة"
-                }) , 403));
-        }
+    // check if the admin is exists
+    if (!admin) {
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
 
-        // find the admin 
-        const admin = await Admin.findById(req.body.admin_id);
+      // return error
+      return next(
+        new ApiErrors(
+          JOSN.stringify({
+            english: "Sorry, admin not found ...",
+            arabic: "... عذرا لم يتم العثور على حساب الادمن",
+          }),
+          404
+        )
+      );
+    }
 
-        // check if the admin is exists
-        if (!admin) {
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
+    // check if the admin is admin method
+    const isAdmin = CheckAdmin(admin);
 
-            // return error
-            return next(new ApiErrors(JOSN.stringify({
-                english : "Sorry, admin not found ...",
-                arabic : "... عذرا لم يتم العثور على حساب الادمن"
-            }) , 404));
-        }
+    // check if the is not admin
+    if (!isAdmin) {
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
 
-        // check if the admin is admin method
-        const isAdmin = CheckAdmin(admin);
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english:
+              "Sorry, you don't have permissions to update food's meal ...",
+            arabic: "... عذرا ليس لديك الصلاحيات لتعديل زجبة الطعام",
+          }),
+          403
+        )
+      );
+    }
 
-        // check if the is not admin
-        if (!isAdmin) {
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
+    // find the food
+    const food = await Food.findById(req.body.food_id);
 
-            // return error
-            return next(new ApiErrors(JSON.stringify({
-                english : "Sorry, you don't have permissions to update food's meal ...",
-                arabic : "... عذرا ليس لديك الصلاحيات لتعديل زجبة الطعام"
-            }) , 403));
-        }
+    // check if the food is exists
+    if (!food) {
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
 
-        // find the food 
-        const food = await Food.findById(req.body.food_id);
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: "Sorry, food's meal not found ...",
+            arabic: "... عذرا لم يتم العثور على وجبة الطعام",
+          }),
+          404
+        )
+      );
+    }
 
-        // check if the food is exists
-        if (!food) {
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
+    // find and update the food
+    const updateFood = await Food.findByIdAndUpdate(
+      { _id: req.body.food_id },
+      {
+        $set: {
+          title: req.body.title ? req.body.title : food.title,
+          description: req.body.description
+            ? req.body.description
+            : food.description,
+          images: food.images,
+        },
+      },
+      { new: true }
+    );
 
-            // return error
-            return next(new ApiErrors(JSON.stringify({
-                english : "Sorry, food's meal not found ...",
-                arabic : "... عذرا لم يتم العثور على وجبة الطعام"
-            }) , 404));
-        }
-
-        // find and update the food
-        const updateFood = await Food.findByIdAndUpdate({ _id : req.body.food_id } , {
-            $set : {
-                title : req.body.title ? req.body.title : food.title,
-                description : req.body.description ? req.body.description : food.description,
-                images : food.images
-            }
-        } , { new : true });
-
-        // check if the request has images's index to delete
-        if (req.body.images_for_delete && req.body.images_for_delete.length > 0) {
-            // chdck if the food image length is equal one or not
-            if (food.images.length == 1) {
-                // delete all uploaded images from images folder
-                DeleteImages(req.files , next);
-
-                // return error
-                return next(new ApiErrors(JSON.stringify({
-                    english : "Sorry, you cannot delete all food images ...",
-                    arabic : "... عذرا لا يمكنك حذف جميع صور وجبة الطعام"
-                }) , 403));
-            } else {
-                req.body.images_for_delete.forEach( async (image) => {
-                    updateFood.images = food.images.filter(img => img != image);
-                    await DeleteCloudinary(image , next);
-                });
-            }
-        };
-
-        // check if the request has a new images to upload
-        if (req.files && req.files.length > 0) {
-            console.log(updateFood);
-
-            for (let i = 0; i < req.files.length; i++) {
-                const uploadedImage = await UploadCloudinary(req.files[i] , next)
-                updateFood.images.push(uploadedImage);
-            }
-            console.log(updateFood);
-
-            // delete all uploaded images from images folder
-            DeleteImages(req.files , next);
-        }
-
-        // save the changes
-        await updateFood.save();
-
-        // create resul
-        const result = {
-            "message" : "Food updated successfully",
-            "food_data" : _.pick(updateFood , ["_id" , "title" , "description" , "images"])
-        }
-
-        // send the result
-        res.status(200).send(result);
-
-    } catch (error) {
+    // check if the request has images's index to delete
+    if (req.body.images_for_delete && req.body.images_for_delete.length > 0) {
+      // chdck if the food image length is equal one or not
+      if (food.images.length == 1) {
         // delete all uploaded images from images folder
-        DeleteImages(req.files , next);
+        DeleteImages(req.files, next);
 
         // return error
-        return next(new ApiErrors(JOSN.stringify({
-            english : error,
-            arabic : "... عذرا خطأ عام"
-        }) , 500));
+        return next(
+          new ApiErrors(
+            JSON.stringify({
+              english: "Sorry, you cannot delete all food images ...",
+              arabic: "... عذرا لا يمكنك حذف جميع صور وجبة الطعام",
+            }),
+            403
+          )
+        );
+      } else {
+        req.body.images_for_delete.forEach(async (image) => {
+          updateFood.images = food.images.filter((img) => img != image);
+          await DeleteCloudinary(image, next);
+        });
+      }
     }
+
+    // check if the request has a new images to upload
+    if (req.files && req.files.length > 0) {
+      console.log(updateFood);
+
+      for (let i = 0; i < req.files.length; i++) {
+        const uploadedImage = await UploadCloudinary(req.files[i], next);
+        updateFood.images.push(uploadedImage);
+      }
+      console.log(updateFood);
+
+      // delete all uploaded images from images folder
+      DeleteImages(req.files, next);
+    }
+
+    // save the changes
+    await updateFood.save();
+
+    // create resul
+    const result = {
+      message: "Food updated successfully",
+      food_data: _.pick(updateFood, ["_id", "title", "description", "images"]),
+    };
+
+    // send the result
+    res.status(200).send(result);
+  } catch (error) {
+    // delete all uploaded images from images folder
+    DeleteImages(req.files, next);
+
+    // return error
+    return next(
+      new ApiErrors(
+        JOSN.stringify({
+          english: error,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;

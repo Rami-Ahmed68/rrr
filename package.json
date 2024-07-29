@@ -1,5 +1,5 @@
 {
-  "name": "school-back",
+  "name": "School-System",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "ramiahmed",
+  "author": "https://www.rami-web.onrender.com",
   "engines": {
     "node": "20.11.1"
   },

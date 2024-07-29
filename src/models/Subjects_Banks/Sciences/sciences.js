@@ -1,90 +1,96 @@
 const mongoose = require("mongoose");
 
 const sciences = new mongoose.Schema({
-    title : {
-        type : String,
-        required : true,
-        min : 3,
-        max : 300
+  title: {
+    type: String,
+    required: true,
+    min: 3,
+    max: 300,
+  },
+  description: {
+    type: String,
+    required: true,
+    min: 3,
+    max: 300,
+  },
+  note: {
+    type: String,
+    required: true,
+    min: 5,
+    max: 100,
+  },
+  points: {
+    type: Number,
+    required: true,
+  },
+  level: {
+    type: String,
+    enum: ["easy", "normal", "hard"],
+    required: true,
+  },
+  class_level: {
+    type: String,
+    required: true,
+    enum: [
+      "First_grade",
+      "Second_grade",
+      "Third_grade",
+      "Fourth_grade",
+      "Fifth_grade",
+      "Sixth_grade",
+      "Seventh_grade",
+      "Eighth_grade",
+      "Ninth_grade",
+      "Literary_Tenth_grade",
+      "Scientific_Tenth_grade",
+      "Literary_Eleventh_grade",
+      "Scientific_Eleventh_grade",
+      "Literary_baccalaureate",
+      "Scientific_baccalaureate",
+    ],
+  },
+  images: [
+    {
+      type: String,
+      max: 5,
     },
-    description : {
-        type : String,
-        required : true,
-        min : 3,
-        max : 300
+  ],
+  repated: [
+    {
+      type: String,
     },
-    note : {
-        type : String,
-        required : true,
-        min : 5,
-        max : 100
-    },
-    points : {
-        type : Number,
-        required : true,
-    },
-    level : {
-        type : String,
-        enum : [ "easy" , "normal" , "hard"],
-        required : true
-    },
-    class_level : {
-        type : String,
-        required : true,
-        enum : [
-            "First_grade" 
-            , "Second_grade" 
-            , "Third_grade" 
-            , "Fourth_grade" 
-            , "Fifth_grade" 
-            , "Sixth_grade" 
-            , "Seventh_grade" 
-            , "Eighth_grade" 
-            , "Ninth_grade" 
-            , "Literary_Tenth_grade" 
-            , "Scientific_Tenth_grade" 
-            , "Literary_Eleventh_grade" 
-            , "Scientific_Eleventh_grade" 
-            , "Literary_baccalaureate",
-            "Scientific_baccalaureate"
-        ]
-    },
-    images : [{
-        type : String,
-        max : 5
-    }],
-    repated : [{
-        type : String,
-    }],
-    options: [{
-        type: Object, 
-        required: true,
-        properties: {
+  ],
+  options: [
+    {
+      type: Object,
+      required: true,
+      properties: {
         value: {
-            type: String,
-            required: true,
+          type: String,
+          required: true,
         },
         answer: {
-            type: Boolean,
-            required: true,
+          type: Boolean,
+          required: true,
         },
-        },
-    }],
-    created_by_type : {
-        type : String,
-        required : true,
-        enum : ["admin" , "teacher"]
+      },
     },
-    created_by : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true,
-        refPath : "created_by_type"
-    },
-    created_at : {
-        type : Date,
-        default : new Date()
-    }
+  ],
+  created_by_type: {
+    type: String,
+    required: true,
+    enum: ["admin", "teacher"],
+  },
+  created_by: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    refPath: "created_by_type",
+  },
+  created_at: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
-const Sciences = mongoose.model("sciences" , sciences);
+const Sciences = mongoose.model("sciences", sciences);
 module.exports = Sciences;
