@@ -79,6 +79,7 @@ router.post("/", async (req, res, next) => {
         "_id",
         "name",
         "is_admin",
+        "is_supper_admin",
         "email",
         "avatar",
         "gender",
