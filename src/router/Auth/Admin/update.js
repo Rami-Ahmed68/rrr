@@ -76,6 +76,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.gender &&
       !req.body.password &&
+      !req.body.delete_avatar &&
       req.files.length < 1
     ) {
       // to delete uploaded avatar
@@ -228,6 +229,7 @@ router.put("/", upload, async (req, res, next) => {
     // send the data to user
     res.status(200).send(result);
   } catch (error) {
+    console.log(error)
     // to delete uploaded avatar
     DeleteImages(req.files, next);
 
