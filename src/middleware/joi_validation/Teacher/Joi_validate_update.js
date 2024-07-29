@@ -8,7 +8,7 @@ const Validate_admin_update = (data) => {
     password: Joi.string().min(8).max(100),
     about_me : Joi.string().min(5).max(500),
     gender: Joi.string(),
-    phone_number : Joi.string(),
+    phone_number : Joi.string().min(10).max(10),
     delete_avatar: Joi.string(), // true to delete the avatar and set the default avatar
   });
 
