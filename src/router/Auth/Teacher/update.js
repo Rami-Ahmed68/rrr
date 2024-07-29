@@ -75,8 +75,8 @@ router.put("/", upload, async (req, res, next) => {
     if (
       !req.body.name &&
       !req.body.password &&
-      !req.body.about_me &&,
-      !req.body.phone_number &&,
+      !req.body.about_me &&
+      !req.body.phone_number &&
       !req.body.delete_avatar &&
       req.files.length == 0
     ) {
