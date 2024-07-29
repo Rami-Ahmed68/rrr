@@ -5,7 +5,7 @@ const _ = require("lodash");
 const dotenv = require("dotenv");
 dotenv.config({ path: "../../../../config/.env" });
 
-// admin model
+// teacher model
 const Teacher = require("../../../models/Teacher/teacher");
 
 // Api Error function
@@ -116,7 +116,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find the teacher by id
-    const teacher = await Admin.findById(req.body.adminId);
+    const teacher = await Teacher.findById(req.body.teacher_id);
 
     // check if the teacher is exists
     if (!teacher) {
@@ -197,14 +197,14 @@ router.put("/", upload, async (req, res, next) => {
       // upload new avatar to cloudinary
       const newAvatar = await UploadCloudinary(req.files[0], next);
 
-      // update the admin avatar
+      // update the teacher avatar
       updateTeacher.avatar = newAvatar;
 
       // delete the avatar
       DeleteImages(req.files, next);
     }
 
-    // save the admin
+    // save the teacher
     await updateTeacher.save();
 
     // delete avatar from images folder
@@ -213,7 +213,7 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Acount data updated successfully",
-      admin_data: _.pick(updateTeacher, [
+      user_data: _.pick(updateTeacher, [
         "_id",
         "name",
         "editor",
