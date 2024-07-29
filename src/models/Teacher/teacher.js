@@ -117,7 +117,7 @@ const teacher = new mongoose.Schema({
     ref: "admin",
   },
   phone_number: {
-    type: Number,
+    type: String,
     min: 10,
     max: 10,
   },
