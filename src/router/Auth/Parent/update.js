@@ -199,7 +199,7 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Parent account updated successfully",
-      parent_data: _.pick(updateParent, [
+      user_data: _.pick(updateParent, [
         "_id",
         "name",
         "avatar",
