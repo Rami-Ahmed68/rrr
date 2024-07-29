@@ -220,6 +220,7 @@ router.put("/", upload, async (req, res, next) => {
         "email",
         "avatar",
         "gender",
+        "about_me",
         "phone_number",
         "joinde_at",
         "rate",
