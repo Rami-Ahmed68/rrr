@@ -76,6 +76,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.gender &&
       !req.body.password &&
+      !req.body.delete_avatar &&
       req.files.length == 0
     ) {
       // to delete uploaded avatar
@@ -143,13 +144,14 @@ router.put("/", upload, async (req, res, next) => {
           password: req.body.password
             ? await HashPassword(req.body.password)
             : teacher.password,
+          about_me : req.bodyabout_me ? req.body.about_me : teacher.about_me,
           gender: req.body.gender ? req.body.gender : teacher.gender,
         },
       },
       { new: true }
     );
 
-    if (req.body.delete_avatar) {
+    if (req.body.delete_avatar && req.body.delete_avatar == "true") {
       if (req.files.length > 0) {
         // delete the uploaded images from images folder
         DeleteImages(req.files, next);
@@ -169,7 +171,7 @@ router.put("/", upload, async (req, res, next) => {
         updateTeacher.gender == "male"
           ? process.env.DEFAULT_MAN_AVATAR
           : process.env.DEFAULT_WOMAN_AVATAR;
-    } else {
+    } else if (req.body.delete_avatar && req.body.delete_avatar == "false"){
       // check if the request has any image
       if (req.files.length == 0) {
         // return error if the request hasn't new avatar
@@ -218,6 +220,7 @@ router.put("/", upload, async (req, res, next) => {
         "email",
         "avatar",
         "gender",
+        "phone_number",
         "joinde_at",
         "rate",
       ]),
@@ -233,7 +236,7 @@ router.put("/", upload, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: error,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500
