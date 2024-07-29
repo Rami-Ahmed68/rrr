@@ -41,7 +41,7 @@ const admin = mongoose.Schema({
     default: new Date(),
   },
   phone_number: {
-    type: Number,
+    type: String,
     min: 10,
     max: 10,
   },
