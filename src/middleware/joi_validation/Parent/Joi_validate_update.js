@@ -6,7 +6,6 @@ const Validate_admin_update = (data, next) => {
     parent_id: Joi.string().required(),
     name: Joi.string().min(3).max(100),
     password: Joi.string().min(8).max(100),
-    gender: Joi.string(),
     delete_avatar: Joi.string(), // true to delete the avatar and set the default avatar
   });
 
