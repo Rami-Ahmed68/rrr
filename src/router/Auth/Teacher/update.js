@@ -74,8 +74,9 @@ router.put("/", upload, async (req, res, next) => {
     // check if the request has any data
     if (
       !req.body.name &&
-      !req.body.gender &&
       !req.body.password &&
+      !req.body.about_me &&,
+      !req.body.phone_number &&,
       !req.body.delete_avatar &&
       req.files.length == 0
     ) {
@@ -145,7 +146,7 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : teacher.password,
           about_me : req.bodyabout_me ? req.body.about_me : teacher.about_me,
-          gender: req.body.gender ? req.body.gender : teacher.gender,
+          phone_number : req.body.phone_number ? req.body.phone_number : teacher.phone_number
         },
       },
       { new: true }
