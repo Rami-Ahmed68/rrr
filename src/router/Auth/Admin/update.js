@@ -76,7 +76,6 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.gender &&
       !req.body.password &&
-      !req.body.delete_avatar &&
       req.files.length < 1
     ) {
       // to delete uploaded avatar
@@ -99,7 +98,7 @@ router.put("/", upload, async (req, res, next) => {
     const VerifyTokenData = await VerifyToken(req.headers.authorization, next);
 
     // verify token id with admin id in body
-    if (VerifyTokenData._id != req.body.admin_id) {
+    if (VerifyTokenData._id != req.body.adminId) {
       // to delete uploaded avatar
       DeleteImages(req.files, next);
 
@@ -116,7 +115,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find the admin by id
-    const admin = await Admin.findById(req.body.admin_id);
+    const admin = await Admin.findById(req.body.adminId);
 
     // check if the admin is exists
     if (!admin) {
@@ -137,7 +136,7 @@ router.put("/", upload, async (req, res, next) => {
 
     // update admin acount and return the admin data after updated
     const updateAdmin = await Admin.findByIdAndUpdate(
-      { _id: req.body.admin_id },
+      { _id: req.body.adminId },
       {
         $set: {
           name: req.body.name ? req.body.name : admin.name,
@@ -145,7 +144,6 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : admin.password,
           gender: req.body.gender ? req.body.gender : admin.gender,
-          phone_number : req.body.phone_number ? req.body.phone_number : admin.phone_number
         },
       },
       { new: true }
@@ -213,24 +211,21 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Acount data updated successfully",
-      user_data: _.pick(updateAdmin, [
+      admin_data: _.pick(updateAdmin, [
         "_id",
         "name",
         "is_admin",
         "email",
         "avatar",
         "gender",
-        "phone_number",
         "joinde_at",
         "rate",
       ]),
     };
 
-    
     // send the data to user
     res.status(200).send(result);
   } catch (error) {
-    console.log(error)
     // to delete uploaded avatar
     DeleteImages(req.files, next);
 
@@ -238,7 +233,7 @@ router.put("/", upload, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error}...`,
+          english: error,
           arabic: "... عذرا خطأ عام",
         }),
         500

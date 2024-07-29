@@ -16,6 +16,9 @@ const Admin = require("../../../../models/Admin/admin");
 // parent model
 const Parent = require("../../../../models/Parent/parent");
 
+// hashing password function
+const HashPassword = require("../../../../utils/password_methods/HashPassword");
+
 // validate body data method
 const Validate_parent_create = require("../../../../middleware/joi_validation/super_Admin/Parent/Joi_validate_create_parent");
 
@@ -153,11 +156,14 @@ router.post("/", upload, async (req, res, next) => {
       );
     }
 
+    // hash password
+    const hashedPassword = await HashPassword(req.body.password);
+
     // create parent account
     const parent = new Parent({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hashedPassword,
       gender: req.body.gender,
       created_by: req.body.super_admin_id,
       phone_number: req.body.phone_number,

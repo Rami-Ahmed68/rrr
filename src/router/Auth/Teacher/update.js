@@ -5,7 +5,7 @@ const _ = require("lodash");
 const dotenv = require("dotenv");
 dotenv.config({ path: "../../../../config/.env" });
 
-// teacher model
+// admin model
 const Teacher = require("../../../models/Teacher/teacher");
 
 // Api Error function
@@ -74,10 +74,8 @@ router.put("/", upload, async (req, res, next) => {
     // check if the request has any data
     if (
       !req.body.name &&
+      !req.body.gender &&
       !req.body.password &&
-      !req.body.about_me &&
-      !req.body.phone_number &&
-      !req.body.delete_avatar &&
       req.files.length == 0
     ) {
       // to delete uploaded avatar
@@ -117,7 +115,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find the teacher by id
-    const teacher = await Teacher.findById(req.body.teacher_id);
+    const teacher = await Admin.findById(req.body.adminId);
 
     // check if the teacher is exists
     if (!teacher) {
@@ -145,14 +143,13 @@ router.put("/", upload, async (req, res, next) => {
           password: req.body.password
             ? await HashPassword(req.body.password)
             : teacher.password,
-          about_me : req.bodyabout_me ? req.body.about_me : teacher.about_me,
-          phone_number : req.body.phone_number ? req.body.phone_number : teacher.phone_number
+          gender: req.body.gender ? req.body.gender : teacher.gender,
         },
       },
       { new: true }
     );
 
-    if (req.body.delete_avatar && req.body.delete_avatar == "true") {
+    if (req.body.delete_avatar) {
       if (req.files.length > 0) {
         // delete the uploaded images from images folder
         DeleteImages(req.files, next);
@@ -172,7 +169,7 @@ router.put("/", upload, async (req, res, next) => {
         updateTeacher.gender == "male"
           ? process.env.DEFAULT_MAN_AVATAR
           : process.env.DEFAULT_WOMAN_AVATAR;
-    } else if (req.body.delete_avatar && req.body.delete_avatar == "false"){
+    } else {
       // check if the request has any image
       if (req.files.length == 0) {
         // return error if the request hasn't new avatar
@@ -198,14 +195,14 @@ router.put("/", upload, async (req, res, next) => {
       // upload new avatar to cloudinary
       const newAvatar = await UploadCloudinary(req.files[0], next);
 
-      // update the teacher avatar
+      // update the admin avatar
       updateTeacher.avatar = newAvatar;
 
       // delete the avatar
       DeleteImages(req.files, next);
     }
 
-    // save the teacher
+    // save the admin
     await updateTeacher.save();
 
     // delete avatar from images folder
@@ -214,15 +211,13 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Acount data updated successfully",
-      user_data: _.pick(updateTeacher, [
+      admin_data: _.pick(updateTeacher, [
         "_id",
         "name",
         "editor",
         "email",
         "avatar",
         "gender",
-        "about_me",
-        "phone_number",
         "joinde_at",
         "rate",
       ]),
@@ -238,7 +233,7 @@ router.put("/", upload, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error} ...`,
+          english: error,
           arabic: "... عذرا خطأ عام",
         }),
         500
