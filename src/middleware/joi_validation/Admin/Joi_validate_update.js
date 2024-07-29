@@ -3,7 +3,7 @@ const Joi = require("joi");
 const Validate_admin_update = (data, next) => {
   // validate update admin data
   const Schema = Joi.object().keys({
-    adminId: Joi.string().required(),
+    admin_id: Joi.string().required(),
     name: Joi.string().min(3).max(100),
     password: Joi.string().min(8).max(100),
     gender: Joi.string(),
