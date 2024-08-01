@@ -62,7 +62,7 @@ router.get("/", async (req, res, next) => {
         "subject",
         "about_me",
         "gender",
-        ,
+         "class_level" ,
         "rate",
         "list_of_rate",
         "rate_status",
