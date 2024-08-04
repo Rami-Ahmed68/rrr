@@ -73,7 +73,7 @@ router.post("/", async (req, res, next) => {
     }
     
     // compare passwords
-    const comparedPassword = await compare(
+    const comparedPassword = await comparePassword(
       req.body.password,
       superAdmin.password
     );
