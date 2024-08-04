@@ -54,7 +54,7 @@ router.post("/", async (req, res, next) => {
     }
 
     // compare passwords
-    const comparedPassword = await comparePassword(
+    const comparedPassword = await compare(
       req.body.super_admin_password,
       superAdmin.password
     );
