@@ -64,7 +64,7 @@ router.post("/", async (req, res, next) => {
       return next(
         new ApiErrors(
           JSON.stringify({
-            english: "Sorry, invalid super admin data ...",
+            english: "Sorry, invalid super admin data &...",
             arabic: "... عذرا لم يتم العثور على بيانات السوبر ادمن ",
           }),
           400
@@ -83,7 +83,7 @@ router.post("/", async (req, res, next) => {
       return next(
         new ApiErrors(
           JSON.stringify({
-            english: "Invalid email or password ...",
+            english: "Invalid email or password !...",
             arabic: "... عذرا خطأ في الايميل او كلمة المرور ",
           }),
           400
