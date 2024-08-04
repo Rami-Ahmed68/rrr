@@ -17,6 +17,9 @@ const Validate_super_admin_login = require("../../../middleware/joi_validation/s
 // generate token method
 const GenerateToken = require("../../../utils/token_methods/GenerateToken");
 
+// check super admin  methdo
+const CheckSuperAdmin = require("../../../middleware/CheckSuperAdmin");
+
 router.post("/", async (req, res, next) => {
   try {
     // validate body data
@@ -53,6 +56,22 @@ router.post("/", async (req, res, next) => {
       );
     }
 
+    // check if the super admin is super admin
+    const isSuperAdmin = CheckSuperAdmin(superAdmin);
+
+    // check if the isSuperAdmin is true or false
+    if (!isSuperAdmin) {
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: "Sorry, invalid super admin data ...",
+            arabic: "... عذرا لم يتم العثور على بيانات السوبر ادمن ",
+          }),
+          400
+        )
+      );
+    }
+    
     // compare passwords
     const comparedPassword = await compare(
       req.body.super_admin_password,
@@ -96,7 +115,7 @@ router.post("/", async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: error,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500
