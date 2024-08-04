@@ -40,7 +40,7 @@ router.post("/", async (req, res, next) => {
 
     // find the super admin
     const superAdmin = await Admin.findOne({
-      email: req.body.super_admin_email,
+      email: req.body.email,
     });
 
     // check if the super admin is exists
@@ -74,7 +74,7 @@ router.post("/", async (req, res, next) => {
     
     // compare passwords
     const comparedPassword = await compare(
-      req.body.super_admin_password,
+      req.body.password,
       superAdmin.password
     );
 
