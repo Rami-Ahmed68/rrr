@@ -10,7 +10,7 @@ const Validate_admin_data = (data) => {
     gender: Joi.string().required(),
     is_admin: Joi.boolean().required(),
     avatar: Joi.string(),
-    phone_number: Joi.number().min(10).max(10),
+    phone_number: Joi.string().min(10).max(10),
   });
 
   // validate body data using schema
