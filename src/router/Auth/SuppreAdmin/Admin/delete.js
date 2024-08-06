@@ -16,9 +16,6 @@ const Validate_delete_admin = require("../../../../middleware/joi_validation/sup
 // check super admin method
 const CheckSuperAdmin = require("../../../../middleware/CheckSuperAdmin");
 
-// check admin method
-const CheckAdmin = require("../../../../middleware/CheckAdmin");
-
 // verify token data method
 const VerifyToken = require("../../../../utils/token_methods/VerifyToken");
 
@@ -55,23 +52,6 @@ router.delete("/", async (req, res, next) => {
             arabic: "... عذرا لم يتم العثور على حساب الأدمن",
           }),
           404
-        )
-      );
-    }
-
-    // check admin
-    const isAdmin = CheckAdmin(admin);
-
-    // check if the admin is not super admin
-    if (!isAdmin) {
-      // return error
-      return next(
-        new ApiErrors(
-          JSON.stringify({
-            english: "Sorry, the super admin account can not be deleted ...",
-            arabic: " ... عذرا لا يمكني حذف حساب الأدمن",
-          }),
-          403
         )
       );
     }
