@@ -9,7 +9,7 @@ const Validate_update_admin = (data) => {
     password: Joi.string().min(8).max(100),
     gender: Joi.string(),
     delete_avatar: Joi.string(),
-    phone_number: Joi.number().min(10).max(10),
+    phone_number: Joi.string().min(10).max(10),
   });
 
   // validate data
