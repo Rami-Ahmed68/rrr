@@ -71,7 +71,7 @@ router.get("/", async (req, res, next) => {
           "is_admin",
           "email",
           "gender",
-          "rate",
+          "phone_number",
           "joind_at",
         ])
       ),
