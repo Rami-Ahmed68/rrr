@@ -47,6 +47,8 @@ router.put("/", upload, async (req, res, next) => {
     }
     console.log(req.body.super_admin_id)
     console.log(req.body.admin_id)
+    console.log(req.body.name)
+    console.log(req.body.password)
 
     // validate body data
     const Error = Validate_update_admin(req.body, next);
