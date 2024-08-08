@@ -10,6 +10,7 @@ const Validate_update_admin = (data) => {
     gender: Joi.string(),
     delete_avatar: Joi.string(),
     phone_number: Joi.string().min(10).max(10),
+    is_admin : Joi.boolean()
   });
 
   // validate data
