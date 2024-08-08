@@ -45,6 +45,7 @@ router.put("/", upload, async (req, res, next) => {
         new ApiErrors("you can not upload more than one image ...", 403)
       );
     }
+    console.log(req.body.super_admin_id)
 
     // validate body data
     const Error = Validate_update_admin(req.body, next);
