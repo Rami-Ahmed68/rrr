@@ -45,11 +45,6 @@ router.put("/", upload, async (req, res, next) => {
         new ApiErrors("you can not upload more than one image ...", 403)
       );
     }
-    console.log(req.body.super_admin_id)
-    console.log(req.body.admin_id)
-    console.log(req.body.name)
-    console.log(req.body.password)
-    console.log(req.body)
 
     // validate body data
     const Error = Validate_update_admin(req.body, next);
@@ -77,6 +72,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.gender &&
       !req.body.password &&
       !req.body.phone_number &&
+      !req.body.is_admin &&
       req.files.length == 0
     ) {
       // // to delete uploaded avatar
@@ -185,6 +181,7 @@ router.put("/", upload, async (req, res, next) => {
           phone_number: req.body.phone_number
             ? req.body.phone_number
             : admin.phone_number,
+          is_admin : req.body.is_admin ? req.body.is_admin : admin.is_admin
         },
       },
       { new: true }
