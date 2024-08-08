@@ -37,7 +37,7 @@ const CheckSuperAdmin = require("../../../../middleware/CheckSuperAdmin");
 router.put("/", upload, async (req, res, next) => {
   try {
     // check if the request has more than i avatar
-    if (req.files.length > 1) {
+    if (req.files && req.files.length > 1) {
       // to delete all uploaded images from images folder
       DeleteImages(req.files, next);
       // return the error with error message
@@ -75,7 +75,7 @@ router.put("/", upload, async (req, res, next) => {
       req.files.length == 0
     ) {
       // // to delete uploaded avatar
-      // DeleteImages(req.files , next);
+      DeleteImages(req.files , next);
 
       // return error If the body does not have any data
       return next(
@@ -186,7 +186,7 @@ router.put("/", upload, async (req, res, next) => {
     );
 
     if (req.body.delete_avatar && req.body.delete_avatar == "true") {
-      if (req.files.length > 0) {
+      if (req.files && req.files.length > 0) {
         // delete the uploaded images from images folder
         DeleteImages(req.files, next);
       }
@@ -207,7 +207,7 @@ router.put("/", upload, async (req, res, next) => {
           : process.env.DEFAULT_WOMAN_AVATAR;
     } else if (req.body.delete_avatar && req.body.delete_avatar == "false") {
       // check if the request has any image
-      if (req.files.length == 0) {
+      if (req.files && req.files.length == 0) {
         // return error if the request hasn't new avatar
         return next(
           new ApiErrors(
@@ -252,7 +252,6 @@ router.put("/", upload, async (req, res, next) => {
         "avatar",
         "gender",
         "joinde_at",
-        "rate",
       ]),
     };
 
