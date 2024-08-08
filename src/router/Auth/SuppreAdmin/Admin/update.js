@@ -73,7 +73,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.password &&
       !req.body.phone_number &&
       !req.body.is_admin &&
-      !req.body.delete_avatar
+      !req.body.delete_avatar &&
       req.files.length == 0
     ) {
       // // to delete uploaded avatar
