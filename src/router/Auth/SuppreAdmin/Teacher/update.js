@@ -198,6 +198,7 @@ router.put("/", upload, async (req, res, next) => {
           class_level: req.body.class_level
             ? req.body.class_level
             : teacher.class_level,
+          phone_number : req.body.phone_number ? req.body.phone_number : teacher.phone_number
         },
       },
       { new: true }
