@@ -28,9 +28,6 @@ router.put("/", async (req, res, next) => {
     //validate body data
     const Error = Validate_start_rate(req.body);
 
-console.log(req.headers.authorization)
-console.log(req.body)
-    
     // check if the body data has any error
     if (Error.error) {
       // return error
