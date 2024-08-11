@@ -41,7 +41,7 @@ router.put("/", async (req, res, next) => {
         )
       );
     }
-
+console.log(req.headers.authorization)
     // verify token data
     const VerifyTokenData = await VerifyToken(req.headers.authorization, next);
 
