@@ -24,7 +24,7 @@ const CheckAdmin = require("../../../../middleware/CheckAdmin");
 const VerifyToken = require("../../../../utils/token_methods/VerifyToken");
 
 router.put("/", async (req, res, next) => {
-  try {
+  // try {
     //validate body data
     const Error = Validate_start_rate(req.body);
 
@@ -153,18 +153,18 @@ console.log(req.headers.authorization)
 
     // send the result
     res.status(200).send(result);
-  } catch (error) {
-    // retun error
-    return next(
-      new ApiErrors(
-        JSON.stringify({
-          english: `${error}...`,
-          arabic: "... عذرا خطأ عام",
-        }),
-        500
-      )
-    );
-  }
+  // } catch (error) {
+  //   // retun error
+  //   return next(
+  //     new ApiErrors(
+  //       JSON.stringify({
+  //         english: `${error}...`,
+  //         arabic: "... عذرا خطأ عام",
+  //       }),
+  //       500
+  //     )
+  //   );
+  // }
 });
 
 module.exports = router;
