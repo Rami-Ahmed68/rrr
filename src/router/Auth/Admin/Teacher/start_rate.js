@@ -45,6 +45,8 @@ console.log(req.headers.authorization)
     // verify token data
     const VerifyTokenData = await VerifyToken(req.headers.authorization, next);
 
+  console.log(VerifyTokenData)
+  
     // check if the admin id in token is equal id in body
     if (VerifyTokenData._id != req.body.admin_id) {
       // return error
