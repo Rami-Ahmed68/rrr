@@ -79,6 +79,7 @@ router.get("/", async (req, res, next) => {
           "my_plans",
           "class_level",
           "created_by",
+          "birth_date",
           "joind_at",
         ])
       ),
