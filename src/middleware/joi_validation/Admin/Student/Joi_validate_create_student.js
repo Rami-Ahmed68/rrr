@@ -13,6 +13,7 @@ const Validate_student_create = (data) => {
     gender: Joi.string().required(),
     about_me: Joi.string().min(5).max(500),
     class_level: Joi.string().required(),
+    phone_number: Joi.string().min(10).max(10),
   });
 
   // validate body data using Schema
