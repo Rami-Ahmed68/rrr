@@ -9,7 +9,7 @@ const Validate_parent_update = (data) => {
     password: Joi.string().min(8).max(100),
     children: Joi.string(),
     gender: Joi.string(),
-    delete_avatar: Joi.string().required(),
+    delete_avatar: Joi.string(),
   });
 
   // validate body data using Schema
