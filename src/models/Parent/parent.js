@@ -40,7 +40,7 @@ const parent = new mongoose.Schema({
     enum: ["male", "female"],
   },
   phone_number: {
-    type: Number,
+    type: String,
     min: 10,
     max: 10,
   },
