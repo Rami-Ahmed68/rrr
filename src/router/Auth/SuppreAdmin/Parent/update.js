@@ -84,7 +84,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.password &&
       !req.body.gender &&
-      !childrenArray &&
+      !req.body.children &&
       !req.body.phone_number &&
       req.files.length == 0
     ) {
