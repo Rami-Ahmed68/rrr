@@ -189,10 +189,48 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : parent.password,
           gender: req.body.gender ? req.body.gender : parent.gender,
+          phone_number: req.body.phone_number
+            ? req.body.phone_number
+            : parent.phone_number,
         },
       },
       { new: true }
     );
+
+    // create a new array for children
+    let childrenArray = JSON.parse(req.body.children) || [];
+
+    if (childrenArray && childrenArray.length > 0) {
+      updateParent.children = [];
+
+      for (let i = 0; i < childrenArray.length; i++) {
+        // find the student
+        const student = await Student.findById(childrenArray[i]);
+
+        // check if the student is exists
+        if (!student) {
+          // delete all uploaded images from imgaes folder
+          DeleteImages(req.files, next);
+
+          // return error
+          return next(
+            new ApiErrors(
+              JSON.stringify({
+                english: "Sorry, invalid student's id ...",
+                arabic: "... عذرا خطأ في معرفات الطلاب",
+              }),
+              404
+            )
+          );
+        }
+
+        if (!updateParent.children.includes(childrenArray[i])) {
+          updateParent.children.push(childrenArray[i]);
+        }
+      }
+    } else {
+      updateParent.children = [];
+    }
 
     if (req.body.children) {
       req.body.children.forEach(async (studentId) => {

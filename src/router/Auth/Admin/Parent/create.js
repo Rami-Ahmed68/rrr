@@ -10,6 +10,9 @@ const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 // admin model
 const Admin = require("../../../../models/Admin/admin");
 
+// student model
+const Student = require("../../../../models/Student/student");
+
 // parent model
 const Parent = require("../../../../models/Parent/parent");
 
@@ -163,6 +166,7 @@ router.post("/", upload, async (req, res, next) => {
       password: hashedPassword,
       created_by: req.body.admin_id,
       gender: req.body.gender,
+      phone_number : req.body.phone_number ? req.body.phone_number : ""
     });
 
     // check if the request any image upload it to cloudinary
@@ -181,6 +185,37 @@ router.post("/", upload, async (req, res, next) => {
         req.body.gender == "male"
           ? process.env.DEFAULT_MAN_AVATAR
           : process.env.DEFAULT_WOMAN_AVATAR;
+    }
+
+    // create a new array for children
+    let childrenArray = JSON.parse(req.body.children) || [];
+
+    // check if the children array length is more than one children id
+    if (childrenArray && childrenArray.length > 0) {
+      for (let i = 0; i < childrenArray.length; i++) {
+        // get the children
+        const student = await Student.findById(childrenArray[i]);
+
+        // check if the student is exists
+        if (!student) {
+          // delete all uploaded images
+          DeleteImages(req.files, next);
+
+          // return error
+          return next(
+            new ApiErrors(
+              JSON.stringify({
+                english: "Sorry, invalid student's id ...",
+                arabic: "... عذرا خطأ في معرفات الطلاب",
+              }),
+              400
+            )
+          );
+        } else {
+          // add the student id to the parent's children array
+          parent.children.push(student._id);
+        }
+      }
     }
 
     // save the parent in data base

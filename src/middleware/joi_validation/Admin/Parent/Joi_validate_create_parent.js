@@ -7,6 +7,8 @@ const Validate_parent_create = (data) => {
     name: Joi.string().min(3).max(100).required(),
     email: Joi.string().min(5).max(100).email(),
     password: Joi.string().min(8).max(100).required(),
+    children: Joi.string(),
+    phone_number: Joi.string().min(10).max(10),
     gender: Joi.string().required(),
   });
 

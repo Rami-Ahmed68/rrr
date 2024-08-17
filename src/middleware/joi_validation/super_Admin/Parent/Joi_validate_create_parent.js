@@ -8,8 +8,8 @@ const Validate_parent_create = (data) => {
     email: Joi.string().min(5).max(100).email(),
     password: Joi.string().min(8).max(100).required(),
     gender: Joi.string().required(),
-    children: Joi.array(),
-    phone_number: Joi.number().min(10).max(10),
+    children: Joi.string(),
+    phone_number: Joi.string().min(10).max(10),
   });
 
   // validate body data using Schema

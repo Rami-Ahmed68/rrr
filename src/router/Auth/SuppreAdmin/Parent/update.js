@@ -84,7 +84,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.password &&
       !req.body.gender &&
-      !req.body.children &&
+      !childrenArray &&
       !req.body.phone_number &&
       req.files.length == 0
     ) {
@@ -199,12 +199,15 @@ router.put("/", upload, async (req, res, next) => {
       { new: true }
     );
 
-    if (req.body.children && req.body.children.length > 0) {
+    // create a new array for children
+    let childrenArray = JSON.parse(req.body.children) || [];
+
+    if (childrenArray && childrenArray.length > 0) {
       updateParent.children = [];
 
-      for (let i = 0; i < req.body.children.length; i++) {
+      for (let i = 0; i < childrenArray.length; i++) {
         // find the student
-        const student = await Student.findById(req.body.children[i]);
+        const student = await Student.findById(childrenArray[i]);
 
         // check if the student is exists
         if (!student) {
@@ -223,8 +226,8 @@ router.put("/", upload, async (req, res, next) => {
           );
         }
 
-        if (!updateParent.children.includes(req.body.children[i])) {
-          updateParent.children.push(req.body.children[i]);
+        if (!updateParent.children.includes(childrenArray[i])) {
+          updateParent.children.push(childrenArray[i]);
         }
       }
     } else {

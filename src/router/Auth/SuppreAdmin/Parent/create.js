@@ -187,11 +187,14 @@ router.post("/", upload, async (req, res, next) => {
           : process.env.DEFAULT_WOMAN_AVATAR;
     }
 
+    // create a new array for children
+    let childrenArray = JSON.parse(req.body.children) || [];
+
     // check if the children array length is more than one children id
-    if (req.body.children && req.body.children.length > 0) {
-      for (let i = 0; i < req.body.children.length; i++) {
+    if (childrenArray && childrenArray.length > 0) {
+      for (let i = 0; i < childrenArray.length; i++) {
         // get the children
-        const student = await Student.findById(req.body.children[i]);
+        const student = await Student.findById(childrenArray[i]);
 
         // check if the student is exists
         if (!student) {
