@@ -166,7 +166,7 @@ router.post("/", upload, async (req, res, next) => {
       password: hashedPassword,
       gender: req.body.gender,
       created_by: req.body.super_admin_id,
-      phone_number: req.body.phone_number,
+      phone_number: req.body.phone_number ? req.body.phone_number : "",
     });
 
     // check if the request any image upload it to cloudinary
