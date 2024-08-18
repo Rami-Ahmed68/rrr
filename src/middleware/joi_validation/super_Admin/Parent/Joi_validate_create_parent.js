@@ -9,7 +9,7 @@ const Validate_parent_create = (data) => {
     password: Joi.string().min(8).max(100).required(),
     gender: Joi.string().required(),
     children: Joi.string(),
-    phone_number: Joi.string().min(10).max(10),
+    phone_number: Joi.string().min(10).max(10).allow(''),
   });
 
   // validate body data using Schema
