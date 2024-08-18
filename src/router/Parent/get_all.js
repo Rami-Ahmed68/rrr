@@ -54,10 +54,19 @@ router.get("/", async (req, res, next) => {
       })
         .skip(skip)
         .limit(limit)
+        .populate({
+          path : "children",
+          select : "_id name avatar"
+        })
         .sort({ _id: -1 });
     } else {
       // get all parent
-      parents = await Parent.find().skip(skip).limit(limit).sort({ _id: -1 });
+      parents = await Parent.find().skip(skip)
+      .limit(limit)
+      .populate({
+        path : "children",
+        select : "_id name avatar"
+      }).sort({ _id: -1 });
     }
 
     // create result
