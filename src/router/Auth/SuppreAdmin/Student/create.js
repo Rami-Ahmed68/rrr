@@ -215,7 +215,7 @@ router.post("/", upload, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: error,
+          english: `${error} ...`,
           arabci: "... عذرا خطأ عام",
         }),
         500

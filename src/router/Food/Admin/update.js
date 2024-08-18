@@ -239,7 +239,7 @@ router.put("/", upload_food_images, async (req, res, next) => {
     return next(
       new ApiErrors(
         JOSN.stringify({
-          english: error,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500

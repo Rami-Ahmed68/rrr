@@ -208,7 +208,7 @@ router.post("/", upload_food_images, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSOON.stringify({
-          english: error,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500

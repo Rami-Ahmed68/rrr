@@ -54,17 +54,10 @@ router.get("/", async (req, res, next) => {
       })
         .skip(skip)
         .limit(limit)
-        .populate({
-          path : "children",
-          select : "_id name avatar"
-        })
         .sort({ _id: -1 });
     } else {
       // get all parent
-      parents = await Parent.find().skip(skip).limit(limit).populate({
-          path : "children",
-          select : "_id name avatar"
-        }).sort({ _id: -1 });
+      parents = await Parent.find().skip(skip).limit(limit).sort({ _id: -1 });
     }
 
     // create result
@@ -77,7 +70,6 @@ router.get("/", async (req, res, next) => {
           "avatar",
           "gender",
           "joined_at",
-          "phone_number",
           "children",
           "created_by",
           "created_at",
@@ -92,7 +84,7 @@ router.get("/", async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error}...`,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500

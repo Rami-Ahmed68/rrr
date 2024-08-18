@@ -181,7 +181,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error}`,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500

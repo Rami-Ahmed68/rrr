@@ -72,7 +72,7 @@ router.post("/" , async (req , res , next) => {
 
     } catch (error) {
         return next(new ApiErrors(JSON.stringify({
-            english : error,
+            english : `${error} ...`,
             arabic : "... عذرا خطأ عام"
         }) , 500));
     }

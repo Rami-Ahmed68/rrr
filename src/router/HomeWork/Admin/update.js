@@ -263,7 +263,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error}`,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500
