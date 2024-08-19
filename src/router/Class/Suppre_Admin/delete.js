@@ -50,7 +50,7 @@ const Default_covers = [
 ];
 
 router.delete("/", async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_class_delete(req.body);
 
@@ -206,18 +206,18 @@ router.delete("/", async (req, res, next) => {
 
     // send the result to use
     res.status(200).send(result);
-  // } catch (error) {
-  //   // return the error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+  } catch (error) {
+    // return the error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;
