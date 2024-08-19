@@ -143,7 +143,7 @@ router.delete("/", async (req, res, next) => {
     // delete the class id from all class's students
     classObject.students.forEach(async (student_id) => {
       // get the student
-      const getStudent = await Student(findById(student_id));
+      const getStudent = await Student.findById(student_id);
 
       // delete the class id from student classes
       getStudent.classes.filter((class_id) => class_id != classObject._id);
