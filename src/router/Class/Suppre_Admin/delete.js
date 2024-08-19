@@ -160,10 +160,11 @@ router.delete("/", async (req, res, next) => {
       teacher.classes = teacher.classes.filter(
         (class_id) => class_id != req.body.class_id
       );
+
+      // save the teacher
+      await teacher.save();
     }
 
-    // save the teacher
-    await teacher.save();
 
     // check if the class has any home work and delete it
     if (classObject.home_works.length > 0) {
