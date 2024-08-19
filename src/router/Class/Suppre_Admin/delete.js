@@ -168,9 +168,9 @@ router.delete("/", async (req, res, next) => {
 
     // check if the class has any home work and delete it
     if (classObject.home_works.length > 0) {
-      classObject.home_works.forEach(async (hw_id) => {
+      classObject.home_works.forEach(async (hw_object) => {
         // find the home work by id
-        const home_work = await Home_Work.findById(hw_id);
+        const home_work = await Home_Work.findById(hw_object._id);
 
         // check if the home work has any image
         if (home_work.images.length > 0) {
