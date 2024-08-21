@@ -51,7 +51,7 @@ router.get("/", async (req, res, next) => {
         .populate([
           {
             path: "teacher",
-            select: "_id name avatar",
+            select: "_id name avatar gender class_level classes subject rate",
           },
           {
             path: "created_by",
