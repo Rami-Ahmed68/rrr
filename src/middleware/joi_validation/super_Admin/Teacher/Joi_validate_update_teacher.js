@@ -11,7 +11,7 @@ const Validate_teacher_update = (data) => {
     password: Joi.string().min(8).max(100),
     about_me: Joi.string().min(10).max(500),
     gender: Joi.string(),
-    delete_avatar: Joi.boolean(),
+    delete_avatar: Joi.string(),
     class_level: Joi.string(),
     phone_number: Joi.string().min(10).max(10),
   });
