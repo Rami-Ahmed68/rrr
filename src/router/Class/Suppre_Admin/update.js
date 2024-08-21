@@ -54,7 +54,7 @@ const Default_covers = [
 ];
 
 router.put("/", upload_cover, async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_class_update(req.body);
 
@@ -240,7 +240,7 @@ router.put("/", upload_cover, async (req, res, next) => {
       },
     ]);
 
-    if (req.body.delete_cover) {
+    if (req.body.delete_cover == "true") {
       // check if the class cover is not default cover and delete it
       if (!Default_covers.includes(classObject.cover)) {
         await DeleteCloudinary(classObject.cover);
@@ -291,7 +291,7 @@ router.put("/", upload_cover, async (req, res, next) => {
           break;
         default:
       }
-    } else if (req.body.delete_cover) {
+    } else if (req.body.delete_cover == "false") {
       // check if the request has not any  image
       if (req.files.length == 0) {
         // return error
@@ -321,8 +321,6 @@ router.put("/", upload_cover, async (req, res, next) => {
       DeleteImages(req.files, next);
     }
 
-    DeleteImages(req.files, next);
-
     // save the changes
     await updateClassObject.save();
 
@@ -344,21 +342,21 @@ router.put("/", upload_cover, async (req, res, next) => {
 
     // send the result to user
     res.status(200).send(result);
-  // } catch (error) {
-  //   // delete all uploaded images from images folder
-  //   DeleteImages(req.files, next);
+  } catch (error) {
+    // delete all uploaded images from images folder
+    DeleteImages(req.files, next);
 
-  //   // return the error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error}...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+    // return the error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error}...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;
