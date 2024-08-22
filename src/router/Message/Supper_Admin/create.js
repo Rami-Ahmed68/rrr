@@ -8,15 +8,6 @@ const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 // admin model
 const Admin = require("../../../models/Admin/admin");
 
-// student model
-const Student = require("../../../models/Student/student");
-
-// teacher model
-const Teacher = require("../../../models/Teacher/teacher");
-
-// parent model
-const Parent = require("../../../models/Parent/parent");
-
 // message model
 const Message = require("../../../models/Message/message");
 

@@ -3,7 +3,7 @@ const Joi = require("joi");
 const Validate_create_message = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
-    super_admin_id: Joi.string().required(),
+    super_admin_id: Joi.string(),
     title: Joi.string().min(5).max(50).required(),
     description: Joi.string().min(5).max(500).required(),
     note: Joi.string(),
