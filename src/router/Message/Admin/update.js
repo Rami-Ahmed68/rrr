@@ -127,7 +127,7 @@ router.put("/", async (req, res, next) => {
       },
       { new: true }
     ).populate({
-      pasth: "created_by",
+      path: "created_by",
       select: "_id name avatar",
     });
 
