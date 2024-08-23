@@ -11,6 +11,9 @@ const Admin = require("../../../models/Admin/admin");
 // message model
 const Message = require("../../../models/Message/message");
 
+// verify token data method
+const VerifyToken = require("../../../utils/token_methods/VerifyToken");
+
 // validate body data method
 const Validate_update_message = require("../../../middleware/joi_validation/Message/Admin/Joi_validate_update_message");
 
