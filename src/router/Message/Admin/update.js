@@ -30,7 +30,7 @@ router.put("/", async (req, res, next) => {
       // return error
       return next(
         new ApiErrors(
-          JOSN.stringify({
+          JSON.stringify({
             english: Error.error.details[0].message,
             arabic: "... عذرا خطأ في البيانات المرسلة",
           }),
