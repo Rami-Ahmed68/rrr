@@ -168,6 +168,7 @@ router.post("/", upload, async (req, res, next) => {
       created_by: req.body.super_admin_id,
       avatar: "",
       class_level: req.body.class_level,
+      phone_number : req.body.phone_number ? req.body.phone_number : ""
     });
 
     // check if the request has a avatar to upload it to cloudinary
