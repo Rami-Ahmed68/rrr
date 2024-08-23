@@ -22,6 +22,7 @@ const CheckSuperAdmin = require("../../../middleware/CheckSuperAdmin");
 
 router.post("/", async (req, res, next) => {
   try {
+    console.log(req.body.super_admin_id)
     // validate body data
     const Error = Validate_create_message(req.body);
 
