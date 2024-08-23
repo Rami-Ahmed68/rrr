@@ -76,7 +76,7 @@ router.put("/", async (req, res, next) => {
     // check if the admin is admin
     const isAdmin = CheckAdmin(admin);
 
-    if (!isrAdmin) {
+    if (!isAdmin) {
       // return error
       return next(
         new ApiErrors(
