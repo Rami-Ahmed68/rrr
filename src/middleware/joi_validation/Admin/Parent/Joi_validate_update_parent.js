@@ -9,7 +9,7 @@ const Validate_parent_update = (data) => {
     password: Joi.string().min(8).max(100),
     children: Joi.string(),
     gender: Joi.string(),
-    phone_number: Joi.string().min(10).max(10),
+    phone_number: Joi.string().min(10).max(10).allow(''),
     delete_avatar: Joi.string(),
   });
 
