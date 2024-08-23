@@ -90,10 +90,7 @@ router.put("/", async (req, res, next) => {
     }
 
     // fidn the message
-    const message = await Message.findById(req.body.message_id).populate({
-      path: "created_by",
-      select: "_id name avatar",
-    });
+    const message = await Message.findById(req.body.message_id);
 
     // chekc if the messaeg is eixsts
     if (!message) {
