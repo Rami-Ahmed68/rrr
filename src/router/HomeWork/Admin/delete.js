@@ -120,13 +120,17 @@ router.delete("/", async (req, res, next) => {
     // find the home work's class
     const home_work_class = await ClassSchema.findById(home_work.class_id);
 
-    // delete the home work id from class's home works array
-    home_work_class.home_works = home_work_class.home_works.filter(
-      (Id) => Id != req.body.home_work_id
-    );
-
-    // sav eth class after deleted the home work id
-    await home_work_class.save();
+    // check if the class is exists
+    if (home_work_class) {
+      // delete the home id from class's home works array
+      home_work_class.home_works = home_work_class.home_works.filter(
+        (Id) => Id != req.body.home_work_id
+      );
+  
+      // sav eth class after deleted the home work id
+      await home_work_class.save();
+      }
+  
 
     // check and delete the home work images
     if (home_work.images.length > 0) {
