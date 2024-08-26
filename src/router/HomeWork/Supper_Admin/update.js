@@ -34,12 +34,6 @@ const upload_home_work_images = require("../../../utils/multer/upload_hw_images/
 
 router.put("/", upload_home_work_images, async (req, res, next) => {
   try {
-    // covert the images for delete
-    console.log(req.body.images_for_delete)
-    console.log(typeof req.body.images_for_delete)
-    req.body.images_for_delete = JSON.parse(req.body.images_for_delete);
-    console.log(req.body.images_for_delete)
-    console.log(typeof req.body.images_for_delete)
 
     // validate body data
     const Error = Validate_hw_update(req.body);
@@ -68,7 +62,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
       !req.body.note &&
       !req.body.level &&
       !req.body.files &&
-      req.body.images_for_delete
+      !req.body.images_for_delete
     ) {
       // return error
       return next(
