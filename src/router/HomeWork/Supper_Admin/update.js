@@ -36,6 +36,8 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
   try {
     // covert the images for delete
     req.body.images_for_delete = JSON.parse(req.body.images_for_delete);
+    console.log(req.body.images_for_delete)
+    console.log(typeof req.body.images_for_delete)
 
     // validate body data
     const Error = Validate_hw_update(req.body);
