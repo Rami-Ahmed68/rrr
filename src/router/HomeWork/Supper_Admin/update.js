@@ -63,7 +63,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
       !req.body.level &&
       !req.body.files &&
       !req.body.images_for_delete &&
-      !req.body.files
+      !req.files
     ) {
       // return error
       return next(
