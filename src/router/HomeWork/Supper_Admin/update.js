@@ -226,6 +226,8 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
           (image) => image != ImagesForDelete[i]
         );
 
+        console.log(ImagesForDelete[i]);
+        console.log(ImagesForDelete);
         // delete the image from cloudinary
         await DeleteCloudinary(ImagesForDelete[i] , next);
       }
