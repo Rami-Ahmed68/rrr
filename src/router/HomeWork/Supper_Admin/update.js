@@ -220,6 +220,8 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
 
     // check if the request has a images to delete
     if (ImagesForDelete.length > 0) {
+      console.log(ImagesForDelete);
+
       for (let i = 0; i < ImagesForDelete.length; i++) {
         // filter and return images url
         updateHomeWork.images = updateHomeWork.images.filter(
@@ -227,7 +229,6 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
         );
 
         console.log(ImagesForDelete[i]);
-        console.log(ImagesForDelete);
         // delete the image from cloudinary
         await DeleteCloudinary(ImagesForDelete[i] , next);
       }
