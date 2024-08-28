@@ -81,6 +81,9 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     // create imagesForDelete
     const ImagesForDelete = JSON.parse(req.body.images_for_delete);
 
+    console.log(ImagesForDelete)
+    console.log(typeof ImagesForDelete)
+
     // check if the requesat has more thean 5 images
     if (req.files && req.files.length > 5) {
       // delete all uploaded images from images folder
