@@ -51,7 +51,7 @@ router.get("/", async (req, res, next) => {
       },
       {
         path: "home_works",
-        select: "_id title images level created_at",
+        select: "_id title images level description created_at",
       },
     ]);
 
