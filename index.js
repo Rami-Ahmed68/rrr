@@ -173,7 +173,7 @@ app.use("/api/v1/teacher/update", TeacherUpdate);
 // get teacher
 app.use("/api/v1/teacher/get/one", TeacherGetOne);
 app.use("/api/v1/teacher/get/all", TeacherGetAll);
-app.use("/ap/v1/teacher/get/count" , GetTeachersCount);
+app.use("/api/v1/teacher/get/count" , GetTeachersCount);
 // get teacher
 // create teacher api's
 
