@@ -380,7 +380,7 @@ const studentPlanCopy = require("./src/router/Plan/Student/copy_plan");
 // get
 const planGetAll = require("./src/router/Plan/get_all");
 const planGetOne = require("./src/router/Plan/get_one");
-const GetPlansCount = require("./src/router/Plan/get/count");
+const GetPlansCount = require("./src/router/Plan/get_plans_count");
 // get
 
 // require plan files
