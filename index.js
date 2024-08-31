@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 dotenv.config({ path: "./config/.env" });
 const cors = require("cors");
 
+
 // select the api methods and origin ( who can use the api's )
 const corsOptions = {
   origin: "*",
