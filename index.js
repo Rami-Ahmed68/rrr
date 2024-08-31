@@ -122,6 +122,7 @@ const adminUpdateTeacher = require("./src/router/Auth/Admin/Teacher/update");
 // get
 const adminGetOne = require("./src/router/Admin/get_one");
 const adminGetAll = require("./src/router/Admin/get_all");
+const get_admins_count = require("./src/router/Admin/get_admins_count");
 // get
 // require admin files
 
@@ -152,6 +153,7 @@ app.use("/api/v1/admin/teacher/update", adminUpdateTeacher);
 // get
 app.use("/api/v1/admin/get/one", adminGetOne);
 app.use("/api/v1/admin/get/all", adminGetAll);
+app.use("/api/v1/admin/get/count" , get_admins_count);
 // get
 // create admin api's
 
@@ -160,6 +162,7 @@ const TeacherLogin = require("./src/router/Auth/Teacher/login");
 const TeacherUpdate = require("./src/router/Auth/Teacher/update");
 const TeacherGetOne = require("./src/router/Teacher/get_one");
 const TeacherGetAll = require("./src/router/Teacher/get_all");
+const GetTeachersCount = require("./src/router/Teacher/get_Teachers_count");
 // require teacher files
 
 // create teacher api's
@@ -169,6 +172,7 @@ app.use("/api/v1/teacher/update", TeacherUpdate);
 // get teacher
 app.use("/api/v1/teacher/get/one", TeacherGetOne);
 app.use("/api/v1/teacher/get/all", TeacherGetAll);
+app.use("/ap/v1/teacher/get/count" , GetTeachersCount);
 // get teacher
 // create teacher api's
 
@@ -177,6 +181,7 @@ const StudentLogin = require("./src/router/Auth/Student/login");
 const StudentUpdate = require("./src/router/Auth/Student/update");
 const StudentGetOne = require("./src/router/Student/get_one");
 const StudentGetAll = require("./src/router/Student/get_all");
+const GetStudentsCount = require("./src/router/Student/get_Students_count")
 // require student files
 
 // create student api's
@@ -186,6 +191,7 @@ app.use("/api/v1/student/update", StudentUpdate);
 // get students
 app.use("/api/v1/student/get/one", StudentGetOne);
 app.use("/api/v1/student/get/all", StudentGetAll);
+app.use("/api/v1/student/get/count" , GetStudentsCount);
 // get students
 
 // create student api's
@@ -196,6 +202,7 @@ const ParentLogin = require("./src/router/Auth/Parent/login");
 const ParentUpdate = require("./src/router/Auth/Parent/update");
 const ParentGetOne = require("./src/router/Parent/get_one");
 const ParentGetAll = require("./src/router/Parent/get_all");
+const GetParentsCount = require("./src/router/Parent/get_parents_count");
 
 // require parent files
 
@@ -206,6 +213,7 @@ app.use("/api/v1/parent/update", ParentUpdate);
 // get parent
 app.use("/api/v1/parent/get/one", ParentGetOne);
 app.use("/api/v1/parent/get/all", ParentGetAll);
+app.use("/api/v1/parent/get/count" , GetParentsCount)
 // get parent
 
 // create parent api's
@@ -262,6 +270,10 @@ const ClassGetOne = require("./src/router/Class/get_one");
 const ClassGetAll = require("./src/router/Class/get_all");
 // get classes
 
+// get to classes count
+const GetClassesCount = require("./src/router/Class/get_classes_count");
+// get to classes count
+
 // join & leave class
 const JoiToClass = require("./src/router/Class/joi_class");
 const LeaveToClass = require("./src/router/Class/leave_class");
@@ -290,6 +302,7 @@ app.use("/api/v1/teacher/class/update", teacherUpdateClass);
 // get class
 app.use("/api/v1/class/get/one", ClassGetOne);
 app.use("/api/v1/class/get/all", ClassGetAll);
+app.use("/api/v1/class/get/count" , GetClassesCount);
 // get class
 
 // join & leave class
@@ -314,6 +327,7 @@ const adminUpdateFood = require("./src/router/Food/Admin/update");
 // get
 const FoodGetOne = require("./src/router/Food/get_one");
 const FoodGetAll = require("./src/router/Food/get_all");
+const GetFoodsCount = require("./src/router/Food/get_food_count");
 // get
 
 // require food files
@@ -335,6 +349,7 @@ app.use("/api/v1/admin/food/update", adminUpdateFood);
 // get
 app.use("/api/v1/food/get/one", FoodGetOne);
 app.use("/api/v1/food/get/all", FoodGetAll);
+app.use("/api/v1/food/get/count" , GetFoodsCount);
 // get
 
 // create food api's
@@ -364,6 +379,7 @@ const studentPlanCopy = require("./src/router/Plan/Student/copy_plan");
 // get
 const planGetAll = require("./src/router/Plan/get_all");
 const planGetOne = require("./src/router/Plan/get_one");
+const GetPlansCount = require("./src/router/Plan/get/count");
 // get
 
 // require plan files
@@ -392,6 +408,7 @@ app.use("/api/v1/student/plan/copy", studentPlanCopy);
 // get
 app.use("/api/v1/plan/get/all", planGetAll);
 app.use("/api/v1/plan/get/one", planGetOne);
+app.use("/api/v1/plan/get/count" , GetPlansCount);
 // get
 // create plan api's
 
@@ -411,6 +428,7 @@ const adminMessageUpdate = require("./src/router/Message/Admin/update");
 // get
 const messageGetAll = require("./src/router/Message/get_all");
 const messageGetOne = require("./src/router/Message/get_one");
+const getMessgaesCount = require("./src/router/Message/get_messages_count");
 // get
 // require message files
 
@@ -430,6 +448,7 @@ app.use("/api/v1/admin/message/update", adminMessageUpdate);
 // get
 app.use("/api/v1/message/get/all", messageGetAll);
 app.use("/api/v1/message/get/one", messageGetOne);
+app.use("/api/v1/messages/get/count" , getMessgaesCount);
 // get
 // craete reate message api's
 
@@ -456,6 +475,7 @@ const teacherHwUpdate = require("./src/router/HomeWork/Teacher/update");
 // get
 const hwGetOne = require("./src/router/HomeWork/get_one");
 const hwGetAll = require("./src/router/HomeWork/get_all");
+const hwCount = require("./src/router/HomeWork/get_home_works_count");
 // get
 
 // require home work files
@@ -483,6 +503,7 @@ app.use("/api/v1/teacher/hw/update", teacherHwUpdate);
 // get
 app.use("/api/v1/hw/get/one", hwGetOne);
 app.use("/api/v1/hw/get/all", hwGetAll);
+app.use("/api/v1/hw/get/count" , hwCount);
 // get
 
 // create home work api's

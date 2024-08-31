@@ -61,7 +61,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
       !req.body.note &&
       !req.body.level &&
       !req.body.files &&
-      req.body.images_for_delete.length == 0
+      !req.body.images_for_delete.length
     ) {
       // return error
       return next(
@@ -174,11 +174,14 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
       );
     }
 
+    // create imagesForDelete
+    const ImagesForDelete = JSON.parse(req.body.images_for_delete);
+
     // check if the images count is less than 5 images
     if (
       (req.files ? req.files.length : 0) +
         home_work.images.length -
-        (req.body.images_for_delete ? req.body.images_for_delete : 0) >
+        (ImagesForDelete ? ImagesForDelete : 0) >
       5
     ) {
       // delete all uplaoded images from images folder
@@ -214,15 +217,15 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     );
 
     // check if the request has a images to delete
-    if (req.body.images_for_delete && req.body.images_for_delete.length > 0) {
-      for (let i = 0; i < req.body.images_for_delete.length; i++) {
+    if (ImagesForDelete && ImagesForDelete.length > 0) {
+      for (let i = 0; i < ImagesForDelete.length; i++) {
         // filter and return images url
         updateHomeWork.images = updateHomeWork.images.filter(
-          (image) => image != req.body.images_for_delete[i]
+          (image) => image != ImagesForDelete[i]
         );
 
         // delete the image from cloudinary
-        await DeleteCloudinary(req.body.images_for_delete[i]);
+        await DeleteCloudinary(ImagesForDelete[i]);
       }
     }
 
