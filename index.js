@@ -272,7 +272,7 @@ const ClassGetAll = require("./src/router/Class/get_all");
 // get classes
 
 // get to classes count
-const GetClassesCount = require("./src/router/Class/get_classes_count");
+// const GetClassesCount = require("./src/router/Class/get_classes_count");
 // get to classes count
 
 // join & leave class
@@ -303,7 +303,7 @@ app.use("/api/v1/teacher/class/update", teacherUpdateClass);
 // get class
 app.use("/api/v1/class/get/one", ClassGetOne);
 app.use("/api/v1/class/get/all", ClassGetAll);
-app.use("/api/v1/class/get/count" , GetClassesCount);
+// app.use("/api/v1/class/get/count" , GetClassesCount);
 // get class
 
 // join & leave class
