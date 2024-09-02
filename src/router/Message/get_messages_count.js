@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const _ = require("lodash");
 const Joi = require("joi");
 
 
-// messages model
+// Message model
 const Message = require("../../models/Message/message");
 
 // api error method
@@ -36,37 +35,38 @@ router.get("/" , async (req , res , next) => {
     }
 
     // create a message's count var
-    let MessagesCount ;
+    let MessageCount ;
 
     if (req.body.recipient == "super" || req.body.recipient == "admin") {
-      // get to the all messages count 
-      MessagesCount = await Messages.countDocuments({ });
+      // get to the all Message count 
+      MessageCount = await Message.countDocuments({ });
+      console.log(`this ... ${Message.countDocuments({ })}`)
     } else if (req.body.recipient == "teachers") {
-      // get to the all messages count 
-      MessagesCount = await Messages.countDocuments({ $or : [
+      // get to the all Message count 
+      MessageCount = await Message.countDocuments({ $or : [
         { recipient : "teachers" },
         { recipient : "public" }
       ] });
     } else if (req.body.recipient == "students") {
-      // get to the all messages count 
-      MessagesCount = await Messages.countDocuments({ $or : [
+      // get to the all Message count 
+      MessageCount = await Message.countDocuments({ $or : [
         { recipient : "students" },
         { recipient : "public" }
       ] });
     } else if (req.body.recipient == "parents") {
-      // get to the all messages count 
-      MessagesCount = await Messages.countDocuments({ $or : [
+      // get to the all Message count 
+      MessageCount = await Message.countDocuments({ $or : [
         { recipient : "parents" },
         { recipient : "public" }
       ] });
     }
 
-    console.log(MessagesCount)
+    console.log(MessageCount)
 
   // create a result
   const results = {
-    "message" : "Geted to all messages length",
-    "messages_length" : MessagesCount
+    "message" : "Geted to all Message length",
+    "Messages_count" : MessageCount
   }
 
   // sed the response
