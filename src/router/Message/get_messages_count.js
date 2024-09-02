@@ -47,18 +47,24 @@ router.get("/" , async (req , res , next) => {
         { recipient : "teachers" },
         { recipient : "public" }
       ] });
+    console.log(MessageCount)
+
     } else if (req.body.recipient == "students") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "students" },
         { recipient : "public" }
       ] });
+    console.log(MessageCount)
+
     } else if (req.body.recipient == "parents") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "parents" },
         { recipient : "public" }
       ] });
+    console.log(MessageCount)
+
     }
 
     console.log(MessageCount)
