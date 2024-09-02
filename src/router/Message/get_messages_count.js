@@ -40,14 +40,14 @@ router.get("/" , async (req , res , next) => {
     if (req.body.recipient == "super" || req.body.recipient == "admin") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ });
-      console.log(`this ... ${Message.countDocuments({ })}`)
+      console.log(`one ... ${MessageCount}`)
     } else if (req.body.recipient == "teachers") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "teachers" },
         { recipient : "public" }
       ] });
-    console.log(MessageCount)
+      console.log(`tow ... ${MessageCount}`)
 
     } else if (req.body.recipient == "students") {
       // get to the all Message count 
@@ -55,7 +55,7 @@ router.get("/" , async (req , res , next) => {
         { recipient : "students" },
         { recipient : "public" }
       ] });
-    console.log(MessageCount)
+      console.log(`three ... ${MessageCount}`)
 
     } else if (req.body.recipient == "parents") {
       // get to the all Message count 
@@ -63,7 +63,7 @@ router.get("/" , async (req , res , next) => {
         { recipient : "parents" },
         { recipient : "public" }
       ] });
-    console.log(MessageCount)
+      console.log(`for ... ${MessageCount}`)
 
     }
 
