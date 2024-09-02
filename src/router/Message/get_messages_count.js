@@ -12,15 +12,15 @@ const ApiErrors = require("../../utils/validation_error/ApiErrors");
 router.get("/" , async (req , res , next) => {
   try {
 
-    // create a Schema to validate body data
+    // create a Schema to validate query data
     const Schema = Joi.object().keys({
       recipient : Joi.string().required()
     });
 
-    // validate the body data
+    // validate the query data
     const Error = Schema.validate(req.query);
 
-    // check if the body has any error
+    // check if the query has any error
     if (Error.error) {
       // return error
       return next(
@@ -37,34 +37,27 @@ router.get("/" , async (req , res , next) => {
     // create a message's count var
     let MessageCount = 0 ;
 
-    if (req.body.recipient == "super" || req.body.recipient == "admin") {
+    if (req.query.recipient == "super" || req.query.recipient == "admin") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ });
-      console.log(`one ... ${MessageCount}`)
-    } else if (req.body.recipient == "teachers") {
+    } else if (req.query.recipient == "teachers") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "teachers" },
         { recipient : "public" }
       ] });
-      console.log(`tow ... ${MessageCount}`)
-
-    } else if (req.body.recipient == "students") {
+    } else if (req.query.recipient == "students") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "students" },
         { recipient : "public" }
       ] });
-      console.log(`three ... ${MessageCount}`)
-
-    } else if (req.body.recipient == "parents") {
+    } else if (req.query.recipient == "parents") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "parents" },
         { recipient : "public" }
       ] });
-      console.log(`for ... ${MessageCount}`)
-
     }
 
     // console.log(MessageCount)
