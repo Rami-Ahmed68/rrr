@@ -1,6 +1,5 @@
-const express = require();
+const express = require("express");
 const router = express.Router();
-
 
 // api error method
 const ApiErrors = require("../../utils/validation_error/ApiErrors");
