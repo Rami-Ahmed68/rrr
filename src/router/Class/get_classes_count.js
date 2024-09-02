@@ -6,13 +6,13 @@ const router = express.Router();
 const ApiErrors = require("../../utils/validation_error/ApiErrors");
 
 // classes model
-const ClassesSchema = require("../../models/Class/class");
+const ClassSchema = require("../../models/Class/class");
 
 router.get("/" , async (req , res , next) => {
   try {
 
     // get to all classes dount
-    const ClassesCount = await ClassesSchema.countDocuments({});
+    const ClassesCount = await ClassSchema.countDocuments({});
 
     // create result
     const result = {
