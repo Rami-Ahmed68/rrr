@@ -23,13 +23,16 @@ router.get("/" , async (req , res , next) => {
 
     // check if the body has any error
     if (Error.error) {
-      // return the error
-      return next(new ApiErrors(
-        JSON.stringify({
-          english : Error.error.details[0].messages,
-          arabic : "... عذرا خطأ في البيانات المرسلة"
-        })
-      ))
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: Error.error.details[0].message,
+            arabic: "... عذرا خطأ في البيانات المرسلة",
+          }),
+          400
+        )
+      );
     }
 
     // create a message's count var
