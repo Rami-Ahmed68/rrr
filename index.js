@@ -449,7 +449,7 @@ app.use("/api/v1/admin/message/update", adminMessageUpdate);
 // get
 app.use("/api/v1/message/get/all", messageGetAll);
 app.use("/api/v1/message/get/one", messageGetOne);
-app.use("/api/v1/messages/get/count" , getMessgaesCount);
+app.use("/api/v1/message/get/count" , getMessgaesCount);
 // get
 // craete reate message api's
 
