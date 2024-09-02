@@ -35,31 +35,32 @@ router.get("/" , async (req , res , next) => {
     }
 
     // create a message's count var
-    let MessageCount ;
+    let MessageCount = await Message.countDocuments({ });
+    console.log(`this ... ${Message.countDocuments({ })}`)
 
-    if (req.body.recipient == "super" || req.body.recipient == "admin") {
-      // get to the all Message count 
-      MessageCount = await Message.countDocuments({ });
-      console.log(`this ... ${Message.countDocuments({ })}`)
-    } else if (req.body.recipient == "teachers") {
-      // get to the all Message count 
-      MessageCount = await Message.countDocuments({ $or : [
-        { recipient : "teachers" },
-        { recipient : "public" }
-      ] });
-    } else if (req.body.recipient == "students") {
-      // get to the all Message count 
-      MessageCount = await Message.countDocuments({ $or : [
-        { recipient : "students" },
-        { recipient : "public" }
-      ] });
-    } else if (req.body.recipient == "parents") {
-      // get to the all Message count 
-      MessageCount = await Message.countDocuments({ $or : [
-        { recipient : "parents" },
-        { recipient : "public" }
-      ] });
-    }
+    // if (req.body.recipient == "super" || req.body.recipient == "admin") {
+    //   // get to the all Message count 
+    //   MessageCount = await Message.countDocuments({ });
+    //   console.log(`this ... ${Message.countDocuments({ })}`)
+    // } else if (req.body.recipient == "teachers") {
+    //   // get to the all Message count 
+    //   MessageCount = await Message.countDocuments({ $or : [
+    //     { recipient : "teachers" },
+    //     { recipient : "public" }
+    //   ] });
+    // } else if (req.body.recipient == "students") {
+    //   // get to the all Message count 
+    //   MessageCount = await Message.countDocuments({ $or : [
+    //     { recipient : "students" },
+    //     { recipient : "public" }
+    //   ] });
+    // } else if (req.body.recipient == "parents") {
+    //   // get to the all Message count 
+    //   MessageCount = await Message.countDocuments({ $or : [
+    //     { recipient : "parents" },
+    //     { recipient : "public" }
+    //   ] });
+    // }
 
     console.log(MessageCount)
 
