@@ -5,7 +5,7 @@ const Joi = require("joi");
 
 
 // messages model
-const Messages = require("../../models/Message/message");
+const Message = require("../../models/Message/message");
 
 // api error method
 const ApiErrors = require("../../utils/validation_error/ApiErrors");
@@ -61,7 +61,7 @@ router.get("/" , async (req , res , next) => {
       ] });
     }
 
-  console.log(MessagesCount);
+    console.log(MessagesCount)
 
   // create a result
   const results = {
