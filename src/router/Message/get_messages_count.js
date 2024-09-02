@@ -67,7 +67,7 @@ router.get("/" , async (req , res , next) => {
 
     }
 
-    console.log(MessageCount)
+    // console.log(MessageCount)
 
   // create a result
   const results = {
