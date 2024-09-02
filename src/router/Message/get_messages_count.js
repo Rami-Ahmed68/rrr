@@ -35,7 +35,7 @@ router.get("/" , async (req , res , next) => {
     }
 
     // create a message's count var
-    let MessageCount ;
+    let MessageCount = 0 ;
 
     if (req.body.recipient == "super" || req.body.recipient == "admin") {
       // get to the all Message count 
