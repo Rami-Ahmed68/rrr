@@ -19,7 +19,7 @@ router.get("/" , async (req , res , next) => {
     });
 
     // validate the body data
-    const Error = Schema.validate(req.body);
+    const Error = Schema.validate(req.query);
 
     // check if the body has any error
     if (Error.error) {
