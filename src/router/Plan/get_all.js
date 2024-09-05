@@ -82,6 +82,7 @@ router.get("/", async (req, res, next) => {
           "students",
           "teachers",
           "class_level",
+          "plan_data",
           "created_at",
           "created_by",
         ])
