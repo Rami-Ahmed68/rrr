@@ -74,6 +74,9 @@ router.put("/", upload_food_images, async (req, res, next) => {
       );
     }
 
+    // craete the new images for delete
+    let ImagesForDelete = JSON.parse(req.body.images_for_delete);
+
     // check if the body images length more than 5 images
     if (req.files && req.files.length > 5) {
       // delete all uploaded images
@@ -183,7 +186,7 @@ router.put("/", upload_food_images, async (req, res, next) => {
     );
 
     // check if the request has images's index to delete
-    if (req.body.images_for_delete && req.body.images_for_delete.length > 0) {
+    if (ImagesForDelete && ImagesForDelete.length > 0) {
       // chdck if the food image length is equal one or not
       if (food.images.length == 1) {
         // delete all uploaded images from images folder
@@ -200,7 +203,7 @@ router.put("/", upload_food_images, async (req, res, next) => {
           )
         );
       } else {
-        req.body.images_for_delete.forEach(async (image) => {
+        ImagesForDelete.forEach(async (image) => {
           updateFood.images = food.images.filter((img) => img != image);
           await DeleteCloudinary(image, next);
         });

@@ -7,7 +7,7 @@ const Validate_update_food = (data) => {
     food_id: Joi.string().required(),
     title: Joi.string().min(3).max(100),
     description: Joi.string().min(3).max(500),
-    images_for_delete: Joi.array(),
+    images_for_delete: Joi.string(),
   });
 
   // validate body data

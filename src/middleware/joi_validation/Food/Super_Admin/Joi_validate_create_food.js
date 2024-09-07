@@ -6,7 +6,7 @@ const Validate_create_food = (data) => {
     super_admin_id: Joi.string().required(),
     title: Joi.string().min(3).max(100).required(),
     description: Joi.string().min(3).max(500).required(),
-    images: Joi.array(),
+    images: Joi.array().max(5),
   });
 
   // validate body data
