@@ -33,7 +33,7 @@ const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 const CheckSuperAdmin = require("../../../middleware/CheckSuperAdmin");
 
 router.put("/", upload_food_images, async (req, res, next) => {
-  try {
+  // try {
     // valiadte body data
     const Error = Validate_update_food(req.body);
 
@@ -233,21 +233,21 @@ router.put("/", upload_food_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  } catch (error) {
-    // delete all uploaded images from images folder
-    DeleteImages(req.files, next);
+  // } catch (error) {
+  //   // delete all uploaded images from images folder
+  //   DeleteImages(req.files, next);
 
-    // return error
-    return next(
-      new ApiErrors(
-        JSON.stringify({
-          english: `${error} ...`,
-          arabic: "... عذرا خطأ عام",
-        }),
-        500
-      )
-    );
-  }
+  //   // return error
+  //   return next(
+  //     new ApiErrors(
+  //       JSON.stringify({
+  //         english: `${error} ...`,
+  //         arabic: "... عذرا خطأ عام",
+  //       }),
+  //       500
+  //     )
+  //   );
+  // }
 });
 
 module.exports = router;
