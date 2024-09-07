@@ -75,7 +75,12 @@ router.put("/", upload_food_images, async (req, res, next) => {
     }
 
     // craete the new images for delete
-    let ImagesForDelete = JSON.parse(req.body.images_for_delete);
+    let ImagesForDelete;
+
+    // check if the request any images for delete
+    if (req.body.images_for_delete) {
+      ImagesForDelete = JSON.parse(req.body.images_for_delete)
+    }
 
     // check if the body images length more than 5 images
     if (req.files && req.files.length > 5) {
@@ -95,7 +100,10 @@ router.put("/", upload_food_images, async (req, res, next) => {
     }
 
     // check if the request has a new data
-    if (!req.body.title && !req.body.description && req.files.length == 0) {
+    if (!req.body.title &&
+      !req.body.description &&
+      !req.body.images_for_delete &&
+      req.files.length == 0) {
       // return error
       return next(
         new ApiErrors(
