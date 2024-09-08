@@ -176,8 +176,8 @@ app.use("/api/v1/teacher/update", TeacherUpdate);
 app.use("/api/v1/teacher/get/one", TeacherGetOne);
 app.use("/api/v1/teacher/get/all", TeacherGetAll);
 app.use("/api/v1/teacher/get/count" , GetTeachersCount);
-app.use("/api/v1/teacher/get/classes" , GetTeachersClasses);
-app.use("/api/v1/teacher/get/plans" , GetTeachersPlans);
+// app.use("/api/v1/teacher/get/classes" , GetTeachersClasses);
+// app.use("/api/v1/teacher/get/plans" , GetTeachersPlans);
 // get teacher
 // create teacher api's
 
@@ -200,8 +200,8 @@ app.use("/api/v1/student/update", StudentUpdate);
 app.use("/api/v1/student/get/one", StudentGetOne);
 app.use("/api/v1/student/get/all", StudentGetAll);
 app.use("/api/v1/student/get/count" , GetStudentsCount);
-app.use("/api/v1/student/get/classes" , GetStudentsClasses);
-app.use("/api/v1/student/get/plans" , GetStudentsPlans);
+// app.use("/api/v1/student/get/classes" , GetStudentsClasses);
+// app.use("/api/v1/student/get/plans" , GetStudentsPlans);
 // get students
 
 // create student api's
