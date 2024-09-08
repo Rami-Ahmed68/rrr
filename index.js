@@ -191,6 +191,7 @@ const GetStudentsClasses = require("./src/router/Student/get_classes");
 const GetStudentsPlans = require("./src/router/Student/get_plans");
 // require student files
 
+
 // create student api's
 app.use("/api/v1/student/login", StudentLogin);
 app.use("/api/v1/student/update", StudentUpdate);
