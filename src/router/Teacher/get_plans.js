@@ -35,7 +35,7 @@ router.get("/" , async (req , res , next) => {
 
     // find the teacher 
     const teacher = await Teacher.findById(req.query.teacher_id).populate({
-      path : "plans",
+      path : "my_plans",
       select : "_id title description note students teachers created_at"
     });
 
@@ -56,7 +56,7 @@ router.get("/" , async (req , res , next) => {
     // create result
     const result = {
       "messgae" : "Teacher's plans geted successfully",
-      "plans_data" : teacher.plans
+      "plans_data" : teacher.my_plans
     }
 
     // send results

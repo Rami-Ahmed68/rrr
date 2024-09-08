@@ -176,8 +176,8 @@ app.use("/api/v1/teacher/update", TeacherUpdate);
 app.use("/api/v1/teacher/get/one", TeacherGetOne);
 app.use("/api/v1/teacher/get/all", TeacherGetAll);
 app.use("/api/v1/teacher/get/count" , GetTeachersCount);
-// app.use("/api/v1/teacher/get/classes" , GetTeachersClasses);
-// app.use("/api/v1/teacher/get/plans" , GetTeachersPlans);
+app.use("/api/v1/teacher/get/classes" , GetTeachersClasses);
+app.use("/api/v1/teacher/get/plans" , GetTeachersPlans);
 // get teacher
 // create teacher api's
 
