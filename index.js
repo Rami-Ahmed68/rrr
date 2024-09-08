@@ -164,6 +164,8 @@ const TeacherUpdate = require("./src/router/Auth/Teacher/update");
 const TeacherGetOne = require("./src/router/Teacher/get_one");
 const TeacherGetAll = require("./src/router/Teacher/get_all");
 const GetTeachersCount = require("./src/router/Teacher/get_Teachers_count");
+const GetTeachersClasses = require("./src/router/Teacher/get_classes");
+const GetTeachersPlans = require("./src/router/Teacher/get_plans");
 // require teacher files
 
 // create teacher api's
@@ -174,6 +176,8 @@ app.use("/api/v1/teacher/update", TeacherUpdate);
 app.use("/api/v1/teacher/get/one", TeacherGetOne);
 app.use("/api/v1/teacher/get/all", TeacherGetAll);
 app.use("/api/v1/teacher/get/count" , GetTeachersCount);
+app.use("/api/v1/teacher/get/classes" , GetTeachersClasses);
+app.use("/api/v1/teacher/get/plans" , GetTeachersPlans);
 // get teacher
 // create teacher api's
 
@@ -182,7 +186,9 @@ const StudentLogin = require("./src/router/Auth/Student/login");
 const StudentUpdate = require("./src/router/Auth/Student/update");
 const StudentGetOne = require("./src/router/Student/get_one");
 const StudentGetAll = require("./src/router/Student/get_all");
-const GetStudentsCount = require("./src/router/Student/get_Students_count")
+const GetStudentsCount = require("./src/router/Student/get_Students_count");
+const GetStudentsClasses = require("./src/router/Student/get_classes");
+const GetStudentsPlans = require("./src/router/Student/get_plans");
 // require student files
 
 // create student api's
@@ -193,6 +199,8 @@ app.use("/api/v1/student/update", StudentUpdate);
 app.use("/api/v1/student/get/one", StudentGetOne);
 app.use("/api/v1/student/get/all", StudentGetAll);
 app.use("/api/v1/student/get/count" , GetStudentsCount);
+app.use("/api/v1/student/get/classes" , GetStudentsClasses);
+app.use("/api/v1/student/get/plans" , GetStudentsPlans);
 // get students
 
 // create student api's
