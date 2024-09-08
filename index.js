@@ -200,7 +200,7 @@ app.use("/api/v1/student/update", StudentUpdate);
 app.use("/api/v1/student/get/one", StudentGetOne);
 app.use("/api/v1/student/get/all", StudentGetAll);
 app.use("/api/v1/student/get/count" , GetStudentsCount);
-// app.use("/api/v1/student/get/classes" , GetStudentsClasses);
+app.use("/api/v1/student/get/classes" , GetStudentsClasses);
 // app.use("/api/v1/student/get/plans" , GetStudentsPlans);
 // get students
 
