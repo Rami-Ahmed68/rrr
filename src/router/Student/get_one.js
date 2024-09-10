@@ -38,6 +38,7 @@ router.get("/", async (req, res, next) => {
       {
         path: "classes",
         select: "_id title cover home_works subject students created_at",
+        limit : 5
       },
       {
         path: "my_plans",
