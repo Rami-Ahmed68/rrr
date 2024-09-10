@@ -42,6 +42,7 @@ router.get("/", async (req, res, next) => {
       {
         path: "my_plans",
         select: "_id title description students teachers",
+        limit : 5
       },
       {
         path: "created_by",
