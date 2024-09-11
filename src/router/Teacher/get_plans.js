@@ -13,7 +13,7 @@ router.get("/" , async (req , res , next) => {
 
     // craete shcema to validate body data 
     const Schema = Joi.object().keys({
-      teacher_id : Joi.string().require()
+      teacher_id : Joi.string().required()
     });
 
     // validate query data 
