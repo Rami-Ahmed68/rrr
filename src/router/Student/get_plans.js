@@ -36,7 +36,7 @@ router.get("/" , async (req , res , next) => {
     // find the student 
     const student = await Student.findById(req.query.student_id).populate({
       path : "my_plans",
-      select : "_id title description note class_level students teachers created_at"
+      select : "_id title description note class_levelt_ students teachers created_at"
     });
 
     // check if the student is exists

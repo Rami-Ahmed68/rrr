@@ -84,6 +84,7 @@ router.post("/", async (req, res, next) => {
         "editor",
         "email",
         "subject",
+        "my_plans",
         "about_me",
         "gender",
         "class_level",
