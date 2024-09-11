@@ -43,6 +43,7 @@ router.get("/", async (req, res, next) => {
         path: "children",
         select: "_id name avatar",
       },
+
     ]);
 
     // check if the parent is exists
@@ -60,7 +61,7 @@ router.get("/", async (req, res, next) => {
         "name",
         "avatar",
         "gender",
-        "childern",
+        "children",
         "created_by",
         "created_at",
       ]),
