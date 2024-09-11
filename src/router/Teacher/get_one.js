@@ -37,11 +37,13 @@ router.get("/", async (req, res, next) => {
     const teacher = await Teacher.findById(req.query.teacher_id).populate([
       {
         path: "classes",
-        select: "_id title cover",
+        select: "_id title cover home_works subject students created_at",
+        limit : 5
       },
       {
         path: "my_plans",
-        select: "_id title",
+        select: "_id title description students teachers",
+        limit : 5
       },
       {
         path: "created_by",
