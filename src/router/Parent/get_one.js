@@ -41,7 +41,7 @@ router.get("/", async (req, res, next) => {
       },
       {
         path: "children",
-        select: "_id name avatar",
+        select: "_id name avatar class_level finished_exams points total_gpa phone_number",
       },
 
     ]);
