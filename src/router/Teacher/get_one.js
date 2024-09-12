@@ -64,6 +64,7 @@ router.get("/", async (req, res, next) => {
         "subject",
         "about_me",
         "gender",
+        "phone_number"
         ,
         "rate",
         "list_of_rate",
