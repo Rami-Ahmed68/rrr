@@ -151,7 +151,7 @@ router.put("/", upload, async (req, res, next) => {
       { new: true }
     );
 
-    if (req.body.delete_avatar) {
+    if (req.body.delete_avatar == "true") {
       if (req.files.length > 0) {
         // delete the uploaded images from images folder
         DeleteImages(req.files, next);
@@ -171,7 +171,7 @@ router.put("/", upload, async (req, res, next) => {
         updateTeacher.gender == "male"
           ? process.env.DEFAULT_MAN_AVATAR
           : process.env.DEFAULT_WOMAN_AVATAR;
-    } else {
+    } else if (req.body.delete_avatar == "false") {
       // check if the request has any image
       if (req.files.length == 0) {
         // return error if the request hasn't new avatar
