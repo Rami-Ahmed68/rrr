@@ -116,7 +116,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find the teacher by id
-    const teacher = await Admin.findById(req.body.adminId);
+    const teacher = await Teacher.findById(req.body.teacher_id);
 
     // check if the teacher is exists
     if (!teacher) {
