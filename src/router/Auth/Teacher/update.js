@@ -213,7 +213,7 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Acount data updated successfully",
-      admin_data: _.pick(updateTeacher, [
+      user_data: _.pick(updateTeacher, [
         "_id",
         "name",
         "editor",
