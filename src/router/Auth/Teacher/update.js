@@ -33,7 +33,7 @@ const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 const Validate_teacher_update = require("../../../middleware/joi_validation/Teacher/Joi_validate_update");
 
 router.put("/", upload, async (req, res, next) => {
-  // try {
+  try {
     // check if the request has more than i avatar
     if (req.files.length > 1) {
       // to delete all uploaded images from images folder
@@ -227,21 +227,21 @@ router.put("/", upload, async (req, res, next) => {
 
     // send the data to user
     res.status(200).send(result);
-  // } catch (error) {
-  //   // to delete uploaded avatar
-  //   DeleteImages(req.files, next);
+  } catch (error) {
+    // to delete uploaded avatar
+    DeleteImages(req.files, next);
 
-  //   // return error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+    // return error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;

@@ -4,6 +4,8 @@ const teacher = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    min: 3,
+    max: 100,
   },
   editor: {
     type: Boolean,
@@ -52,10 +54,14 @@ const teacher = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    min: 5,
+    max: 50,
   },
   password: {
     type: String,
     required: true,
+    min: 8,
+    max: 100,
   },
   avatar: {
     type: String,
@@ -63,6 +69,8 @@ const teacher = new mongoose.Schema({
   about_me: {
     type: String,
     required: false,
+    min: 5,
+    max: 500,
   },
   gender: {
     type: String,
