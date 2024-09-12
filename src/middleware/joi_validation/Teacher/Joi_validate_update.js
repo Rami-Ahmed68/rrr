@@ -4,9 +4,10 @@ const Validate_admin_update = (data) => {
   // validate update admin data
   const Schema = Joi.object().keys({
     teacher_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100),
-    password: Joi.string().min(8).max(100),
+    name: Joi.string().min().max(),
+    password: Joi.string().min().max(),
     gender: Joi.string(),
+    about_me : Joi.string(),
     delete_avatar: Joi.string(), // true to delete the avatar and set the default avatar
   });
 
