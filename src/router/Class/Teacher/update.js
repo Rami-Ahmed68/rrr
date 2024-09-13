@@ -207,47 +207,66 @@ router.put("/", upload_cover, async (req, res, next) => {
         await DeleteCloudinary(classObject.cover);
       }
 
+      if (req.files && req.files.length > 0) {
+        // delete all uploaded images from images folder
+        DeleteImages(req.files, next);
+      }
+
       // set the default cover
       switch (updateClassObject.subject) {
         case "Math":
-          classObject.cover = process.env.DEFAULT_COVER_MATH;
+          updateClassObject.cover = process.env.DEFAULT_COVER_MATH;
           break;
         case "History":
-          classObject.cover = process.env.DEFAULT_COVER_HISTORY;
+          updateClassObject.cover = process.env.DEFAULT_COVER_HISTORY;
           break;
         case "Arabic":
-          classObject.cover = process.env.DEFAULT_COVER_ARABIC;
+          updateClassObject.cover = process.env.DEFAULT_COVER_ARABIC;
           break;
         case "English":
-          classObject.cover = process.env.DEFAULT_COVER_ENGLISH;
+          updateClassObject.cover = process.env.DEFAULT_COVER_ENGLISH;
           break;
         case "French":
-          classObject.cover = process.env.DEFAULT_COVER_FRENCH;
+          updateClassObject.cover = process.env.DEFAULT_COVER_FRENCH;
           break;
         case "Philosophy":
-          classObject.cover = process.env.DEFAULT_COVER_PHILOSOPHY;
+          updateClassObject.cover = process.env.DEFAULT_COVER_PHILOSOPHY;
           break;
         case "Physics":
-          classObject.cover = process.env.DEFAULT_COVER_PHYSICS;
+          updateClassObject.cover = process.env.DEFAULT_COVER_PHYSICS;
           break;
         case "Sciences":
-          classObject.cover = process.env.DEFAULT_COVER_SCIENCES;
+          updateClassObject.cover = process.env.DEFAULT_COVER_SCIENCES;
           break;
         case "Islam":
-          classObject.cover = process.env.DEFAULT_COVER_ISLAM;
+          updateClassObject.cover = process.env.DEFAULT_COVER_ISLAM;
           break;
         case "Geography":
-          classObject.cover = process.env.DEFAULT_COVER_GEOGRAPHY;
+          updateClassObject.cover = process.env.DEFAULT_COVER_GEOGRAPHY;
           break;
         case "Chemistry":
-          classObject.cover = process.env.DEFAULT_COVER_CHEMISTRY;
+          updateClassObject.cover = process.env.DEFAULT_COVER_CHEMISTRY;
           break;
         case "Alwatania":
-          classObject.cover = process.env.DEFAULT_COVER_ALWATANIA;
+          updateClassObject.cover = process.env.DEFAULT_COVER_ALWATANIA;
           break;
         default:
       }
     } else if (req.body.delete_cover == "false") {
+      // check if the request has not any  image
+      if (req.files.length == 0) {
+        // return error
+        return next(
+          new ApiErrors(
+            JSON.stringify({
+              english: "Sorry, you must send a new cover image ...",
+              arabic: "... عذرا يجب ارسال صور غلاف جديدة",
+            }),
+            403
+          )
+        );
+      }
+
       // check if the class cover is not default cover and delete it
       if (!Default_covers.includes(classObject.cover)) {
         await DeleteCloudinary(classObject.cover);
