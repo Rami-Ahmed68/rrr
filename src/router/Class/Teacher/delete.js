@@ -137,7 +137,7 @@ router.delete("/", async (req, res, next) => {
 
     // check if the class cover is not default cover and delete it
     if (!Default_covers.includes(classObject.cover)) {
-      await DeleteCloudinary(classObject.cover);
+      await DeleteCloudinary(classObject.cover ,next);
     }
 
     // delete the class id from all class's students
@@ -175,7 +175,7 @@ router.delete("/", async (req, res, next) => {
         if (home_work.images.length > 0) {
           for (let i = 0; i < home_work.images.length; i++) {
             // delete the images from cloudinary cloud
-            await DeleteCloudinary(home_work.images[i]);
+            await DeleteCloudinary(home_work.images[i] , next);
           }
         }
 
