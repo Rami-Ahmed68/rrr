@@ -52,6 +52,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
     let repatedArray = req.body.repated ? JSON.parse(req.body.repated) : [] 
 
     console.log(req.body.options)
+    console.log(typeof req.body.options)
     console.log(JSON.parse(req.body.options))
 
     // covert the options array from string to pase
