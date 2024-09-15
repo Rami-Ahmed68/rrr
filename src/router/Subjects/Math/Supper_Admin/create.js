@@ -51,14 +51,10 @@ router.post("/", upload_question_images, async (req, res, next) => {
     // covert the repated array from string to pares
     let repatedArray = req.body.repated ? JSON.parse(req.body.repated) : [] 
 
-    console.log(req.body.options)
-    console.log(typeof req.body.options)
-    console.log(JSON.parse(req.body.options))
+    // // covert the options array from string to pase
+    // let optionsArray = JSON.parse(req.body.options);
 
-    // covert the options array from string to pase
-    let optionsArray = JSON.parse(req.body.options);
-
-    console.log(optionsArray)
+    // console.log(optionsArray)
 
     // check if the request has more than 5 images
     if (req.files && req.files.length > 5) {
@@ -145,7 +141,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
       level: req.body.level,
       class_level: req.body.class_level,
       repated: repatedArray,
-      options: optionsArray,
+      options: req.body.options,
       images: [],
       created_by_type: "admin",
       created_by: req.body.super_admin_id,

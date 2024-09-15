@@ -11,7 +11,7 @@ const Validate_create_question = (data) => {
     level: Joi.string().required(),
     class_level: Joi.string().required(),
     repated: Joi.string(),
-    options: Joi.string().required(),
+    options: Joi.array().required(),
   });
 
   // validate body data
