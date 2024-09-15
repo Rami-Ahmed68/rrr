@@ -30,7 +30,7 @@ const VerifyToken = require("../../../../utils/token_methods/VerifyToken");
 const UploadCloudinary = require("../../../../utils/cloudinary/UploadCloudinary");
 
 router.post("/", upload_question_images, async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_create_question(req.body);
 
@@ -47,14 +47,6 @@ router.post("/", upload_question_images, async (req, res, next) => {
         )
       );
     }
-
-    // covert the repated array from string to pares
-    let repatedArray = req.body.repated ? JSON.parse(req.body.repated) : [] 
-
-    // // covert the options array from string to pase
-    // let optionsArray = JSON.parse(req.body.options);
-
-    // console.log(optionsArray)
 
     // check if the request has more than 5 images
     if (req.files && req.files.length > 5) {
@@ -140,7 +132,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
       points: req.body.points,
       level: req.body.level,
       class_level: req.body.class_level,
-      repated: repatedArray,
+      repated: req.body.repated,
       options: req.body.options,
       images: [],
       created_by_type: "admin",
@@ -183,18 +175,18 @@ router.post("/", upload_question_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  // } catch (error) {
-  //   // return error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+  } catch (error) {
+    // return error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;

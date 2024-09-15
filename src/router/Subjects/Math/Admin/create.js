@@ -48,12 +48,6 @@ router.post("/", upload_question_images, async (req, res, next) => {
       );
     }
 
-    // covert the repated array from string to pares
-    let repatedArray = req.body.repated ? JSON.parse(req.body.repated) : [] 
-
-    // covert the options array from string to pase
-    let optionsArray = JSON.parse(req.body.options);
-
     // check if the request has more than 5 images
     if (req.files && req.files.length > 5) {
       // delete all uploaded images from images folder
@@ -138,8 +132,8 @@ router.post("/", upload_question_images, async (req, res, next) => {
       points: req.body.points,
       level: req.body.level,
       class_level: req.body.class_level,
-      repated: repatedArray,
-      options: optionsArray,
+      repated: req.body.repated,
+      options: req.body.options,
       images: [],
       created_by_type: "admin",
       created_by: req.body.admin_id,
