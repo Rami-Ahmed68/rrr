@@ -178,6 +178,12 @@ router.put("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    // covert the repated array from string to pares
+    let repatedArray = req.body.repated ? JSON.parse(req.body.repated) : question.repated
+
+    // covert the options array from string to pase
+    let optionsArray = req.body.options ? JSON.parse(req.body.options) : question.options;
+
     // find and update the question
     const updateQuestion = await Math.findByIdAndUpdate(
       { _id: req.body.question_id },
@@ -193,8 +199,8 @@ router.put("/", upload_question_images, async (req, res, next) => {
           class_level: req.body.class_level
             ? req.body.class_level
             : question.class_level,
-          repated: req.body.repated ? req.body.repated : question.repated,
-          options: req.body.options ? req.body.options : question.options,
+          repated: repatedArray,
+          options: optionsArray,
           images: question.images,
         },
       },
