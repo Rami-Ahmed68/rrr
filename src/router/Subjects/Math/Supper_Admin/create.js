@@ -54,6 +54,8 @@ router.post("/", upload_question_images, async (req, res, next) => {
     // covert the options array from string to pase
     let optionsArray = JSON.parse(req.body.options);
 
+    console.log(optionsArray)
+
     // check if the request has more than 5 images
     if (req.files && req.files.length > 5) {
       // delete all uploaded images from images folder
