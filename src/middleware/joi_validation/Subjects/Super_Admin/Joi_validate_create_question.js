@@ -10,7 +10,7 @@ const Validate_create_question = (data) => {
     points: Joi.number().required(),
     level: Joi.string().required(),
     class_level: Joi.string().required(),
-    repated: Joi.string(),
+    repated: Joi.string().allow(''),
     options: Joi.string().required(),
     
   });
