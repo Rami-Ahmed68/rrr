@@ -65,6 +65,7 @@ router.get("/", async (req, res, next) => {
         "level",
         "class_level",
         "images",
+
         "repated",
         "options",
         "created_by_type",
