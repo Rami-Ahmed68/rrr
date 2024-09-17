@@ -54,10 +54,12 @@ router.put("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    console.log(typeof req.body.images_for_delete);
     console.log(req.body.images_for_delete);
     // create a ImagesForDeleteArray
     let ImagesForDeleteArray = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
     console.log(req.body.ImagesForDeleteArray);
+    console.log(typeof req.body.ImagesForDeleteArray);
     
     // check if the request has new data
     if (
