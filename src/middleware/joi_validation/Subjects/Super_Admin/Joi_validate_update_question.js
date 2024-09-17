@@ -11,8 +11,8 @@ const Validate_update_question = (data) => {
     points: Joi.number(),
     level: Joi.string(),
     class_level: Joi.string(),
-    repated: Joi.array(),
-    options: Joi.array(),
+    repated: Joi.string(),
+    options: Joi.string(),
     images_for_delete: Joi.string(),
   });
 
