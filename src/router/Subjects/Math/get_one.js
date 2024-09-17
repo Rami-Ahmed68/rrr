@@ -66,6 +66,7 @@ router.get("/", async (req, res, next) => {
         "images",
         "repated",
         "options",
+        "created_at",
         "created_by",
       ]),
     };
