@@ -169,7 +169,7 @@ router.put("/", upload_question_images, async (req, res, next) => {
     if (
       (req.files ? req.files.length : 0) +
         question.images.length -
-        (ImagesForDeleteArray ? ImagesForDeleteArray : 0) >
+        (ImagesForDeleteArray ? ImagesForDeleteArray.length : 0) >
       5
     ) {
       // delete all uplaoded images from images folder

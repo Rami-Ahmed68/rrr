@@ -183,7 +183,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     if (
       (req.files ? req.files.length : 0) +
         home_work.images.length -
-        (req.body.ImagesForDelete ? req.body.ImagesForDelete : 0) >
+        (ImagesForDelete ? ImagesForDelete.length : 0) >
       5
     ) {
       // delete all uplaoded images from images folder
