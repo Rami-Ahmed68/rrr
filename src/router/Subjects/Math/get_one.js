@@ -36,7 +36,7 @@ router.get("/", async (req, res, next) => {
     // find the question
     const question = await Math.findById(req.query.question_id).populate({
       path: "created_by",
-      select: "_id name avatar created_by_type",
+      select: "_id name avatar",
     });
 
     // check if the question is exists
@@ -67,6 +67,7 @@ router.get("/", async (req, res, next) => {
         "images",
         "repated",
         "options",
+        "created_by_type",
         "created_at",
         "created_by",
       ]),
