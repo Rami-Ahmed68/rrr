@@ -54,6 +54,9 @@ router.put("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    // create a ImagesForDeleteArray
+    let ImagesForDeleteArray = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
+
     // check if the request has new data
     if (
       !req.body.title &&
@@ -162,9 +165,6 @@ router.put("/", upload_question_images, async (req, res, next) => {
 
     // covert the options array to pase
     let optionsArray = req.body.options ? JSON.parse(req.body.options) : question.options;
-
-    // create a ImagesForDeleteArray
-    let ImagesForDeleteArray = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
 
     if (
       (req.files ? req.files.length : 0) +
