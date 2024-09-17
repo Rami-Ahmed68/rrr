@@ -13,7 +13,7 @@ const Validate_update_question = (data) => {
     class_level: Joi.string(),
     repated: Joi.array(),
     options: Joi.array(),
-    images_for_delete: Joi.array(),
+    images_for_delete: Joi.string(),
   });
 
   // validate body data

@@ -63,7 +63,7 @@ router.put("/", upload_question_images, async (req, res, next) => {
       !req.body.class_level &&
       !req.body.points &&
       !req.files &&
-      req.body.images_for_delete.length == 0
+      !ImagesForDeleteArray
     ) {
       // return error
       return next(
@@ -157,10 +157,19 @@ router.put("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    // covert the repated array to pase 
+    let repeatArray = req.body.repated ? JSON.parse(req.body.repated) : question.repated;
+
+    // covert the options array to pase
+    let optionsArray = req.body.options ? JSON.parse(req.body.options) : question.options;
+
+    // create a ImagesForDeleteArray
+    let ImagesForDeleteArray = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
+
     if (
       (req.files ? req.files.length : 0) +
         question.images.length -
-        (req.body.images_for_delete ? req.body.images_for_delete : 0) >
+        (ImagesForDeleteArray ? ImagesForDeleteArray : 0) >
       5
     ) {
       // delete all uplaoded images from images folder
@@ -178,11 +187,6 @@ router.put("/", upload_question_images, async (req, res, next) => {
       );
     }
 
-    // covert the repated array to pase 
-    let repeatArray = req.body.repated ? JSON.parse(req.body.repated) : question.repated;
-
-    // covert the options array to pase
-    let optionsArray = req.body.options ? JSON.parse(req.body.options) : question.options;
 
     // find and update the question
     const updateQuestion = await Math.findByIdAndUpdate(
@@ -208,15 +212,15 @@ router.put("/", upload_question_images, async (req, res, next) => {
     );
 
     // check if the requst has any image fo delete
-    if (req.body.images_for_delete && req.body.images_for_delete.length > 0) {
-      for (let i = 0; i < req.body.images_for_delete.length; i++) {
+    if (ImagesForDeleteArray && ImagesForDeleteArray.length > 0) {
+      for (let i = 0; i < ImagesForDeleteArray.length; i++) {
         // delete the deleted image from images array
         updateQuestion.images = updateQuestion.images.filter(
-          (image) => image !== req.body.images_for_delete[i]
+          (image) => image !== ImagesForDeleteArray[i]
         );
 
         // delete the image from cloudinary cloud
-        await DeleteCloudinary(req.body.images_for_delete[i], next);
+        await DeleteCloudinary(ImagesForDeleteArray[i], next);
       }
     }
 
