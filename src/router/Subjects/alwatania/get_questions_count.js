@@ -18,7 +18,7 @@ router.get("/" , async (req , res , next) => {
   // create a result
   const results = {
     "message" : "Geted to all questions length",
-    "Messages_count" : QuestionsCount
+    "Questions_count" : QuestionsCount
   }
 
   // sed the response
