@@ -6,8 +6,8 @@ const Joi = require("joi");
 // api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// philosophy model
-const Philosophy = require("../../../models/Subjects_Banks/Philosophy/philosophy");
+// Philosophy model
+const Philosophy = require("../../../models/Subjects_Banks/Philosophy/Philosophy");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -63,9 +63,12 @@ router.get("/", async (req, res, next) => {
         "note",
         "points",
         "level",
+        "class_level",
         "images",
         "repated",
         "options",
+        "created_by_type",
+        "created_at",
         "created_by",
       ]),
     };

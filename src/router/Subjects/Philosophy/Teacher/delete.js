@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// philosophy model
-const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/philosophy");
+// math model
+const Math = require("../../../../models/Subjects_Banks/Math/math");
 
 // teacher model
 const Teacher = require("../../../../models/Teacher/teacher");
@@ -93,7 +93,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // find the question
-    const question = await Philosophy.findById(req.body.question_id);
+    const question = await Math.findById(req.body.question_id);
 
     // checkif the question id exists
     if (!question) {
@@ -118,7 +118,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // delete the question from data base
-    await Philosophy.deleteOne(question._id);
+    await Math.deleteOne(question._id);
 
     // create result
     const result = {

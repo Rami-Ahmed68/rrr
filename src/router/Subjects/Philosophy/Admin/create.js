@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// philosophy model
-const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/philosophy");
+// Philosophy model
+const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/Philosophy");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");
@@ -124,6 +124,12 @@ router.post("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    // covert the repated array to pase 
+    let repeatArray = req.body.repated ? JSON.parse(req.body.repated) : [];
+
+    // covert the options array to pase
+    let optionsArray = JSON.parse(req.body.options);
+
     // create the question
     const question = new Philosophy({
       title: req.body.title,
@@ -132,8 +138,8 @@ router.post("/", upload_question_images, async (req, res, next) => {
       points: req.body.points,
       level: req.body.level,
       class_level: req.body.class_level,
-      repated: req.body.repated,
-      options: req.body.options,
+      repated: repeatArray,
+      options: optionsArray,
       images: [],
       created_by_type: "admin",
       created_by: req.body.admin_id,
