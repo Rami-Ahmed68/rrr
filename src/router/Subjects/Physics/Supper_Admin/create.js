@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// physics model
-const Physics = require("../../../../models/Subjects_Banks/Physics/physics");
+// Physics model
+const Physics = require("../../../../models/Subjects_Banks/Physics/Physics");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Super_Admin/Joi_validate_create_question");
@@ -124,6 +124,12 @@ router.post("/", upload_question_images, async (req, res, next) => {
       );
     }
 
+    // covert the repated array to pase 
+    let repeatArray = req.body.repated ? JSON.parse(req.body.repated) : [];
+
+    // covert the options array to pase
+    let optionsArray = JSON.parse(req.body.options);
+
     // create the question
     const question = new Physics({
       title: req.body.title,
@@ -132,8 +138,8 @@ router.post("/", upload_question_images, async (req, res, next) => {
       points: req.body.points,
       level: req.body.level,
       class_level: req.body.class_level,
-      repated: req.body.repated,
-      options: req.body.options,
+      repated: repeatArray,
+      options: optionsArray,
       images: [],
       created_by_type: "admin",
       created_by: req.body.super_admin_id,

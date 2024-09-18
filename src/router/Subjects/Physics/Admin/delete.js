@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// physics model
-const Physics = require("../../../../models/Subjects_Banks/Physics/physics");
+// Physics model
+const Physics = require("../../../../models/Subjects_Banks/Physics/Physics");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");
