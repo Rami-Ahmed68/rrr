@@ -541,6 +541,7 @@ const teacherAlwataniaUpdate = require("./src/router/Subjects/alwatania/Teacher/
 // get
 const AlwataniaGetOne = require("./src/router/Subjects/alwatania/get_one");
 const AlwataniaGetAll = require("./src/router/Subjects/alwatania/get_all");
+const GetAlwataniaQuestionsCount = require("./src/router/Subjects/alwatania/get_questions_count");
 // get
 
 // start exam
@@ -572,6 +573,7 @@ app.use("/api/v1/teacher/alwatania/update", teacherAlwataniaUpdate);
 // get
 app.use("/api/v1/alwatania/get/one", AlwataniaGetOne);
 app.use("/api/v1/alwatania/get/all", AlwataniaGetAll);
+app.use("/api/v1/alwatania/get/count" , GetAlwataniaQuestionsCount);
 // get
 
 // start exam
@@ -602,6 +604,7 @@ const teacherMathUpdate = require("./src/router/Subjects/Math/Teacher/update");
 // get
 const MathGetOne = require("./src/router/Subjects/Math/get_one");
 const MathGetAll = require("./src/router/Subjects/Math/get_all");
+const GetMathQuestionsCount = require("./src/router/Subjects/Math/get_questions_count");
 // get
 
 // start exam
@@ -631,6 +634,7 @@ app.use("/api/v1/teacher/math/update", teacherMathUpdate);
 // get
 app.use("/api/v1/math/get/one", MathGetOne);
 app.use("/api/v1/math/get/all", MathGetAll);
+app.use("/api/v1/math/get/count" , GetMathQuestionsCount);
 // get
 
 // start exam
@@ -660,6 +664,7 @@ const teacherReligionUpdate = require("./src/router/Subjects/Religion/Teacher/up
 // get
 const ReligionGetOne = require("./src/router/Subjects/Religion/get_one");
 const ReligionGetAll = require("./src/router/Subjects/Religion/get_all");
+const GetReligionQuestionsCount = require("./src/router/Subjects/Religion/get_questions_count");
 // get
 
 // start exam
@@ -689,6 +694,7 @@ app.use("/api/v1/teacher/islam/update", teacherReligionUpdate);
 // get
 app.use("/api/v1/islam/get/one", ReligionGetOne);
 app.use("/api/v1/islam/get/all", ReligionGetAll);
+app.use("/api/v1/islam/get/count" , GetReligionQuestionsCount);
 // get
 
 // start exam
@@ -718,6 +724,7 @@ const teacherEnglishUpdate = require("./src/router/Subjects/English/Teacher/upda
 // get
 const EnglishGetOne = require("./src/router/Subjects/English/get_one");
 const EnglishGetAll = require("./src/router/Subjects/English/get_all");
+const GetEnglishQuestionsCount = require("./src/router/Subjects/English/get_questions_count");
 // get
 
 // start exam
@@ -747,6 +754,7 @@ app.use("/api/v1/teacher/english/update", teacherEnglishUpdate);
 // get
 app.use("/api/v1/english/get/one", EnglishGetOne);
 app.use("/api/v1/english/get/all", EnglishGetAll);
+app.use("/api/v1/english/get/count" , GetEnglishQuestionsCount);
 // get
 
 // start exam
@@ -776,6 +784,7 @@ const teacherFrenchUpdate = require("./src/router/Subjects/French/Teacher/update
 // get
 const FrenchGetOne = require("./src/router/Subjects/French/get_one");
 const FrenchGetAll = require("./src/router/Subjects/French/get_all");
+const GetFrenchQuestionsCount = require("./src/router/Subjects/French/get_questions_count");
 // get
 
 // start exam
@@ -805,6 +814,7 @@ app.use("/api/v1/teacher/french/update", teacherFrenchUpdate);
 // get
 app.use("/api/v1/french/get/one", FrenchGetOne);
 app.use("/api/v1/french/get/all", FrenchGetAll);
+app.use("/api/v1/french/get/count" , GetFrenchQuestionsCount);
 // get
 
 // start exam
@@ -834,6 +844,7 @@ const teacherArabicUpdate = require("./src/router/Subjects/Arabic/Teacher/update
 // get
 const ArabicGetOne = require("./src/router/Subjects/Arabic/get_one");
 const ArabicGetAll = require("./src/router/Subjects/Arabic/get_all");
+const GetArabicQuestionsCount = require("./src/router/Subjects/Arabic/get_questions_count");
 // get
 
 // start exam
@@ -863,6 +874,7 @@ app.use("/api/v1/teacher/arabic/update", teacherArabicUpdate);
 // get
 app.use("/api/v1/arabic/get/one", ArabicGetOne);
 app.use("/api/v1/arabic/get/all", ArabicGetAll);
+app.use("/api/v1/arabic/get/count" , GetArabicQuestionsCount);
 // get
 
 // start exam
@@ -892,6 +904,7 @@ const teacherHistoryUpdate = require("./src/router/Subjects/History/Teacher/upda
 // get
 const HistoryGetOne = require("./src/router/Subjects/History/get_one");
 const HistoryGetAll = require("./src/router/Subjects/History/get_all");
+const GetHistoryQuestionsCount = require("./src/router/Subjects/History/get_questions_count");
 // get
 
 // start exam
@@ -921,6 +934,7 @@ app.use("/api/v1/teacher/history/update", teacherHistoryUpdate);
 // get
 app.use("/api/v1/history/get/one", HistoryGetOne);
 app.use("/api/v1/history/get/all", HistoryGetAll);
+app.use("/api/v1/history/get/count" , GetHistoryQuestionsCount);
 // get
 
 // start exam
@@ -950,6 +964,7 @@ const teacherChemistryUpdate = require("./src/router/Subjects/chemistry/Teacher/
 // get
 const ChemistryGetOne = require("./src/router/Subjects/chemistry/get_one");
 const ChemistryGetAll = require("./src/router/Subjects/chemistry/get_all");
+const GetChemistryQuestionsCount = require("./src/router/Subjects/chemistry/get_questions_count");
 // get
 
 // start exam
@@ -979,6 +994,7 @@ app.use("/api/v1/teacher/chemistry/update", teacherChemistryUpdate);
 // get
 app.use("/api/v1/chemistry/get/one", ChemistryGetOne);
 app.use("/api/v1/chemistry/get/all", ChemistryGetAll);
+app.use("/api/v1/chemistry/get/count" , GetChemistryQuestionsCount);
 // get
 
 // start exam
@@ -1008,6 +1024,7 @@ const teacherPhysicsUpdate = require("./src/router/Subjects/Physics/Teacher/upda
 // get
 const PhysicsGetOne = require("./src/router/Subjects/Physics/get_one");
 const PhysicsGetAll = require("./src/router/Subjects/Physics/get_all");
+const GetPhysicsQuestionsCount = require("./src/router/Subjects/Physics/get_questions_count");
 // get
 
 // start exam
@@ -1017,30 +1034,31 @@ const physicsExam = require("./src/router/Subjects/Physics/start_exam");
 
 // create Physics api's
 // super admin
-app.use("/api/v1/super/Physics/create", superPhysicsCreate);
-app.use("/api/v1/super/Physics/delete", superPhysicsDelete);
-app.use("/api/v1/super/Physics/update", superPhysicsUpdate);
+app.use("/api/v1/super/physics/create", superPhysicsCreate);
+app.use("/api/v1/super/physics/delete", superPhysicsDelete);
+app.use("/api/v1/super/physics/update", superPhysicsUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/admin/Physics/create", adminPhysicsCreate);
-app.use("/api/v1/admin/Physics/delete", adminPhysicsDelete);
-app.use("/api/v1/admin/Physics/update", adminPhysicsUpdate);
+app.use("/api/v1/admin/physics/create", adminPhysicsCreate);
+app.use("/api/v1/admin/physics/delete", adminPhysicsDelete);
+app.use("/api/v1/admin/physics/update", adminPhysicsUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/teacher/Physics/create", teacherPhysicsCreate);
-app.use("/api/v1/teacher/Physics/delete", teacherPhysicsDelete);
-app.use("/api/v1/teacher/Physics/update", teacherPhysicsUpdate);
+app.use("/api/v1/teacher/physics/create", teacherPhysicsCreate);
+app.use("/api/v1/teacher/physics/delete", teacherPhysicsDelete);
+app.use("/api/v1/teacher/physics/update", teacherPhysicsUpdate);
 // super admin
 
 // get
-app.use("/api/v1/Physics/get/one", PhysicsGetOne);
-app.use("/api/v1/Physics/get/all", PhysicsGetAll);
+app.use("/api/v1/physics/get/one", PhysicsGetOne);
+app.use("/api/v1/physics/get/all", PhysicsGetAll);
+app.use("/api/v1/physics/get/count" , GetPhysicsQuestionsCount);
 // get
 
 // start exam
-app.use("/api/v1/Physics/exam", physicsExam);
+app.use("/api/v1/physics/exam", physicsExam);
 // start exam
 // create Physics api's
 
@@ -1066,6 +1084,7 @@ const teacherSciencesUpdate = require("./src/router/Subjects/Sciences/Teacher/up
 // get
 const SciencesGetOne = require("./src/router/Subjects/Sciences/get_one");
 const SciencesGetAll = require("./src/router/Subjects/Sciences/get_all");
+const GetSciencesQuestionsCount = require("./src/router/Subjects/Sciences/get_questions_count");
 // get
 
 // start exam
@@ -1075,30 +1094,31 @@ const sciencesExam = require("./src/router/Subjects/Sciences/start_exam");
 
 // create Sciences api's
 // super admin
-app.use("/api/v1/super/Sciences/create", superSciencesCreate);
-app.use("/api/v1/super/Sciences/delete", superSciencesDelete);
-app.use("/api/v1/super/Sciences/update", superSciencesUpdate);
+app.use("/api/v1/super/sciences/create", superSciencesCreate);
+app.use("/api/v1/super/sciences/delete", superSciencesDelete);
+app.use("/api/v1/super/sciences/update", superSciencesUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/admin/Sciences/create", adminSciencesCreate);
-app.use("/api/v1/admin/Sciences/delete", adminSciencesDelete);
-app.use("/api/v1/admin/Sciences/update", adminSciencesUpdate);
+app.use("/api/v1/admin/sciences/create", adminSciencesCreate);
+app.use("/api/v1/admin/sciences/delete", adminSciencesDelete);
+app.use("/api/v1/admin/sciences/update", adminSciencesUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/teacher/Sciences/create", teacherSciencesCreate);
-app.use("/api/v1/teacher/Sciences/delete", teacherSciencesDelete);
-app.use("/api/v1/teacher/Sciences/update", teacherSciencesUpdate);
+app.use("/api/v1/teacher/sciences/create", teacherSciencesCreate);
+app.use("/api/v1/teacher/sciences/delete", teacherSciencesDelete);
+app.use("/api/v1/teacher/sciences/update", teacherSciencesUpdate);
 // super admin
 
 // get
-app.use("/api/v1/Sciences/get/one", SciencesGetOne);
-app.use("/api/v1/Sciences/get/all", SciencesGetAll);
+app.use("/api/v1/sciences/get/one", SciencesGetOne);
+app.use("/api/v1/sciences/get/all", SciencesGetAll);
+app.use("/api/v1/sciences/get/count" , GetSciencesQuestionsCount);
 // get
 
 // start exam
-app.use("/api/v1/Sciences/exam", sciencesExam);
+app.use("/api/v1/sciences/exam", sciencesExam);
 // start exam
 // create sciences api's
 
@@ -1124,6 +1144,7 @@ const teacherGeographyUpdate = require("./src/router/Subjects/Geography/Teacher/
 // get
 const GeographyGetOne = require("./src/router/Subjects/Geography/get_one");
 const GeographyGetAll = require("./src/router/Subjects/Geography/get_all");
+const GetGeographyQuestionsCount = require("./src/router/Subjects/Geography/get_questions_count");
 // get
 
 // start exam
@@ -1153,6 +1174,7 @@ app.use("/api/v1/teacher/Geography/update", teacherGeographyUpdate);
 // get
 app.use("/api/v1/Geography/get/one", GeographyGetOne);
 app.use("/api/v1/Geography/get/all", GeographyGetAll);
+app.use("/api/v1/Geography/get/count" , GetGeographyQuestionsCount);
 // get
 
 // start exam
@@ -1182,6 +1204,7 @@ const teacherPhilosophyUpdate = require("./src/router/Subjects/Philosophy/Teache
 // get
 const PhilosophyGetOne = require("./src/router/Subjects/Philosophy/get_one");
 const PhilosophyGetAll = require("./src/router/Subjects/Philosophy/get_all");
+const GetPhilosophyQuestionsCount = require("./src/router/Subjects/Philosophy/get_questions_count");
 // get
 
 // start exam
@@ -1191,30 +1214,31 @@ const philosophyExam = require("./src/router/Subjects/Philosophy/start_exam");
 
 // create Philosophy api's
 // super admin
-app.use("/api/v1/super/Philosophy/create", superPhilosophyCreate);
-app.use("/api/v1/super/Philosophy/delete", superPhilosophyDelete);
-app.use("/api/v1/super/Philosophy/update", superPhilosophyUpdate);
+app.use("/api/v1/super/philosophy/create", superPhilosophyCreate);
+app.use("/api/v1/super/philosophy/delete", superPhilosophyDelete);
+app.use("/api/v1/super/philosophy/update", superPhilosophyUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/admin/Philosophy/create", adminPhilosophyCreate);
-app.use("/api/v1/admin/Philosophy/delete", adminPhilosophyDelete);
-app.use("/api/v1/admin/Philosophy/update", adminPhilosophyUpdate);
+app.use("/api/v1/admin/philosophy/create", adminPhilosophyCreate);
+app.use("/api/v1/admin/philosophy/delete", adminPhilosophyDelete);
+app.use("/api/v1/admin/philosophy/update", adminPhilosophyUpdate);
 // super admin
 
 // super admin
-app.use("/api/v1/teacher/Philosophy/create", teacherPhilosophyCreate);
-app.use("/api/v1/teacher/Philosophy/delete", teacherPhilosophyDelete);
-app.use("/api/v1/teacher/Philosophy/update", teacherPhilosophyUpdate);
+app.use("/api/v1/teacher/philosophy/create", teacherPhilosophyCreate);
+app.use("/api/v1/teacher/philosophy/delete", teacherPhilosophyDelete);
+app.use("/api/v1/teacher/philosophy/update", teacherPhilosophyUpdate);
 // super admin
 
 // get
-app.use("/api/v1/Philosophy/get/one", PhilosophyGetOne);
-app.use("/api/v1/Philosophy/get/all", PhilosophyGetAll);
+app.use("/api/v1/philosophy/get/one", PhilosophyGetOne);
+app.use("/api/v1/philosophy/get/all", PhilosophyGetAll);
+app.use("/api/v1/philosophy/get/count" , GetPhilosophyQuestionsCount);
 // get
 
 // start exam
-app.use("/api/v1/Philosophy/exam", philosophyExam);
+app.use("/api/v1/philosophy/exam", philosophyExam);
 // start exam
 // create philosophy api's
 
