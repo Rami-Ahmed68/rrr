@@ -6,7 +6,7 @@ const Joi = require("joi");
 //api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// french model
+// French model
 const French = require("../../../models/Subjects_Banks/French/french");
 
 router.get("/", async (req, res, next) => {

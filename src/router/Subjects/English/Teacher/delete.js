@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// english model
+// English model
 const English = require("../../../../models/Subjects_Banks/English/english");
 
 // teacher model

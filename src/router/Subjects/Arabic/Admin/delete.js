@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// arabic model
+// Arabic model
 const Arabic = require("../../../../models/Subjects_Banks/Arabic/arabic");
 
 // admin model

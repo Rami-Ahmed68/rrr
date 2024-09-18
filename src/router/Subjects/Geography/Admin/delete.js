@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// geography model
+// Geography model
 const Geography = require("../../../../models/Subjects_Banks/Geography/geography");
 
 // admin model

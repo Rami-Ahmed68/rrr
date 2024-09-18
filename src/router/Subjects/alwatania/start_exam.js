@@ -6,7 +6,7 @@ const Joi = require("joi");
 //api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// alwatania model
+// Alwatania model
 const Alwatania = require("../../../models/Subjects_Banks/alwatania/alwatania");
 
 router.get("/", async (req, res, next) => {

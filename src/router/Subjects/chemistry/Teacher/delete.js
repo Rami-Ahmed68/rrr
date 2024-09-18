@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// chemistry model
+// Chemistry model
 const Chemistry = require("../../../../models/Subjects_Banks/chemistry/chemistry");
 
 // teacher model

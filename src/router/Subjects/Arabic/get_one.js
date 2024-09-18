@@ -6,7 +6,7 @@ const Joi = require("joi");
 // api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// arabic model
+// Arabic model
 const Arabic = require("../../../models/Subjects_Banks/Arabic/arabic");
 
 router.get("/", async (req, res, next) => {
@@ -63,9 +63,12 @@ router.get("/", async (req, res, next) => {
         "note",
         "points",
         "level",
+        "class_level",
         "images",
         "repated",
         "options",
+        "created_by_type",
+        "created_at",
         "created_by",
       ]),
     };
@@ -77,7 +80,7 @@ router.get("/", async (req, res, next) => {
     return next(
       new ApiErrors(
         JSON.stringify({
-          english: `${error}...`,
+          english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
         500

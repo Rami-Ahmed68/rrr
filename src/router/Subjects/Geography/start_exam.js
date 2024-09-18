@@ -6,7 +6,7 @@ const Joi = require("joi");
 //api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// geography model
+// Geography model
 const Geography = require("../../../models/Subjects_Banks/Geography/geography");
 
 router.get("/", async (req, res, next) => {

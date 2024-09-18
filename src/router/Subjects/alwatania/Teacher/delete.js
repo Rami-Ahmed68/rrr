@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// alawatania model
+// Alwatania model
 const Alwatania = require("../../../../models/Subjects_Banks/alwatania/alwatania");
 
 // teacher model
