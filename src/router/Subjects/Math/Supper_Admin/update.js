@@ -33,7 +33,7 @@ const DeleteCloudinary = require("../../../../utils/cloudinary/DeleteCloudinary"
 const Validate_update_question = require("../../../../middleware/joi_validation/Subjects/Super_Admin/Joi_validate_update_question");
 
 router.put("/", upload_question_images, async (req, res, next) => {
-  // try {
+  try {
     // validate bodt data
     const Error = Validate_update_question(req.body);
 
@@ -261,21 +261,21 @@ router.put("/", upload_question_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  // } catch (error) {
-  //   // delete all uploaded images from images folder
-  //   DeleteImages(req.files, next);
+  } catch (error) {
+    // delete all uploaded images from images folder
+    DeleteImages(req.files, next);
 
-  //   // return error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+    // return error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;
