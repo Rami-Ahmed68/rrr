@@ -6,7 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // Philosophy model
-const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/Philosophy");
+const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/philosophy");
 
 // admin model
 const Admin = require("../../../../models/Admin/admin");
