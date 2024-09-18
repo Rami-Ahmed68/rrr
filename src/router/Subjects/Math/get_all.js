@@ -79,6 +79,7 @@ router.get("/", async (req, res, next) => {
           "note",
           "points",
           "level",
+          "class_level",
           "images",
           "repated",
           "options",
