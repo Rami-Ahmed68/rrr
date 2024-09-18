@@ -7,7 +7,7 @@ const Joi = require("joi");
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 // Physics model
-const Physics = require("../../../models/Subjects_Banks/Physics/Physics");
+const Physics = require("../../../models/Subjects_Banks/Physics/physics");
 
 router.get("/", async (req, res, next) => {
   try {
