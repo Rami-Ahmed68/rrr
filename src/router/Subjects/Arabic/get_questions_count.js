@@ -7,7 +7,7 @@ const Joi = require("joi");
 const Arabic = require("../../../models/Subjects_Banks/Arabic/arabic");
 
 // api error method
-const ApiErrors = require("../../utils/validation_error/ApiErrors");
+const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 router.get("/" , async (req , res , next) => {
   try {

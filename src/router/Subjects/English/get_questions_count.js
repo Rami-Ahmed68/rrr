@@ -5,7 +5,7 @@ const router = express.Router();
 const English = require("../../../models/Subjects_Banks/English/english");
 
 // api error method
-const ApiErrors = require("../../utils/validation_error/ApiErrors");
+const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 router.get("/" , async (req , res , next) => {
   try {

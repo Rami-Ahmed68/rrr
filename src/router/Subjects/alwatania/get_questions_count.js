@@ -7,7 +7,7 @@ const Joi = require("joi");
 const Alwatania = require("../../../models/Subjects_Banks/alwatania/alwatania");
 
 // api error method
-const ApiErrors = require("../../utils/validation_error/ApiErrors");
+const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 router.get("/" , async (req , res , next) => {
   try {

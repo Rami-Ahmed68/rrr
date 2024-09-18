@@ -6,7 +6,7 @@ const router = express.Router();
 const Philosophy = require("../../../models/Subjects_Banks/Philosophy/philosophy");
 
 // api error method
-const ApiErrors = require("../../utils/validation_error/ApiErrors");
+const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 router.get("/" , async (req , res , next) => {
   try {

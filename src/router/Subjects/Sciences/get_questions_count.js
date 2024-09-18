@@ -6,7 +6,7 @@ const router = express.Router();
 const Sciences = require("../../../models/Subjects_Banks/Sciences/sciences");
 
 // api error method
-const ApiErrors = require("../../utils/validation_error/ApiErrors");
+const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
 router.get("/" , async (req , res , next) => {
   try {
