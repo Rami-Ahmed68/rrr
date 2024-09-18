@@ -5,7 +5,7 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// religion model
+// Religion model
 const Religion = require("../../../../models/Subjects_Banks/Religion/Religion");
 
 // admin model

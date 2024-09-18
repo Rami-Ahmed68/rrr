@@ -6,8 +6,8 @@ const Joi = require("joi");
 //api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// religion model
-const Religion = require("../../../models/Subjects_Banks/Religion/Religion");
+// Religion model
+const Religion = require("../../../../models/Subjects_Banks/Religion/Religion");
 
 router.get("/", async (req, res, next) => {
   try {
