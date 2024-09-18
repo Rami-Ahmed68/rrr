@@ -6,8 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
 // Physics model
-const Physics = require("../../../../models/Subjects_Banks/Physics/Physics");
-
+const Physics = require("../../../../models/Subjects_Banks/Physics/physics");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Super_Admin/Joi_validate_create_question");
