@@ -6,7 +6,7 @@ const Joi = require("joi");
 //api error method
 const ApiErrors = require("../../../utils/validation_error/ApiErrors");
 
-// history model
+// History model
 const History = require("../../../models/Subjects_Banks/History/history");
 
 router.get("/", async (req, res, next) => {
