@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// math model
-const Math = require("../../../../models/Subjects_Banks/Math/math");
+// Philosophy model
+const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/philosophy");
 
 // teacher model
 const Teacher = require("../../../../models/Teacher/teacher");
@@ -141,7 +141,7 @@ router.put("/", upload_question_images, async (req, res, next) => {
     }
 
     // find the question
-    const question = await Math.findById(req.body.question_id);
+    const question = await Philosophy.findById(req.body.question_id);
 
     // checkif the question is exists
     if (!question) {
@@ -188,7 +188,7 @@ router.put("/", upload_question_images, async (req, res, next) => {
     let optionsArray = req.body.options ? JSON.parse(req.body.options) : question.options;
 
     // find and update the question
-    const updateQuestion = await Math.findByIdAndUpdate(
+    const updateQuestion = await Philosophy.findByIdAndUpdate(
       { _id: req.body.question_id },
       {
         $set: {

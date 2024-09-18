@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// math model
-const Math = require("../../../../models/Subjects_Banks/Math/math");
+// Philosophy model
+const Philosophy = require("../../../../models/Subjects_Banks/Philosophy/philosophy");
 
 // validate body data method
 const Validate_create_question = require("../../../../middleware/joi_validation/Subjects/Teacher/Joi_validate_create_question");
@@ -131,7 +131,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
     let optionsArray = JSON.parse(req.body.options);
 
     // create the question
-    const question = new Math({
+    const question = new Philosophy({
       title: req.body.title,
       description: req.body.description,
       note: req.body.note ? req.body.note : "",
