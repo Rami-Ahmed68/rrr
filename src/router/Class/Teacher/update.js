@@ -94,7 +94,6 @@ router.put("/", upload_cover, async (req, res, next) => {
       !req.body.title &&
       !req.body.teacher_id &&
       !req.body.class_id &&
-      !req.body.subject &&
       !req.body.note &&
       req.files.length == 0 &&
       !req.body.class_level
@@ -178,7 +177,6 @@ router.put("/", upload_cover, async (req, res, next) => {
       {
         $set: {
           title: req.body.title ? req.body.title : classObject.title,
-          subject: req.body.subject ? req.body.subject : classObject.subject,
           note: req.body.note ? req.body.note : classObject.note,
           class_level: req.body.class_level
             ? req.body.class_level

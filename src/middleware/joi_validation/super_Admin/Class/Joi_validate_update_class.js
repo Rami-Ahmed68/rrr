@@ -10,7 +10,7 @@ const Validate_class_update = (data) => {
     subject: Joi.string(),
     note: Joi.string().min(3).max(500),
     class_level: Joi.string(),
-    delete_cover: Joi.boolean(),
+    delete_cover: Joi.string(),
   });
 
   // validate body data
