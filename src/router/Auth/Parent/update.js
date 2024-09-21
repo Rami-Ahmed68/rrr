@@ -29,7 +29,7 @@ const HashingPassword = require("../../../utils/password_methods/HashPassword");
 const UploadCloudinary = require("../../../utils/cloudinary/UploadCloudinary");
 
 router.put("/", upload, async (req, res, next) => {
-  try {
+  // try {
     // validate body data
     const Error = Validate_parent_update(req.body);
 
@@ -213,20 +213,20 @@ router.put("/", upload, async (req, res, next) => {
 
     // send the result to user
     res.status(200).send(result);
-  } catch (error) {
-    // delete all uploaded images from images folder
-    DeleteImages(req.files, next);
+  // } catch (error) {
+  //   // delete all uploaded images from images folder
+  //   DeleteImages(req.files, next);
 
-    return next(
-      new ApiErrors(
-        JSON.stringify({
-          english: `${error} ...`,
-          arabic: "... عذرا خطأ عام",
-        }),
-        500
-      )
-    );
-  }
+  //   return next(
+  //     new ApiErrors(
+  //       JSON.stringify({
+  //         english: `${error} ...`,
+  //         arabic: "... عذرا خطأ عام",
+  //       }),
+  //       500
+  //     )
+  //   );
+  // }
 });
 
 module.exports = router;
