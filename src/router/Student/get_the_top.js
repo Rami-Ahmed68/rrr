@@ -14,8 +14,6 @@ router.get("/", async (req, res, next) => {
     // create Schema
     const Schema = Joi.object().keys({
       class_level: Joi.string().required(),
-      page: Joi.number(),
-      limit: Joi.number(),
     });
 
     // validate query data
@@ -35,25 +33,16 @@ router.get("/", async (req, res, next) => {
       );
     }
 
-    // home page
-    const page = req.query.page || 1;
-
-    // limit of documents
-    const limit = req.query.limit || 5;
-
-    // skip of document
-    const skip = (page - 1) * limit;
-
     // find the students
     const students = await Student.find({
       $or: [
+        {class_level : req.query.class_level},
         { List_of_modifiers: { $exists: true } },
         { total_gpa: { $gt: 0 } },
       ],
     })
       .sort({ total_gpa: -1 })
-      .skip(skip)
-      .limit(limit);
+      .limit(5);
 
     // create result
     const result = {

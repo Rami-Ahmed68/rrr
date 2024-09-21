@@ -186,6 +186,7 @@ const StudentLogin = require("./src/router/Auth/Student/login");
 const StudentUpdate = require("./src/router/Auth/Student/update");
 const StudentGetOne = require("./src/router/Student/get_one");
 const StudentGetAll = require("./src/router/Student/get_all");
+const StudentGetTop = require("./src/router/Student/get_the_top");
 const GetStudentsCount = require("./src/router/Student/get_Students_count");
 const GetStudentsClasses = require("./src/router/Student/get_classes");
 const GetStudentsPlans = require("./src/router/Student/get_plans");
@@ -199,6 +200,7 @@ app.use("/api/v1/student/update", StudentUpdate);
 // get students
 app.use("/api/v1/student/get/one", StudentGetOne);
 app.use("/api/v1/student/get/all", StudentGetAll);
+app.use("/api/v1/student/get/top" , StudentGetTop);
 app.use("/api/v1/student/get/count" , GetStudentsCount);
 app.use("/api/v1/student/get/classes" , GetStudentsClasses);
 app.use("/api/v1/student/get/plans" , GetStudentsPlans);
