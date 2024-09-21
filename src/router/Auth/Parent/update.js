@@ -129,7 +129,7 @@ router.put("/", upload, async (req, res, next) => {
     }
 
     // find and upadte the parent
-    const updateParent = await findByIdAndUpdate(
+    const updateParent = await Parent.findByIdAndUpdate(
       { _id: req.body.parent_id },
       {
         $set: {
