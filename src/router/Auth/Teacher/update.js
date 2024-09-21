@@ -77,6 +77,7 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.gender &&
       !req.body.password &&
       !req.body.about_me &&
+      !req.body.phone_number &&
       req.files.length == 0
     ) {
       // to delete uploaded avatar
@@ -145,7 +146,8 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : teacher.password,
           gender: req.body.gender ? req.body.gender : teacher.gender,
-          about_me : req.body.about_me ? req.body.about_me : teacher.about_me
+          about_me : req.body.about_me ? req.body.about_me : teacher.about_me,
+          phone_number : req.body.phone_number ? req.body.phone_number : teacher.phone_number,
         },
       },
       { new: true }
@@ -219,6 +221,8 @@ router.put("/", upload, async (req, res, next) => {
         "editor",
         "email",
         "avatar",
+        "about_me",
+        "phone_number",
         "gender",
         "joinde_at",
         "rate",
