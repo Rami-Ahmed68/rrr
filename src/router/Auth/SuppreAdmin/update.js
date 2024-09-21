@@ -232,6 +232,7 @@ router.put("/", upload, async (req, res, next) => {
         "_id",
         "name",
         "is_supper_admin",
+        "phone_number",
         "email",
         "avatar",
         "gender",
