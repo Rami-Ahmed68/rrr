@@ -54,6 +54,7 @@ router.put("/", upload, async (req, res, next) => {
     if (
       !req.body.name &&
       !req.body.password &&
+      !req.body.phone_number &&
       !req.body.delete_avatar &&
       req.files.length == 0
     ) {
@@ -137,6 +138,7 @@ router.put("/", upload, async (req, res, next) => {
           password: req.body.password
             ? await HashingPassword(req.body.password)
             : parent.password,
+            phone_number : req.body.phone_number ? req.body.phone_number : parent.phone_number,
         },
       },
       { new: true }
@@ -203,6 +205,7 @@ router.put("/", upload, async (req, res, next) => {
         "_id",
         "name",
         "avatar",
+        "phone_number",
         "children",
         "gender",
       ]),
