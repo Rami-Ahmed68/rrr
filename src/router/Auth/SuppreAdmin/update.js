@@ -225,7 +225,7 @@ router.put("/", upload, async (req, res, next) => {
     // create result
     const result = {
       message: "Super admin acount updated successfully",
-      super_admin_data: _.pick(updateSuperAdmin, [
+      user_data: _.pick(updateSuperAdmin, [
         "_id",
         "name",
         "is_supper_admin",
