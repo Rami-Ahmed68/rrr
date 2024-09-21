@@ -36,7 +36,7 @@ router.get("/", async (req, res, next) => {
     // find the students
     const students = await Student.find({
       $and: [
-        { isEnrolledInScholarship: true },
+        { class_level: req.query.class_level },
         { $or: [
             { List_of_modifiers: { $exists: true } },
             { total_gpa: { $gt: 0 } },
