@@ -6,6 +6,7 @@ const Validate_super_admin_update = (data) => {
     super_admin_id: Joi.string().required(),
     name: Joi.string().min(3).max(100),
     password: Joi.string().min(8).max(100),
+    phone_number : Joi.string(),
     gender: Joi.string(),
     delete_avatar: Joi.string(), // true to delete avatar and set the default avatar
   });

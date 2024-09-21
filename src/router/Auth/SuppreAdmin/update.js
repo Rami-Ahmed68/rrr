@@ -77,6 +77,8 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.gender &&
       !req.body.password &&
+      !req.body.delete_avatar &&
+      !req.body.phone_number &&
       req.files.length == 0
     ) {
       // return error
@@ -161,6 +163,7 @@ router.put("/", upload, async (req, res, next) => {
             ? await HashPassword(req.body.password)
             : superAdmin.password,
           gender: req.body.gender ? req.body.gender : superAdmin.gender,
+          phone_number : req.body.phone_number ? req.body.phone_number : superAdmin.phone_number
         },
       },
       { new: true }
