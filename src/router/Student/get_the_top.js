@@ -35,11 +35,13 @@ router.get("/", async (req, res, next) => {
 
     // find the students
     const students = await Student.find({
-      $or: [
-        {class_level : req.query.class_level},
-        { List_of_modifiers: { $exists: true } },
-        { total_gpa: { $gt: 0 } },
-      ],
+      $and: [
+        { isEnrolledInScholarship: true },
+        { $or: [
+            { List_of_modifiers: { $exists: true } },
+            { total_gpa: { $gt: 0 } },
+        ]},
+    ],
     })
       .sort({ total_gpa: -1 })
       .limit(5);
