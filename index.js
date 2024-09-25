@@ -190,6 +190,7 @@ const StudentGetTop = require("./src/router/Student/get_the_top");
 const GetStudentsCount = require("./src/router/Student/get_Students_count");
 const GetStudentsClasses = require("./src/router/Student/get_classes");
 const GetStudentsPlans = require("./src/router/Student/get_plans");
+const UpdateStudentPoints = require("./src/router/Student/update_points");
 // require student files
 
 
@@ -204,6 +205,7 @@ app.use("/api/v1/student/get/top" , StudentGetTop);
 app.use("/api/v1/student/get/count" , GetStudentsCount);
 app.use("/api/v1/student/get/classes" , GetStudentsClasses);
 app.use("/api/v1/student/get/plans" , GetStudentsPlans);
+app.use("/api/v1/student/update/points" , UpdateStudentPoints);
 // get students
 
 // create student api's

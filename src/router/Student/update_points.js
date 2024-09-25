@@ -48,7 +48,7 @@ router.put("/", async (req, res, next) => {
     }
 
     // update the student points
-    student.points = req.body.points;
+    student.points += req.body.points;
 
     // update finished exams
     student.finished_exams += 1;
