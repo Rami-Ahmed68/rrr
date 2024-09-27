@@ -57,10 +57,10 @@ router.put("/", async (req, res, next) => {
     student.total_gpa = Math.floor(student.points / student.finished_exams);
 
     // check if the student's total GPA is more than the top GPA
-    if (student.total_gpa >= 1000) {
+    if (student.total_gpa >= 100) {
       // add the student info to student
       student.List_of_modifiers.push({
-        total_gpa: student.total_gpa > 1000 ? 1000 : student.total_gpa,
+        total_gpa: student.total_gpa >= 100 ? 100 : student.total_gpa,
         points: student.points,
         finished_exams: student.finished_exams,
       });
