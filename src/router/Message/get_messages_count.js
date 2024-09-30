@@ -40,19 +40,19 @@ router.get("/" , async (req , res , next) => {
     if (req.query.recipient == "super" || req.query.recipient == "admin") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ });
-    } else if (req.query.recipient == "teachers") {
+    } else if (req.query.recipient == "teacher") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "teachers" },
         { recipient : "public" }
       ] });
-    } else if (req.query.recipient == "students") {
+    } else if (req.query.recipient == "student") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "students" },
         { recipient : "public" }
       ] });
-    } else if (req.query.recipient == "parents") {
+    } else if (req.query.recipient == "parent") {
       // get to the all Message count 
       MessageCount = await Message.countDocuments({ $or : [
         { recipient : "parents" },
