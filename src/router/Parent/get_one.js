@@ -61,6 +61,7 @@ router.get("/", async (req, res, next) => {
         "name",
         "avatar",
         "gender",
+        "phone_number",
         "children",
         "created_by",
         "created_at",
