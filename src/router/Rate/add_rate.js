@@ -105,7 +105,7 @@ router.put("/", async (req, res, next) => {
     }
 
     // check if the student's class_level is equal teacher's class_level
-    if (teacher.class_level == student.class_level) {
+    if (teacher.class_level != student.class_level) {
       // return error
       return next(
         new ApiErrors(
