@@ -102,6 +102,7 @@ router.post("/", async (req, res, next) => {
         "name",
         "is_supper_admin",
         "email",
+        "phone_number",
         "avatar",
         "gender",
         "joinde_at",

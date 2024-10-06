@@ -76,7 +76,7 @@ router.post("/", async (req, res, next) => {
     // create result
     const result = {
       message: "Loged in successfully",
-      user_data: _.pick(parent, ["_id", "name", "email", "avatar"]),
+      user_data: _.pick(parent, ["_id", "name", "phone_number" ,"email", "avatar"]),
       token: token,
     };
 
