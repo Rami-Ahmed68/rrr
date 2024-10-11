@@ -4,7 +4,7 @@ const Validate_super_admin_update = (data) => {
   // create schema to validate body data using it
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100),
+    name: Joi.string().min(3),
     password: Joi.string().min(8).max(100),
     phone_number : Joi.string(),
     gender: Joi.string(),

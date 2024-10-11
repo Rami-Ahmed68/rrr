@@ -5,7 +5,6 @@ const student = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   birth_date: {
     type: String,
@@ -34,7 +33,6 @@ const student = new mongoose.Schema({
   about_me: {
     type: String,
     min: 5,
-    max: 500,
   },
   finished_exams: {
     type: Number,

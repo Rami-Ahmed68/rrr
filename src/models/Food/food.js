@@ -5,13 +5,11 @@ const food = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   description: {
     type: String,
     required: true,
     min: 3,
-    max: 500,
   },
   images: [
     {

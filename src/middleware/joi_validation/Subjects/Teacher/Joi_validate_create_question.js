@@ -4,9 +4,9 @@ const Validate_create_question = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
     teacher_id: Joi.string().required(),
-    title: Joi.string().min(3).max(300).required(),
-    description: Joi.string().min(3).max(300).required(),
-    note: Joi.string().min(5).max(100),
+    title: Joi.string().min(3).required(),
+    description: Joi.string().min(3).required(),
+    note: Joi.string().min(5),
     points: Joi.number().required(),
     level: Joi.string().required(),
     class_level: Joi.string().required(),

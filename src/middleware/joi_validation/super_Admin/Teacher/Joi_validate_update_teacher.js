@@ -5,11 +5,11 @@ const Validate_teacher_update = (data) => {
   const Schema = Joi.object().keys({
     spuer_admin_id: Joi.string().required(),
     teacher_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100),
+    name: Joi.string().min(3),
     editor: Joi.boolean(),
     subject: Joi.string(),
     password: Joi.string().min(8).max(100),
-    about_me: Joi.string().min(10).max(500),
+    about_me: Joi.string().min(10),
     gender: Joi.string(),
     delete_avatar: Joi.string(),
     class_level: Joi.string(),

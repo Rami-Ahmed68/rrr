@@ -5,7 +5,6 @@ const teacher = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   editor: {
     type: Boolean,
@@ -70,7 +69,6 @@ const teacher = new mongoose.Schema({
     type: String,
     required: false,
     min: 5,
-    max: 500,
   },
   gender: {
     type: String,

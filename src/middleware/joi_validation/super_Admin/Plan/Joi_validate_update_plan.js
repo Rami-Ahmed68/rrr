@@ -6,8 +6,8 @@ const Validate_plan_update = (data) => {
     super_admin_id: Joi.string().required(),
     plan_id: Joi.string().required(),
     title: Joi.string().min(5).max(50),
-    description: Joi.string().min(5).max(100),
-    note: Joi.string().min(3).max(100),
+    description: Joi.string().min(5),
+    note: Joi.string().min(3),
     plan_info: Joi.array(),
     class_level: Joi.string(),
   });

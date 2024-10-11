@@ -5,9 +5,9 @@ const Validate_class_create = (data) => {
   const Schema = Joi.object().keys({
     admin_id: Joi.string().required(),
     teacher_id: Joi.string().required(),
-    title: Joi.string().min(3).max(100).required(),
+    title: Joi.string().min(3).required(),
     subject: Joi.string().required(),
-    note: Joi.string().min(3).max(500),
+    note: Joi.string().min(3),
     class_level: Joi.string().required(),
   });
 

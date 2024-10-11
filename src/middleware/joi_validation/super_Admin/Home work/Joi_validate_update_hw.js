@@ -5,9 +5,9 @@ const Validate_hw_create = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     home_work_id: Joi.string().required(),
-    title: Joi.string().min(3).max(100).allow(''),
-    description: Joi.string().min(3).max(500).allow(''),
-    note: Joi.string().min(5).max(100).allow(''),
+    title: Joi.string().min(3).allow(''),
+    description: Joi.string().min(3).allow(''),
+    note: Joi.string().min(5).allow(''),
     level: Joi.string().allow(''),
     images_for_delete: Joi.string(),
     images: Joi.array(),

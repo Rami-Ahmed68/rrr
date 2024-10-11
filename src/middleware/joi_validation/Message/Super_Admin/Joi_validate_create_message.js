@@ -4,8 +4,8 @@ const Validate_create_message = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
-    title: Joi.string().min(5).max(50).required(),
-    description: Joi.string().min(5).max(500).required(),
+    title: Joi.string().min(5).required(),
+    description: Joi.string().min(5).required(),
     note: Joi.string(),
     recipient: Joi.string().required(),
     level: Joi.string().required(),

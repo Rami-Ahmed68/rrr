@@ -4,8 +4,8 @@ const Validate_create_food = (data) => {
     // create Schema to validate body data using it
     const Schema = Joi.object().keys({
         admin_id : Joi.string().required(),
-        title : Joi.string().min(3).max(100).required(),
-        description : Joi.string().min(3).max(500).required(),
+        title : Joi.string().min(3).required(),
+        description : Joi.string().min(3).required(),
         images : Joi.array()
     });
 

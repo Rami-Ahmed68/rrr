@@ -4,7 +4,7 @@ const Validate_parent_create = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100).required(),
+    name: Joi.string().min(3).required(),
     email: Joi.string().min(5).max(100).email(),
     password: Joi.string().min(8).max(100).required(),
     gender: Joi.string().required(),

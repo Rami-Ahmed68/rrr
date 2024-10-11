@@ -5,7 +5,6 @@ const classSchema = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   students: [
     {
@@ -34,7 +33,6 @@ const classSchema = new mongoose.Schema({
   note: {
     type: String,
     min: 3,
-    max: 500,
   },
   home_works: [
     {

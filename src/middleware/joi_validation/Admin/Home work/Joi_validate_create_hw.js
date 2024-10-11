@@ -4,9 +4,9 @@ const Validate_hw_create = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
     admin_id: Joi.string().required(),
-    title: Joi.string().min(3).max(100).required(),
-    description: Joi.string().min(3).max(500).required(),
-    note: Joi.string().min(5).max(100),
+    title: Joi.string().min(3).required(),
+    description: Joi.string().min(3).required(),
+    note: Joi.string().min(5),
     class_id: Joi.string().required(),
     level: Joi.string().required(),
   });

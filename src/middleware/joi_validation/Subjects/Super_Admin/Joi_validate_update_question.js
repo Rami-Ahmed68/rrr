@@ -5,9 +5,9 @@ const Validate_update_question = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     question_id: Joi.string().required(),
-    title: Joi.string().min(3).max(300),
-    description: Joi.string().min(3).max(300),
-    note: Joi.string().min(5).max(100),
+    title: Joi.string().min(3),
+    description: Joi.string().min(3),
+    note: Joi.string().min(5),
     points: Joi.number(),
     level: Joi.string(),
     class_level: Joi.string(),

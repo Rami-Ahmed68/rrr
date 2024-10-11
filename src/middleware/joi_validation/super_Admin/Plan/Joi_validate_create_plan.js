@@ -5,8 +5,8 @@ const Validate_plan_create = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     title: Joi.string().min(5).max(50).required(),
-    description: Joi.string().min(5).max(100).required(),
-    note: Joi.string().min(3).max(100),
+    description: Joi.string().min(5).required(),
+    note: Joi.string().min(3),
     plan_info: Joi.array().required(),
     class_level: Joi.string().required(),
   });

@@ -4,12 +4,12 @@ const Validate_teacher_create = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100).required(),
+    name: Joi.string().min(3).required(),
     editor: Joi.boolean().required(),
     subject: Joi.string().required(),
     email: Joi.string().min(5).max(50).email().required(),
     password: Joi.string().min(8).max(100).required(),
-    about_me: Joi.string().min(10).max(500),
+    about_me: Joi.string().min(10),
     gender: Joi.string().required(),
     class_level: Joi.string().required(),
     phone_number: Joi.string().min(10).max(10).allow(''),

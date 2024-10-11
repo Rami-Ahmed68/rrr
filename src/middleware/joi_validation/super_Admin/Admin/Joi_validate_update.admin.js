@@ -5,7 +5,7 @@ const Validate_update_admin = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     admin_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100),
+    name: Joi.string().min(3),
     password: Joi.string().min(8).max(100),
     gender: Joi.string(),
     delete_avatar: Joi.string(),

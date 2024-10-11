@@ -5,11 +5,11 @@ const Validate_student_update = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     student_id: Joi.string().required(),
-    name: Joi.string().min(3).max(100),
+    name: Joi.string().min(3),
     birth_date: Joi.string().pattern(/^\d{4}-\d{1,2}-\d{1,2}$/, "YYYY-MM-DD"), // Date pattern validation
     password: Joi.string().min(8).max(100),
     gender: Joi.string(),
-    about_me: Joi.string().min(5).max(500),
+    about_me: Joi.string().min(5),
     class_level: Joi.string(),
     delete_avatar: Joi.string(),
     phone_number: Joi.string().min(10).max(10).allow(''),

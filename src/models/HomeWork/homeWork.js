@@ -5,13 +5,11 @@ const homework = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   description: {
     type: String,
     required: true,
     min: 3,
-    max: 500,
   },
   class_id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -50,7 +48,6 @@ const homework = new mongoose.Schema({
   note: {
     type: String,
     min: 5,
-    max: 100,
   },
   created_at: {
     type: Date,

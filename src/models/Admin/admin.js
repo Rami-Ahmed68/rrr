@@ -5,7 +5,6 @@ const admin = mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 100,
   },
   is_supper_admin: {
     type: Boolean,

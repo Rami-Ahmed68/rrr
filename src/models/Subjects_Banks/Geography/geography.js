@@ -5,19 +5,16 @@ const geography = new mongoose.Schema({
     type: String,
     required: true,
     min: 3,
-    max: 300,
   },
   description: {
     type: String,
     required: true,
     min: 3,
-    max: 300,
   },
   note: {
     type: String,
     required: true,
     min: 5,
-    max: 100,
   },
   points: {
     type: Number,

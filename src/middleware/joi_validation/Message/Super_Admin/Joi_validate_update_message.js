@@ -5,8 +5,8 @@ const Validate_update_message = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     message_id: Joi.string().required(),
-    title: Joi.string().min(5).max(50),
-    description: Joi.string().min(5).max(500),
+    title: Joi.string().min(5),
+    description: Joi.string().min(5),
     note: Joi.string(),
     recipient: Joi.string(),
     level: Joi.string(),

@@ -4,7 +4,7 @@ const Validate_admin_data = (data) => {
   // creaet Schema to validate body data useing it
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
-    name: Joi.string().required().min(3).max(100),
+    name: Joi.string().required().min(3),
     email: Joi.string().required().min(5).max(50).email(),
     password: Joi.string().required().min(8).max(100),
     gender: Joi.string().required(),

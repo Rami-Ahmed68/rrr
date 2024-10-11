@@ -5,18 +5,15 @@ const plan = new mongoose.Schema({
     type: String,
     required: true,
     min: 5,
-    max: 50,
   },
   description: {
     type: String,
     required: true,
     min: 5,
-    max: 500,
   },
   note: {
     type: String,
     min: 5,
-    max: 100,
   },
   plan_info: [
     {
@@ -24,7 +21,6 @@ const plan = new mongoose.Schema({
       day: {
         type: String,
         min: 3,
-        max: 50,
       },
       date: {
         type: String,
@@ -34,7 +30,6 @@ const plan = new mongoose.Schema({
           subject: {
             type: String,
             min: 3,
-            max: 50,
             required: true,
           },
           start_time: {
