@@ -61,7 +61,8 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
       !req.body.note &&
       !req.body.level &&
       !req.body.files &&
-      !req.body.images_for_delete
+      !req.body.images_for_delete &&
+      !req.files
     ) {
       // return error
       return next(
@@ -175,7 +176,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     }
 
     // create imagesForDelete
-    const ImagesForDelete = JSON.parse(req.body.images_for_delete);
+    const ImagesForDelete = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
 
     // check if the images count is less than 5 images
     if (
@@ -261,7 +262,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     };
 
     // send the result
-    
+
     res.status(200).send(result);
   // } catch (error) {
   //   // return error
