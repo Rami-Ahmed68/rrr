@@ -67,7 +67,8 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.class_level &&
       !req.body.birth_date &&
       req.body.about_me &&
-      !req.body.delete_avatar
+      !req.body.delete_avatar &&
+      req.files.length == 0
     ) {
       // delete all uploaded images from images folder
       DeleteImages(req.files, next);
