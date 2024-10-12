@@ -99,7 +99,8 @@ router.put("/", upload_cover, async (req, res, next) => {
       !req.body.subject &&
       !req.body.note &&
       req.files.length == 0 &&
-      !req.body.class_level
+      !req.body.class_level &&
+      !req.body.delete_cover
     ) {
       // return error
       return next(
@@ -240,7 +241,7 @@ router.put("/", upload_cover, async (req, res, next) => {
       },
     ]);
 
-    if (req.body.delete_cover == "true") {
+    if (req.body.delete_cover && req.body.delete_cover == "true") {
       // check if the class cover is not default cover and delete it
       if (!Default_covers.includes(classObject.cover)) {
         await DeleteCloudinary(classObject.cover);
@@ -291,7 +292,7 @@ router.put("/", upload_cover, async (req, res, next) => {
           break;
         default:
       }
-    } else if (req.body.delete_cover == "false") {
+    } else if (req.body.delete_cover && req.body.delete_cover == "false") {
       // check if the request has not any  image
       if (req.files.length == 0) {
         // return error
