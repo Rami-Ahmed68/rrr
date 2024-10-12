@@ -151,6 +151,23 @@ router.post("/", upload_home_work_images, async (req, res, next) => {
       );
     }
 
+    // check if the teacher is the class's teacher
+    if (!Class_object.teacher._id != req.body.teacher_id) {
+      // dleete all uploaded images from images folder
+      DeleteImages(req.files, next);
+
+      // return error
+      return next(
+        new ApiErrors(
+          JSON.stringify({
+            english: "Sorry, you can't edit this because you're not responsible for it ...",
+            arabic: "... عذرا لا يمكنك تعديل هذا لأنك لست مسؤل عنه",
+          }),
+          404
+        )
+      );
+    }
+
     // create home work
     const homeWork = new Home_Work({
       title: req.body.title,
