@@ -54,7 +54,7 @@ const Default_covers = [
 ];
 
 router.put("/", upload_cover, async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_class_update(req.body);
 
@@ -334,21 +334,21 @@ router.put("/", upload_cover, async (req, res, next) => {
 
     // send the result to user
     res.status(200).send(result);
-  // } catch (error) {
-  //   // delete all uploaded images from images folder
-  //   DeleteImages(req.files, next);
+  } catch (error) {
+    // delete all uploaded images from images folder
+    DeleteImages(req.files, next);
 
-  //   // return error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+    // return error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;

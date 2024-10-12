@@ -33,7 +33,7 @@ const DeleteCloudinary = require("../../../utils/cloudinary/DeleteCloudinary");
 const VerifyToken = require("../../../utils/token_methods/VerifyToken");
 
 router.put("/", upload_home_work_images, async (req, res, next) => {
-  try {
+  // try {
     // validate body data
     const Error = Validate_hw_update(req.body);
 
@@ -261,18 +261,18 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  } catch (error) {
-    // return error
-    return next(
-      new ApiErrors(
-        JSON.stringify({
-          english: `${error} ...`,
-          arabic: "... عذرا خطأ عام",
-        }),
-        500
-      )
-    );
-  }
+  // } catch (error) {
+  //   // return error
+  //   return next(
+  //     new ApiErrors(
+  //       JSON.stringify({
+  //         english: `${error} ...`,
+  //         arabic: "... عذرا خطأ عام",
+  //       }),
+  //       500
+  //     )
+  //   );
+  // }
 });
 
 module.exports = router;
