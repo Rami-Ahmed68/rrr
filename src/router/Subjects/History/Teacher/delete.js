@@ -5,8 +5,8 @@ const _ = require("lodash");
 // api error method
 const ApiErrors = require("../../../../utils/validation_error/ApiErrors");
 
-// math model
-const Math = require("../../../../models/Subjects_Banks/Math/math");
+// History model
+const History = require("../../../../models/Subjects_Banks/History/history");
 
 // teacher model
 const Teacher = require("../../../../models/Teacher/teacher");
@@ -93,7 +93,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // find the question
-    const question = await Math.findById(req.body.question_id);
+    const question = await History.findById(req.body.question_id);
 
     // checkif the question id exists
     if (!question) {
@@ -118,7 +118,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // delete the question from data base
-    await Math.deleteOne({_id : question._id});
+    await History.deleteOne({_id : question._id});
 
     // create result
     const result = {
