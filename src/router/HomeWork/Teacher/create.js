@@ -152,7 +152,7 @@ router.post("/", upload_home_work_images, async (req, res, next) => {
     }
 
     // check if the teacher is the class's teacher
-    if (!Class_object.teacher._id != req.body.teacher_id) {
+    if (Class_object.teacher._id != req.body.teacher_id) {
       // dleete all uploaded images from images folder
       DeleteImages(req.files, next);
 
