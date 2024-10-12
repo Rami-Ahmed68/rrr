@@ -30,7 +30,7 @@ const VerifyToken = require("../../../../utils/token_methods/VerifyToken");
 const UploadCloudinary = require("../../../../utils/cloudinary/UploadCloudinary");
 
 router.post("/", upload_question_images, async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_create_question(req.body);
 
@@ -147,9 +147,9 @@ router.post("/", upload_question_images, async (req, res, next) => {
 
     // check if the request has any images
     if (req.files && req.files.length > 0) {
-      for (let i = 0; i < req.body.files.length; i++) {
+      for (let i = 0; i < req.files.length; i++) {
         // upload the image to cloudinary cloud
-        const uploadedImage = await UploadCloudinary(req.body.files[i]);
+        const uploadedImage = await UploadCloudinary(req.files[i]);
 
         // add the uploaded image to question's array
         question.images.push(uploadedImage);
@@ -181,18 +181,18 @@ router.post("/", upload_question_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  // } catch (error) {
-  //   // return error
-  //   return netx(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+  } catch (error) {
+    // return error
+    return netx(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;
