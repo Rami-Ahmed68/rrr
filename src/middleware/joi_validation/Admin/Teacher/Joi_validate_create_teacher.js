@@ -9,7 +9,7 @@ const Validate_teacher_create = (data) => {
     subject: Joi.string().required(),
     email: Joi.string().min(5).max(50).email().required(),
     password: Joi.string().min(8).max(100).required(),
-    about_me: Joi.string().min(10),
+    about_me: Joi.string(),
     gender: Joi.string().required(),
     class_level: Joi.string().required(),
     phone_number: Joi.string().min(10).max(10).allow(''),

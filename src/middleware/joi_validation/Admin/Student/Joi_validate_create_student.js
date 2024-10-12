@@ -11,7 +11,7 @@ const Validate_student_create = (data) => {
     email: Joi.string().min(5).max(50).required(),
     password: Joi.string().min(8).max(100).required(),
     gender: Joi.string().required(),
-    about_me: Joi.string().min(5),
+    about_me: Joi.string(),
     class_level: Joi.string().required(),
     phone_number: Joi.string().min(10).max(10).allow(''),
   });

@@ -6,7 +6,7 @@ const Validate_plan_create = (data) => {
     admin_id: Joi.string().required(),
     title: Joi.string().min(5).required(),
     description: Joi.string().min(5).required(),
-    note: Joi.string().min(3),
+    note: Joi.string(),
     plan_info: Joi.array().required(),
     class_level: Joi.string().required(),
   });

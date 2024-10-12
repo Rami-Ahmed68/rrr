@@ -5,9 +5,9 @@ const Validate_plan_update = (data) => {
   const Schema = Joi.object().keys({
     admin_id: Joi.string().required(),
     plan_id: Joi.string().required(),
-    title: Joi.string().min(5),
-    description: Joi.string().min(5),
-    note: Joi.string().min(3),
+    title: Joi.string(),
+    description: Joi.string(),
+    note: Joi.string(),
     plan_info: Joi.array(),
     class_level: Joi.string(),
   });

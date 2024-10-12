@@ -7,7 +7,7 @@ const Validate_class_create = (data) => {
     teacher_id: Joi.string().required(),
     title: Joi.string().min(3).required(),
     subject: Joi.string().required(),
-    note: Joi.string().min(3),
+    note: Joi.string(),
     class_level: Joi.string().required(),
   });
 

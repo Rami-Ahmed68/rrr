@@ -6,9 +6,9 @@ const Validate_class_update = (data) => {
     admin_id: Joi.string().required(),
     class_id: Joi.string().required(),
     teacher_id: Joi.string(),
-    title: Joi.string().min(3),
+    title: Joi.string(),
     subject: Joi.string(),
-    note: Joi.string().min(3),
+    note: Joi.string(),
     class_level: Joi.string(),
     delete_cover: Joi.string(),
   });

@@ -6,8 +6,8 @@ const Validate_hw_create = (data) => {
     admin_id: Joi.string().required(),
     home_work_id: Joi.string().required(),
     title: Joi.string().min(3).allow(''),
-    description: Joi.string().min(3).allow(''),
-    note: Joi.string().min(5).allow(''),
+    description: Joi.string(),
+    note: Joi.string(),
     level: Joi.string(),
     images_for_delete: Joi.string().allow(''),
   });

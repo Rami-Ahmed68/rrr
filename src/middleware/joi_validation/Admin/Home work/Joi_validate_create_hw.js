@@ -6,7 +6,7 @@ const Validate_hw_create = (data) => {
     admin_id: Joi.string().required(),
     title: Joi.string().min(3).required(),
     description: Joi.string().min(3).required(),
-    note: Joi.string().min(5),
+    note: Joi.string(),
     class_id: Joi.string().required(),
     level: Joi.string().required(),
   });
