@@ -118,7 +118,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // delete the question from data base
-    await Alwatania.deleteOne(req.body.question_id);
+    await Alwatania.deleteOne({_id : req.body.question_id});
 
     // create result
     const result = {

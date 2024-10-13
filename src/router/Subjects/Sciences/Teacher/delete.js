@@ -118,7 +118,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // delete the question from data base
-    await Sciences.deleteOne(question._id);
+    await Sciences.deleteOne({_id : question._id});
 
     // create result
     const result = {

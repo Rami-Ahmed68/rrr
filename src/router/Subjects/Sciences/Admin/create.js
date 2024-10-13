@@ -147,9 +147,9 @@ router.post("/", upload_question_images, async (req, res, next) => {
 
     // check if the request has any images
     if (req.files && req.files.length > 0) {
-      for (let i = 0; i < req.body.files.length; i++) {
+      for (let i = 0; i < req.files.length; i++) {
         // upload the image to cloudinary cloud
-        const uploadedImage = await UploadCloudinary(req.body.files[i]);
+        const uploadedImage = await UploadCloudinary(req.files[i]);
 
         // add the uploaded image to question's array
         question.images.push(uploadedImage);
