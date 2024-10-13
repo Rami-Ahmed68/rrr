@@ -118,7 +118,7 @@ router.delete("/", async (req, res, next) => {
     }
 
     // delete the question from data base
-    await Philosophy.deleteOne(question._id);
+    await Philosophy.deleteOne({_id : question._id});
 
     // create result
     const result = {
