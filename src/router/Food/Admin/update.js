@@ -192,26 +192,10 @@ router.put("/", upload_food_images, async (req, res, next) => {
     // check if the request has images's index to delete
     if (ImagesForDelete && ImagesForDelete.length > 0) {
       // chdck if the food image length is equal one or not
-      if (food.images.length == 1) {
-        // delete all uploaded images from images folder
-        DeleteImages(req.files, next);
-
-        // return error
-        return next(
-          new ApiErrors(
-            JSON.stringify({
-              english: "Sorry, you cannot delete all food images ...",
-              arabic: "... عذرا لا يمكنك حذف جميع صور وجبة الطعام",
-            }),
-            403
-          )
-        );
-      } else {
         ImagesForDelete.forEach(async (image) => {
           updateFood.images = food.images.filter((img) => img != image);
           await DeleteCloudinary(image, next);
         });
-      }
     }
 
     // check if the request has a new images to upload
