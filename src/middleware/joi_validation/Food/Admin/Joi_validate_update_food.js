@@ -3,7 +3,7 @@ const Joi = require("joi");
 const Validate_update_food = (data) => {
   // create Schema to validate body data using it
   const Schema = Joi.object().keys({
-    admin_id: Joi.string().required(),
+    super_admin_id: Joi.string().required(),
     food_id: Joi.string().required(),
     title: Joi.string().min(3),
     description: Joi.string().min(3),
