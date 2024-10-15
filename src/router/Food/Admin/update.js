@@ -193,20 +193,21 @@ router.put("/", upload_food_images, async (req, res, next) => {
     if (ImagesForDelete && ImagesForDelete.length > 0) {
       // chdck if the food image length is equal one or not
         ImagesForDelete.forEach(async (image) => {
+          // filtering the images array 
           updateFood.images = food.images.filter((img) => img != image);
+
+          // delete the image  
           await DeleteCloudinary(image, next);
         });
     }
 
     // check if the request has a new images to upload
     if (req.files && req.files.length > 0) {
-      console.log(updateFood);
 
       for (let i = 0; i < req.files.length; i++) {
         const uploadedImage = await UploadCloudinary(req.files[i], next);
         updateFood.images.push(uploadedImage);
       }
-      console.log(updateFood);
 
       // delete all uploaded images from images folder
       DeleteImages(req.files, next);

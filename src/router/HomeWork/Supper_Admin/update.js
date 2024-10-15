@@ -219,7 +219,7 @@ router.put("/", upload_home_work_images, async (req, res, next) => {
     );
 
     // check if the request has a images to delete
-    if (ImagesForDelete.length > 0) {
+    if (ImagesForDelete && ImagesForDelete.length > 0) {
 
       for (let i = 0; i < ImagesForDelete.length; i++) {
         // filter and return images url
