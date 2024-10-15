@@ -73,13 +73,8 @@ router.put("/", upload_food_images, async (req, res, next) => {
       );
     }
 
-    // craete the new images for delete
-    let ImagesForDelete;
-
-    // check if the request any images for delete
-    if (req.body.images_for_delete) {
-      ImagesForDelete = JSON.parse(req.body.images_for_delete)
-    }
+    // create a ImagesForDelete check if the request any images for delete
+    let ImagesForDelete = req.body.images_for_delete ? JSON.parse(req.body.images_for_delete) : [];
 
     // check if the body images length more than 5 images
     if (req.files && req.files.length > 5) {
