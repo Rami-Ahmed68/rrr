@@ -129,7 +129,7 @@ router.delete("/", async (req, res, next) => {
     // return error
     return next(
       new ApiErrors(
-        JOSN.stringify({
+        JSON.stringify({
           english: `${error} ...`,
           arabic: "... عذرا خطأ عام",
         }),
