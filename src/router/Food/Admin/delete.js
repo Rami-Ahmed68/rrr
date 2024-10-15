@@ -20,6 +20,9 @@ const DeleteCloudinary = require("../../../utils/cloudinary/DeleteCloudinary");
 // check admin method
 const CheckAdmin = require("../../../middleware/CheckAdmin");
 
+// veriy token data method
+const VerifyToken = require("../../../utils/token_methods/VerifyToken");
+
 router.delete("/", async (req, res, next) => {
   try {
     // validate body data
