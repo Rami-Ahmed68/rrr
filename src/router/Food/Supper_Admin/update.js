@@ -194,7 +194,7 @@ router.put("/", upload_food_images, async (req, res, next) => {
     );
 
     // check if the request has images's index to delete
-    if (ImagesForDelete && ImagesForDelete.length > 0) {
+    if (ImagesForDelete.length > 0) {
       // chdck if the food image length is equal one or not
       for (let i = 0; i < ImagesForDelete.length; i++) { 
         updateFood.images = food.images.filter(
