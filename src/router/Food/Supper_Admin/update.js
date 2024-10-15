@@ -200,6 +200,7 @@ router.put("/", upload_food_images, async (req, res, next) => {
         updateFood.images = food.images.filter(
           (image) => image != ImagesForDelete[i]
         );
+        console.log(ImagesForDelete[i])
 
         // delete the image 
         await DeleteCloudinary(ImagesForDelete[i], next);
