@@ -188,16 +188,17 @@ router.put("/", upload_food_images, async (req, res, next) => {
       { new: true }
     );
 
-    // check if the request has images's index to delete
     if (ImagesForDelete.length > 0) {
-      // chdck if the food image length is equal one or not
-      for (let i = 0; i < ImagesForDelete.length; i++) { 
-        updateFood.images = food.images.filter(
-          (image) => image != ImagesForDelete[i]
-        );
-        console.log(ImagesForDelete[i])
-
-        // delete the image 
+      // Create a new array to store the filtered images
+      const filteredImages = food.images.filter(
+        (image) => !ImagesForDelete.includes(image)
+      );
+    
+      // Update updateFood.images with the filtered images
+      updateFood.images = filteredImages;
+    
+      // Now, delete the images from Cloudinary
+      for (let i = 0; i < ImagesForDelete.length; i++) {
         await DeleteCloudinary(ImagesForDelete[i], next);
       }
     }
