@@ -7,7 +7,7 @@ const Validate_update_question = (data) => {
     question_id: Joi.string().required(),
     title: Joi.string().min(3),
     description: Joi.string().min(3),
-    note: Joi.string().min(5),
+    note: Joi.string(),
     points: Joi.number(),
     level: Joi.string(),
     class_level: Joi.string(),
