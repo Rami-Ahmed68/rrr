@@ -184,7 +184,7 @@ router.post("/", upload_question_images, async (req, res, next) => {
     res.status(200).send(result);
   } catch (error) {
     // return error
-    return netx(
+    return next(
       new ApiErrors(
         JSON.stringify({
           english: `${error} ...`,
