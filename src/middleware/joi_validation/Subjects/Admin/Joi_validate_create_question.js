@@ -6,7 +6,7 @@ const Validate_create_question = (data) => {
     admin_id: Joi.string().required(),
     title: Joi.string().min(3).required(),
     description: Joi.string().min(3).required(),
-    note: Joi.string(),
+    note: Joi.string().allow(''),
     points: Joi.number().required(),
     level: Joi.string().required(),
     class_level: Joi.string().required(),

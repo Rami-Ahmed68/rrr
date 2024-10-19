@@ -5,14 +5,14 @@ const Validate_update_question = (data) => {
   const Schema = Joi.object().keys({
     super_admin_id: Joi.string().required(),
     question_id: Joi.string().required(),
-    title: Joi.string(),
-    description: Joi.string(),
-    note: Joi.string(),
+    title: Joi.string().allow(''),
+    description: Joi.string().allow(''),
+    note: Joi.string().allow(''),
     points: Joi.number(),
-    level: Joi.string(),
-    class_level: Joi.string(),
-    repated: Joi.string(),
-    options: Joi.string(),
+    level: Joi.string().allow(''),
+    class_level: Joi.string().allow(''),
+    repated: Joi.string().allow(''),
+    options: Joi.string().allow(''),
     images_for_delete: Joi.string(),
   });
 
