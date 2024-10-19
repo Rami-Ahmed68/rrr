@@ -30,7 +30,7 @@ const VerifyToken = require("../../../../utils/token_methods/VerifyToken");
 const UploadCloudinary = require("../../../../utils/cloudinary/UploadCloudinary");
 
 router.post("/", upload_question_images, async (req, res, next) => {
-  // try {
+  try {
     // validate body data
     const Error = Validate_create_question(req.body);
 
@@ -181,18 +181,18 @@ router.post("/", upload_question_images, async (req, res, next) => {
 
     // send the result
     res.status(200).send(result);
-  // } catch (error) {
-  //   // return error
-  //   return next(
-  //     new ApiErrors(
-  //       JSON.stringify({
-  //         english: `${error} ...`,
-  //         arabic: "... عذرا خطأ عام",
-  //       }),
-  //       500
-  //     )
-  //   );
-  // }
+  } catch (error) {
+    // return error
+    return next(
+      new ApiErrors(
+        JSON.stringify({
+          english: `${error} ...`,
+          arabic: "... عذرا خطأ عام",
+        }),
+        500
+      )
+    );
+  }
 });
 
 module.exports = router;

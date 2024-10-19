@@ -13,7 +13,6 @@ const sciences = new mongoose.Schema({
   },
   note: {
     type: String,
-    required: true,
     min: 5,
   },
   points: {
