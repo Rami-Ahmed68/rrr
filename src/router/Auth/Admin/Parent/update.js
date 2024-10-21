@@ -232,7 +232,7 @@ router.put("/", upload, async (req, res, next) => {
       updateParent.children = [];
     }
 
-    if (req.body.children) {
+    if (req.body.children && req.body.children.length > 0) {
       req.body.children.forEach(async (studentId) => {
         // find the student
         const student = await Student.findById(studentId);
