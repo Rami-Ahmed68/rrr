@@ -232,17 +232,17 @@ router.put("/", upload, async (req, res, next) => {
       updateParent.children = [];
     }
 
-    if (req.body.children && req.body.children.length > 0) {
-      req.body.children.forEach(async (studentId) => {
-        // find the student
-        const student = await Student.findById(studentId);
+    // if (req.body.children && req.body.children.length > 0) {
+    //   req.body.children.forEach(async (studentId) => {
+    //     // find the student
+    //     const student = await Student.findById(studentId);
 
-        // check if the student is exists
-        if (student) {
-          updateParent.children.push(studentId);
-        }
-      });
-    }
+    //     // check if the student is exists
+    //     if (student) {
+    //       updateParent.children.push(studentId);
+    //     }
+    //   });
+    // }
 
     if (req.body.delete_avatar && req.body.delete_avatar == "true") {
       if (req.files.length > 0) {
