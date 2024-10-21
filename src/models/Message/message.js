@@ -13,7 +13,6 @@ const message = new mongoose.Schema({
   },
   note: {
     type: String,
-    min: 5,
   },
   recipient: {
     type: String,
