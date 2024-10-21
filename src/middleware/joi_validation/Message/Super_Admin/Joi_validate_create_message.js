@@ -6,7 +6,7 @@ const Validate_create_message = (data) => {
     super_admin_id: Joi.string().required(),
     title: Joi.string().min(5).required(),
     description: Joi.string().min(5).required(),
-    note: Joi.string(),
+    note: Joi.string().allow(''),
     recipient: Joi.string().required(),
     level: Joi.string().required(),
   });

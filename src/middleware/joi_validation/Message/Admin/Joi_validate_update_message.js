@@ -7,7 +7,7 @@ const Validate_update_message = (data) => {
     message_id: Joi.string().required(),
     title: Joi.string().min(5),
     description: Joi.string().min(5),
-    note: Joi.string(),
+    note: Joi.string().allow(''),
     recipient: Joi.string(),
     level: Joi.string(),
   });
