@@ -11,7 +11,7 @@ const AutoDeleteMessages = async () => {
   try {
 
     // using the moment-timezone libbery
-    const now = moment().tz('Asia/Syria').toDate();
+    const now = moment().tz('Asia/Damascus').toDate();
 
     // notification old
     const duration = new Date(now - 24 * 60 * 60 * 1000);
