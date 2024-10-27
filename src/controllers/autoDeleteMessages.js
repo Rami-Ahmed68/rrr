@@ -9,8 +9,12 @@ const Message = require("../models/Message/message");
 
 const AutoDeleteMessages = async () => {
   try {
+
+    // using the moment-timezone libbery
+    const now = moment().tz('Asia/Syria').toDate();
+
     // notification old
-    const duration = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const duration = new Date(now - 24 * 60 * 60 * 1000);
 
     // find messages that were created more than 24 hours ago
     const messages = await Message.find({
@@ -24,7 +28,7 @@ const AutoDeleteMessages = async () => {
   } catch (error) {
     return new ApiErrors(
       JSON.stringify({
-        english: `${error}...`,
+        english: `${error} ...`,
         arabic: "... عذرا خطأ عام",
       }),
       500
