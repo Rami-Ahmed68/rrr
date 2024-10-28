@@ -26,7 +26,7 @@ const AutoDeleteMessages = require("./src/controllers/autoDeleteMessages");
 // auto delete messages method
 
 // run the delete messages method every 30 m
-setInterval(AutoDeleteMessages, 1000);
+setInterval(AutoDeleteMessages, 1800000);
 // run the delete messages method every 30 m
 
 app.use(express.json());
