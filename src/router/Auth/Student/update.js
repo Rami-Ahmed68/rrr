@@ -76,7 +76,6 @@ router.put("/", upload, async (req, res, next) => {
       !req.body.name &&
       !req.body.gender &&
       !req.body.password &&
-
       !req.body.about_me &&
       !req.body.delete_avatar &&
       !req.body.phone_number &&
